@@ -1,25 +1,26 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Book Library Dashboard</a>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" routerLink="/user">User</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" routerLink="/admin">Admin</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+
 
 <div class="container-fluid">
     <div class="row">
         <div class="col">
             Go to User Pages
             <button class="btn btn-primary" routerLink="/user">User</button>
+            <br>
+            Go to Available Books Pages
+            <button class="btn btn-primary" routerLink="/user/all">Avaiable Books</button>
+            <br>
+            Go to Last Rentals Pages
+            <button class="btn btn-primary" routerLink="/user/lastRental">Last Rentals</button>
+            <br>
+            Go to New Arrivals Pages
+            <button class="btn btn-primary" routerLink="/user/newArrivals">New Arrivals</button>
+            <br>
+            Go to Top Rentals Pages
+            <button class="btn btn-primary" routerLink="/user/topRentals">Top Rentals</button>
+            <br>
+            Go to User Basket
+            <button class="btn btn-danger" routerLink="/user/userBasket">User Basket</button>
+            <br>
         </div>
         <div class="col">
             Go to Admin Pages
