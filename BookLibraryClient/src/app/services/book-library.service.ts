@@ -19,7 +19,7 @@ export class BookLibraryService {
     title: '',
     description: '',
     publisher: '',
-    yearOfPublish: '',
+    yearOfPublish: 0,
     language: '',
     rentalPrice: 0,
   }
@@ -64,15 +64,15 @@ export class BookLibraryService {
   constructor(private http: HttpClient) { }
 
    //Get
-   getBookes(): Observable<Book> {
-    return this.http.get(API_URL + 'all').pipe();
+   getBooks(path: string): Observable<Book> {
+    return this.http.get(API_URL + path + '/all').pipe();
   }
 
    //Get ID
    getBookByID(id: any) {
     this.http.get(API_URL + id) 
-      .subscribe((book: any) => {
-        this.getBook = book;
+      .subscribe((character: any) => {
+        this.getBook = character;
         console.log(this.getBook);
       });
   }
@@ -80,10 +80,8 @@ export class BookLibraryService {
    //Post
    
    postBook() {
-    this.http.post < any > (API_URL, this.addBook).subscribe(data => {
-      this.postId = data.id;
-    });
-  }
+    return this.http.post < any > (API_URL, this.addBook)
+    }
 
    //Put
    putBook() {

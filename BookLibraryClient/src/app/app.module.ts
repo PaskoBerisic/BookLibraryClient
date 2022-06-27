@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +13,7 @@ import { TopRentalsComponent } from './User/top-rentals/top-rentals.component';
 import { UserBasketComponent } from './User/user-basket/user-basket.component';
 import { UserBasketPaymentInfoComponent } from './User/user-basket/user-basket-payment-info/user-basket-payment-info.component';
 import { UserBasketOrderCompleteComponent } from './User/user-basket/user-basket-order-complete/user-basket-order-complete.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -25,10 +27,12 @@ import { UserBasketOrderCompleteComponent } from './User/user-basket/user-basket
     UserBasketComponent,
     UserBasketPaymentInfoComponent,
     UserBasketOrderCompleteComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

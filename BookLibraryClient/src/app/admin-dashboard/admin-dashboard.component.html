@@ -2,7 +2,24 @@
     <div class="row">
         <div class="col">
             Available Books
+            <!-- Get Books - Display with button Add, Update, Delete -->
+            <!-- Get Books -->
+            <div class="col-md-12">
+                <div *ngFor="let bookItem of books">
+                  <div class="container-fluid">
+                    <h3>Name: {{bookItem.title}}</h3>
+                    <h5>Power: {{bookItem.description}}</h5>
+                    <button class="btn btn-primary" routerLink={{bookItem.title}}>Details</button>
+                    <hr>
+                  </div>
+                </div>
+              </div>
         </div>
+        <!-- Check add tutorials project to add onclick button show -->
+        <button class="btn btn-success">Add Book</button>  
+        <button class="btn btn-warning">Update Book</button>  
+        <button class="btn btn-danger">Delete Books</button>  
+
         <div class="col">
             Edit Books
         </div>
@@ -14,3 +31,5 @@
         </div>
     </div>
 </div>
+
+
