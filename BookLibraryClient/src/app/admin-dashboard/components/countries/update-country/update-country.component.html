@@ -1,0 +1,64 @@
+<button class="badge badge-secondary mb-3"  (click)="goBack()"> Back</button>
+
+<div *ngIf="currentCountry.id" class="edit-form">
+        <h4>Edit Book '{{currentCountry.name}} '</h4>
+        <form>
+            <div class="form-group">
+                <label for="name">Book Title</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    [(ngModel)]="currentCountry.name"
+                    name="title"
+                    />
+            </div>
+
+            
+            <div class="form-group">
+                <label for="name">Book Desc</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    [(ngModel)]="currentCountry.shortName"
+                    name="description"
+                    />
+            </div>
+            
+            <div class="form-group">
+                <label for="yearOfPublish">Year of Publish</label>
+                <input
+                    type="number"
+                    class="form-control"
+                    id="yearOfPublish"
+                    [(ngModel)]="currentCountry.vat"
+                    name="yearOfPublish"
+                    />
+            </div>
+        </form>
+        <!-- <button
+      class="badge badge-primary mr-2"
+      *ngIf="currentBook.published"
+      (click)="updatePublished(false)"
+    >
+      UnPublish
+    </button> -->
+    <!-- <button
+      *ngIf="!currentBook.published"
+      class="badge badge-primary mr-2"
+      (click)="updatePublished(true)"
+    >
+      Publish
+    </button> -->
+    <button class="badge badge-danger mr-2" (click)="deleteBook()">
+      Delete
+    </button>
+    <button type="submit" class="badge badge-success mb-2" (click)="updateBook(currentCountry)">
+        Update
+    </button>
+    </div>
+    <div *ngIf="!currentCountry.id">
+        <br />
+        <p>Cannot access this Book...</p>
+    </div>

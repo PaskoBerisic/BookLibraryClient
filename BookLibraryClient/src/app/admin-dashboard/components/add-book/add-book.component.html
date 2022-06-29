@@ -1,0 +1,55 @@
+<div class="container-fluid">
+  <h3>Add Book</h3>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="form-group">
+        <h5>Book Title</h5>
+        <input type="text" class="form-control" [(ngModel)]="book.title">
+        <h5>Publisher</h5>
+        <input type="text" class="form-control" [(ngModel)]="book.publisherId">
+        <h5>Year of Publish</h5>
+        <input type="number" class="form-control" [(ngModel)]="book.yearOfPublish">
+        <h5>Book Description</h5>
+        <input type="text" class="form-control" [(ngModel)]="book.description">
+        <h5>Book Language</h5>
+        <input type="text" class="form-control" [(ngModel)]="book.languageId">
+        <h5>Rental Price</h5>
+        <input type="number" class="form-control" [(ngModel)]="book.rentalPrice">
+        <h5>List Price</h5>
+        <input type="number" class="form-control" [(ngModel)]="book.listPrice">
+        <h5>Unit Number</h5>
+        <input type="number" class="form-control" [(ngModel)]="book.unitNumber">
+      </div>
+    </div>
+    <div class="col-md-9">
+      <h3>Preview</h3>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col" >Title</th>
+            <th scope="col" >Publisher</th>
+            <th scope="col" >Language</th>
+            <th scope="col" width="10%">Year of Publish</th>
+            <th scope="col" width="10%">Rental Price</th>
+            <th scope="col" width="10%">List Price</th>
+            <th scope="col" width="10%">Unit Number</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{book.title}}</td>
+            <td>{{book.publisherId}}</td>
+            <td>{{book.languageId}}</td>
+            <td>{{book.yearOfPublish}}</td>
+            <td>{{book.rentalPrice}}</td>
+            <td>{{book.listPrice}}</td>
+            <td>{{book.unitNumber}}</td>
+          </tr>
+
+        </tbody>
+      </table>
+      <textarea class="form-control" value="{{book.description}}" placeholder="Book Description" cols="100" rows="10"></textarea>
+    </div>
+  </div>
+  <button class="btn btn-success">Add Book</button>
+</div>

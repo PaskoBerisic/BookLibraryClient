@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Book } from '../models/book.model';
 import { BookLibraryService } from '../services/book-library.service';
 
-const API_URL = "";
+const API_URL = "https://localhost:44323/api/";
 @Component({
   selector: 'app-admin-dashboard',
   templateUrl: './admin-dashboard.component.html',
@@ -11,8 +11,10 @@ const API_URL = "";
 })
 export class AdminDashboardComponent implements OnInit {
   books: any[] = [];
+  currentBook: Book = {};
+  currentIndex = -1;
 
- book: Book = {
+  book: Book = {
   id: undefined,
   title: '',
   publisherId: 0,
@@ -28,15 +30,27 @@ export class AdminDashboardComponent implements OnInit {
   updated: '',
 }
 postId: any;
-
+title = '';
   constructor(private http: HttpClient, private bookLibraryService: BookLibraryService) { }
 
   ngOnInit(): void {
     this.getBooks();
   }
+  refreshList(): void {
+    this.getBooks();
+    this.book = {};
+    this.currentIndex = -1;
+  }
+  setActiveBook(book: Book, index: number): void {
+    this.book = book;
+    this.currentIndex = index;
+
+    console.log(this.book)
+  }
+
 
   getBooks(){  
-    this.bookLibraryService.getBooks('Books')
+    this.bookLibraryService.getItems('Book')
       .subscribe((books: any) => {
          this.books = books;
          console.log(books);
