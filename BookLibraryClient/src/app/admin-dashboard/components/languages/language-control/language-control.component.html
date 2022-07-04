@@ -1,0 +1,29 @@
+<h2>Language Control</h2>
+<div class="container-fluid">
+<div class="row">
+  <div class="col-md-10">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Language Name</th>
+        <th scope="col">Short Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let language of languages">
+        <th scope="row">{{language.id}}</th>
+        <td>{{language.name}} </td>
+        <td>{{language.shortName}}</td>
+        
+        <td><button class="btn btn-warning" routerLink="/admin/languageControl/updateLanguage/{{language.id}}">Edit</button></td>
+        <td><button class="btn btn-danger" (click)="deleteBook(language.id)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="col-md-2">
+  <button class="btn btn-success" routerLink="/admin/languageControl/addLanguage">Add Language</button>
+</div>
+</div>
+</div>

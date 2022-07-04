@@ -5,38 +5,47 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
-import { LastRentalsComponent } from './User/last-rentals/last-rentals.component';
-import { NewArrivalsComponent } from './User/new-arrivals/new-arrivals.component';
-import { TopRentalsComponent } from './User/top-rentals/top-rentals.component';
-import { UserBasketComponent } from './User/user-basket/user-basket.component';
-import { UserBasketPaymentInfoComponent } from './User/user-basket/user-basket-payment-info/user-basket-payment-info.component';
-import { UserBasketOrderCompleteComponent } from './User/user-basket/user-basket-order-complete/user-basket-order-complete.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { BookDetailComponent } from './admin-dashboard/book-detail/book-detail.component';
 import { FormsModule } from '@angular/forms';
-import { AdminAvailableBooksComponent } from './admin-dashboard/components/admin-available-books/admin-available-books.component';
-import { DetailedBookComponent } from './admin-dashboard/components/detailed-book/detailed-book.component';
-import { AddBookComponent } from './admin-dashboard/components/add-book/add-book.component';
-import { BookControlComponent } from './admin-dashboard/components/book-control/book-control.component';
-import { EditBookComponent } from './admin-dashboard/components/edit-book/edit-book.component';
+import { AdminAvailableBooksComponent } from './admin-dashboard/components/books/admin-available-books/admin-available-books.component';
+import { DetailedBookComponent } from './admin-dashboard/components/books/detailed-book/detailed-book.component';
+import { AddBookComponent } from './admin-dashboard/components/books/add-book/add-book.component';
+import { BookControlComponent } from './admin-dashboard/components/books/book-control/book-control.component';
+import { EditBookComponent } from './admin-dashboard/components/books/edit-book/edit-book.component';
 import { AddCountryComponent } from './admin-dashboard/components/countries/add-country/add-country.component';
 import { UpdateCountryComponent } from './admin-dashboard/components/countries/update-country/update-country.component';
 import { GetCountryComponent } from './admin-dashboard/components/countries/get-country/get-country.component';
+import { AuthorControlComponent } from './admin-dashboard/components/authors/author-control/author-control.component';
+import { EditAuthorComponent } from './admin-dashboard/components/authors/edit-author/edit-author.component';
+import { AddAuthorComponent } from './admin-dashboard/components/authors/add-author/add-author.component';
+import { GenreControlComponent } from './admin-dashboard/components/genres/genre-control/genre-control.component';
+import { AddGenreComponent } from './admin-dashboard/components/genres/add-genre/add-genre.component';
+import { EditGenreComponent } from './admin-dashboard/components/genres/edit-genre/edit-genre.component';
+import { LanguageControlComponent } from './admin-dashboard/components/languages/language-control/language-control.component';
+import { AddLanguageComponent } from './admin-dashboard/components/languages/add-language/add-language.component';
+import { EditLanguageComponent } from './admin-dashboard/components/languages/edit-language/edit-language.component';
+import { OrderControlComponent } from './admin-dashboard/components/orders/order-control/order-control.component';
+import { AddOrderComponent } from './admin-dashboard/components/orders/add-order/add-order.component';
+import { EditOrderComponent } from './admin-dashboard/components/orders/edit-order/edit-order.component';
+import { RouterModule } from '@angular/router';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { AvailableBooksComponent } from './user-dashboard/components/available-books/available-books.component';
+import { LastRentalsComponent } from './user-dashboard/components/last-rentals/last-rentals.component';
+import { NewArrivalsComponent } from './user-dashboard/components/new-arrivals/new-arrivals.component';
+import { TopRentalsComponent } from './user-dashboard/components/top-rentals/top-rentals.component';
+import { UserBasketComponent } from './user-dashboard/components/user-basket/user-basket.component';
+import { UserPaymentInfoComponent } from './user-dashboard/components/user-basket/user-payment-info/user-payment-info.component';
+import { UserOrderCompleteComponent } from './user-dashboard/components/user-basket/user-order-complete/user-order-complete.component';
+import { LandingComponent } from './shared/landing/landing.component';
+import { FooterComponent } from './shared/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    UserDashboardComponent,
     AdminDashboardComponent,
-    LastRentalsComponent,
-    NewArrivalsComponent,
-    TopRentalsComponent,
-    UserBasketComponent,
-    UserBasketPaymentInfoComponent,
-    UserBasketOrderCompleteComponent,
     NavbarComponent,
     BookDetailComponent,
     AdminAvailableBooksComponent,
@@ -47,12 +56,35 @@ import { GetCountryComponent } from './admin-dashboard/components/countries/get-
     AddCountryComponent,
     UpdateCountryComponent,
     GetCountryComponent,
+    AuthorControlComponent,
+    EditAuthorComponent,
+    AddAuthorComponent,
+    GenreControlComponent,
+    AddGenreComponent,
+    EditGenreComponent,
+    LanguageControlComponent,
+    AddLanguageComponent,
+    EditLanguageComponent,
+    OrderControlComponent,
+    AddOrderComponent,
+    EditOrderComponent,
+    UserDashboardComponent,
+    AvailableBooksComponent,
+    LastRentalsComponent,
+    NewArrivalsComponent,
+    TopRentalsComponent,
+    UserBasketComponent,
+    UserPaymentInfoComponent,
+    UserOrderCompleteComponent,
+    LandingComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

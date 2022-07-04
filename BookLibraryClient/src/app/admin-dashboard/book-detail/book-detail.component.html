@@ -1,127 +1,36 @@
-<div *ngIf="viewMode; else editable">
-    <div *ngIf="currentBook.id">
-        <h4>Book Name</h4>
-        <div>
-            <label><strong>Book Name:</strong></label> 
-            {{currentBook.title}}
+<div class="container py-4 my-4 mx-auto d-flex flex-column">
+    <div class="header">
+        <div class="row r1">
+            <div class="col-md-9 abc">
+                <h1>{{book.name}}</h1>
+            </div>
+            <div class="col-md-3 text-right pqr"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+            <p class="text-right para">Based on 250 Review</p>
         </div>
-        <div>
-            <label><strong>Desc:</strong></label>
-            {{currentBook.description}}
-        </div>
-        <div>
-            <label><strong>Year Of Publish:</strong></label>
-            {{currentBook.yearOfPublish}}
-        </div>
-        <div>
-            <label><strong>Units:</strong></label>
-            {{currentBook.unitNumber}}
-        </div>
-        <div>
-            <label><strong>Rental Price:</strong></label>
-            {{currentBook.rentalPrice}}
-        </div>
-        <div>
-            <label><strong>Status:</strong></label>
-            {{currentBook.publisherId}}
-        </div>
-        <a class="badge badge-warning" routerLink="/books/{{ currentBook.id }}">Edit</a>
-        <a class="badge badge-danger" routerLink="/books/{{ currentBook.id }}">Delete</a>
     </div>
-    <div *ngIf="!currentBook">
-        <br />
-        <p>Please click on a Book ...</p>
+    <div class="container-body mt-4">
+        <div class="row r3">
+            <div class="col-md-5 p-0 klo">
+                <ul>
+                    <li>Author: {{book.Author}}</li>
+                    <li>Year of Publish: {{book.yearOfPublish}}</li>
+                    <li>Easy Returns</li>
+                    <li>12 Months Warranty</li>
+                    <li>EMI Starting from (On Credit Cards)</li>
+                    <li>Normal Delivery : 4-5 Days</li>
+                    <li>Express Delivery : 2-3 Days</li>
+                    <li>COD Available (All Over India)</li>
+                </ul>
+            </div>
+            <div class="col-md-7"> <img src="https://assetscdn1.paytm.com/images/catalog/product/K/KI/KIDTORADO-MUSCUTORA65799297FD22C/1564571511644_0.jpg" width="90%" height="95%"> </div>
+        </div>
+    </div>
+    <div class="footer d-flex flex-column mt-5">
+        <div class="row r4">
+            <div class="col-md-2 myt des"><a href="#">Description</a></div>
+            <div class="col-md-2 myt "><a href="#">Review</a></div>
+            <div class="col-md-2 mio offset-md-4"><a href="#">ADD TO CART</a></div>
+            <div class="col-md-2 myt "><button type="button" class="btn btn-outline-warning"><a href="#">BUY NOW</a></button></div>
+        </div>
     </div>
 </div>
-<ng-template #editable>
-    <div *ngIf="currentBook.id" class="edit-form">
-        <h4>Book</h4>
-        <form>
-            <div class="form-group">
-                <label for="name">Book Title</label>
-                <input
-                    type="text"
-                    class="form-control"
-                    id="name"
-                    [(ngModel)]="currentBook.title"
-                    name="title"
-                    />
-            </div>
-
-            
-            <div class="form-group">
-                <label for="name">Book Desc</label>
-                <input
-                    type="text"
-                    class="form-control"
-                    id="name"
-                    [(ngModel)]="currentBook.description"
-                    name="description"
-                    />
-            </div>
-            
-            <div class="form-group">
-                <label for="yearOfPublish">Year of Publish</label>
-                <input
-                    type="number"
-                    class="form-control"
-                    id="yearOfPublish"
-                    [(ngModel)]="currentBook.yearOfPublish"
-                    name="yearOfPublish"
-                    />
-            </div>
-            
-            <div class="form-group">
-                <label for="genre">Units</label>
-                <input
-                    type="text"
-                    class="form-control"
-                    id="genre"
-                    [(ngModel)]="currentBook.unitNumber"
-                    name="units"
-                    />
-            </div>
-            
-            <div class="form-group">
-                <label for="rentalPrice">Rental Price</label>
-                <input
-                    type="number"
-                    class="form-control"
-                    id="rentalPrice"
-                    [(ngModel)]="currentBook.rentalPrice"
-                    name="rentalPrice"
-                    step=".01"
-                    />
-            </div>
-            <div class="form-group">
-                <label><strong>Status:</strong></label>
-                {{ currentBook.publisherId}}
-            </div>
-        </form>
-        <!-- <button
-      class="badge badge-primary mr-2"
-      *ngIf="currentBook.published"
-      (click)="updatePublished(false)"
-    >
-      UnPublish
-    </button> -->
-    <!-- <button
-      *ngIf="!currentBook.published"
-      class="badge badge-primary mr-2"
-      (click)="updatePublished(true)"
-    >
-      Publish
-    </button> -->
-    <button class="badge badge-danger mr-2" (click)="deleteBook(currentBook)">
-      Delete
-    </button>
-    <button type="submit" class="badge badge-success mb-2" (click)="updateBook(currentBook)">
-        Update
-    </button>
-      <p> {{message}} </p>
-    </div>
-    <div *ngIf="!currentBook.id">
-        <br />
-        <p>Cannot access this Book...</p>
-    </div>
-</ng-template>

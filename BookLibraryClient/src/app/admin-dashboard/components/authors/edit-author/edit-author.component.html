@@ -1,0 +1,103 @@
+<button class="badge badge-secondary mb-3"  (click)="goBack()"> Back</button>
+
+<div *ngIf="currentAuthor.id" class="edit-form">
+        <h4>Edit Author '{{currentAuthor.firstName}}{{currentAuthor.lastName}} '</h4>
+        <form>
+            <div class="form-group">
+                <label for="fname">Author FirstName</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    [(ngModel)]="currentAuthor.firstName"
+                    name="fname"
+                    />
+            </div>
+
+            
+            <div class="form-group">
+                <label for="lname">Author LastName</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="lname"
+                    [(ngModel)]="currentAuthor.lastName"
+                    name="lname"
+                    />
+            </div>
+            
+            <div class="form-group">
+                <label for="dateOfBirth">Date of Birth</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="dateOfBirth"
+                    [(ngModel)]="currentAuthor.dateOfBirth"
+                    name="dateOfBirth"
+                    />
+            </div>
+            
+            <div class="form-group">
+                <label for="country">Country</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="country"
+                    [(ngModel)]="currentAuthor.country"
+                    name="country"
+                    />
+            </div>
+            
+            <div class="form-group">
+                <label for="bibliography">Bibliography</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="bibliography"
+                    [(ngModel)]="currentAuthor.bibliography"
+                    name="bibliography"
+                    />
+            </div>
+
+          <div class="form-group">
+              <label for="booksName">Books</label>  
+                <div *ngFor="let book of books">
+                  <ul>
+                    <li>
+                      <input
+                      type="checkbox"
+                      class="form-control"
+                      id="booksName"
+                      name="booksName"
+                      /> {{book.title}}
+                    </li>
+                  </ul>
+                </div>
+          </div>
+ </form>
+        <!-- <button
+      class="badge badge-primary mr-2"
+      *ngIf="currentAuthor.published"
+      (click)="updatePublished(false)"
+    >
+      UnPublish
+    </button> -->
+    <!-- <button
+      *ngIf="!currentAuthor.published"
+      class="badge badge-primary mr-2"
+      (click)="updatePublished(true)"
+    >
+      Publish
+    </button> --> 
+    <!--  -->
+    <button class="badge badge-danger mr-2" (click)="deleteAuthor(currentAuthor)">
+      Delete
+    </button>
+    <button type="submit" class="badge badge-success mb-2" (click)="updateAuthor(currentAuthor)">
+        Update
+    </button>
+    </div>
+    <div *ngIf="!currentAuthor.id">
+        <br />
+        <p>Cannot access this Author...</p>
+    </div>

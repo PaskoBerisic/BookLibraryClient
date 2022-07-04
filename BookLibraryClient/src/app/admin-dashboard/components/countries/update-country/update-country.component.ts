@@ -13,7 +13,7 @@ const API_URL = "https://localhost:44323/api/";
   styleUrls: ['./update-country.component.css']
 })
 export class UpdateCountryComponent implements OnInit {
-  currentCountry: any;
+  currentCountry: any = {};
   constructor(private http: HttpClient, 
     private location: Location,
      private route: ActivatedRoute,

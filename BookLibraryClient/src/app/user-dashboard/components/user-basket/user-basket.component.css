@@ -1,0 +1,7 @@
+.box{
+    border-style: dotted;
+    width: 100px;
+    height: 100px;
+    align-items: center;
+    text-align: center;
+}

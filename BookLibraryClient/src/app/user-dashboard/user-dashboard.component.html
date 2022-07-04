@@ -1,431 +1,269 @@
+<router-outlet></router-outlet>
+<!-- BEGIN #content -->
+<div class="album py-5 bg-light">
+  <div class="container">
 
-            <!-- BEGIN panel -->
-            <div class="panel panel-inverse">
-                <div class="panel-heading">
-                    <h4 class="panel-title">Last Rented</h4>
-                    <div class="panel-heading-btn">
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i
-                                class="fa fa-expand"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i
-                                class="fa fa-redo"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i
-                                class="fa fa-minus"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i
-                                class="fa fa-times"></i></a>
-                    </div>
+    <!-- BEGIN #lastRental panel -->
+    <div class="panel panel-inverse">
+      <div class="panel-heading">
+        <h4 class="panel-title">Last Rented</h4>
+        <div class="panel-heading-btn">
+          <a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i
+              class="fa fa-expand"></i></a>
+          <a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i
+              class="fa fa-redo"></i></a>
+          <a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i
+              class="fa fa-minus"></i></a>
+          <a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i
+              class="fa fa-times"></i></a>
+        </div>
+      </div>
+      <div class="container">
+        <hr>
+        <h3>Your Last 3 Rentals</h3>
+        <hr>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          <div class="col">
+            <div class="card shadow-sm">
+              <div class="card-body" id="lastRentalView">
+                <h3>Order #5489</h3>
+                <hr>
+                <ol>
+                  <li style="list-style-type:square">Harry Potter #4</li>
+                  <li style="list-style-type:square">Harry Potter #5</li>
+                  <li style="list-style-type:square">Harry Potter #6</li>
+                  <li style="list-style-type:square">Learn Animals for Kids</li>
+                </ol>
+                <hr>
+                <div class="d-flex justify-content-between align-items-center" id="bookControls">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="HPMessage()">Rent
+                      Again?</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="harryPotterCollection()">See
+                      rental details</button>
+                  </div>
+                  <small class="text-muted">Total: 50,00 KN</small>
                 </div>
-                <div class="container">
-                    <hr>
-                    <h3>Your Last 3 Rentals</h3>
-                    <hr>
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                        <div class="col">
-                            <div class="card shadow-sm">
-                                <!-- <img class="bd-placeholder-img card-img-top" width="100%" height="225"
-                                    src="../assets/images/harryPotter.jpg" role="img"
-                                    aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
-                                    focusable="false"> -->
-
-                                <div class="card-body" id="lastRentalView">
-                                    <h3>Order #5489</h3>
-                                    <hr>
-                                    <ol>
-                                    <li style="list-style-type:square">Harry Potter #4</li>
-                                    <li style="list-style-type:square">Harry Potter #5</li>
-                                    <li style="list-style-type:square">Harry Potter #6</li>
-                                    <li style="list-style-type:square">Learn Animals for Kids</li>
-                                    </ol>
-                                    <hr>
-                                    <div class="d-flex justify-content-between align-items-center" id="bookControls">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary"
-                                                onclick="HPMessage()">Rent Again?</button>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary"
-                                                onclick="harryPotterCollection()">See
-                                                rental details</button>
-                                        </div>
-                                        <small class="text-muted">Total: 50,00 KN</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col" >
-                            <div class="card shadow-sm">
-                                <div class="card-body" id="lastRentalView">
-                                    <h3>Order #5103</h3>
-                                    <hr>
-                                    <ol>
-                                    <li style="list-style-type:square">Learn Fruits for Kids</li>
-                                    <li style="list-style-type:square">Hungar Games Collection</li>
-                                    </ol>
-                                    <hr>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary"
-                                                onclick="HGMessage()">Rent Again?</button>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary"
-                                                onclick="hungerGames()">See
-                                                rental details</button>
-                                        </div>
-                                        <small class="text-muted">Total: 50,00 KN</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card shadow-sm">
-                                <div class="card-body" id="lastRentalView">
-                                    <h3>Order Template</h3>
-                                    <hr>
-                                    <ol>
-                                    <li style="list-style-type:square">Book 1</li>
-                                    <li style="list-style-type:square">Book 2</li>
-                                    <li style="list-style-type:square">Book 3</li>
-                                    <li style="list-style-type:square">Book 4</li>
-                                    <li style="list-style-type:square">Book ..</li>
-                                    <li style="list-style-type:square">Book 999</li>
-                                    </ol>
-                                    <hr>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary"
-                                                onclick="HGMessage()">Rent Again?</button>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary"
-                                                onclick="hungerGames()">See
-                                                rental details</button>
-                                        </div>
-                                        <small class="text-muted">Total: X,X KN</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="btn btn-inverse"><a routerLink="/user/lastRental" style="color:white">"See
-                            more ..."</a></button>
-                </div>
+              </div>
             </div>
-
-
-            <!-- BEGIN panel -->
-            <div class="panel panel-inverse">
-                <div class="panel-heading">
-                    <h4 class="panel-title">Top Rentals</h4>
-                    <div class="panel-heading-btn">
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i
-                                class="fa fa-expand"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i
-                                class="fa fa-redo"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i
-                                class="fa fa-minus"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i
-                                class="fa fa-times"></i></a>
-                    </div>
+          </div>
+          <div class="col">
+            <div class="card shadow-sm">
+              <div class="card-body" id="lastRentalView">
+                <h3>Order #5103</h3>
+                <hr>
+                <ol>
+                  <li style="list-style-type:square">Learn Fruits for Kids</li>
+                  <li style="list-style-type:square">Hungar Games Collection</li>
+                </ol>
+                <hr>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="HGMessage()">Rent
+                      Again?</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="hungerGames()">See
+                      rental details</button>
+                  </div>
+                  <small class="text-muted">Total: 50,00 KN</small>
                 </div>
-                <div class="container">
-                    <hr>
-                    <h3>Top Rentals Today</h3>
-                    <hr>
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                        <div class="col">
-                            <div class="card shadow-sm">
-                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                                    xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                                    preserveAspectRatio="xMidYMid slice" focusable="false">
-                                    <title>Placeholder</title>
-                                    <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%"
-                                        fill="#eceeef" dy=".3em">Thumbnail</text>
-                                </svg>
-
-                                <div class="card-body">
-                                    <h3>Book name</h3>
-                                    <p class="card-text">Short description about book.
-                                    </p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary"
-                                                onclick="basket()">Rent</button>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary"
-                                                onclick="defaultMethod()">See details</button>
-                                        </div>
-                                        <small class="text-muted">50,00 KN</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card shadow-sm">
-                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                                    xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                                    preserveAspectRatio="xMidYMid slice" focusable="false">
-                                    <title>Placeholder</title>
-                                    <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%"
-                                        fill="#eceeef" dy=".3em">Thumbnail</text>
-                                </svg>
-
-                                <div class="card-body">
-                                    <h3>Book name</h3>
-                                    <p class="card-text">Short description about book.
-                                    </p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary"
-                                                onclick="basket()">Rent</button>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary"
-                                                onclick="defaultMethod()">See details</button>
-                                        </div>
-                                        <small class="text-muted">50,00 KN</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card shadow-sm">
-                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                                    xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                                    preserveAspectRatio="xMidYMid slice" focusable="false">
-                                    <title>Placeholder</title>
-                                    <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%"
-                                        fill="#eceeef" dy=".3em">Thumbnail</text>
-                                </svg>
-
-                                <div class="card-body">
-                                    <h3>Book name</h3>
-                                    <p class="card-text">Short description about book.
-                                    </p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary"
-                                                onclick="basket()">Rent</button>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary"
-                                                onclick="defaultMethod()">See details</button>
-                                        </div>
-                                        <small class="text-muted">50,00 KN</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="btn btn-inverse"><a href="../UserMenu/UserTopRentals.html" style="color:white">"See
-                            more ..."</a></button>
-                </div>
+              </div>
             </div>
-
-            <!-- BEGIN panel -->
-            <div class="panel panel-inverse">
-                <div class="panel-heading">
-                    <h4 class="panel-title">New Arrivals</h4>
-                    <div class="panel-heading-btn">
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i
-                                class="fa fa-expand"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i
-                                class="fa fa-redo"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i
-                                class="fa fa-minus"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i
-                                class="fa fa-times"></i></a>
-                    </div>
+          </div>
+          <div class="col">
+            <div class="card shadow-sm">
+              <div class="card-body" id="lastRentalView">
+                <h3>Order Template</h3>
+                <hr>
+                <ol>
+                  <li style="list-style-type:square">Book 1</li>
+                  <li style="list-style-type:square">Book 2</li>
+                  <li style="list-style-type:square">Book 3</li>
+                  <li style="list-style-type:square">Book 4</li>
+                  <li style="list-style-type:square">Book ..</li>
+                  <li style="list-style-type:square">Book 999</li>
+                </ol>
+                <hr>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="HGMessage()">Rent
+                      Again?</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="hungerGames()">See
+                      rental details</button>
+                  </div>
+                  <small class="text-muted">Total: X,X KN</small>
                 </div>
-                <div class="container">
-                    <hr>
-                    <h3>New Today</h3>
-                    <hr>
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                        <div class="col">
-                            <div class="card shadow-sm">
-                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                                    xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                                    preserveAspectRatio="xMidYMid slice" focusable="false">
-                                    <title>Placeholder</title>
-                                    <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%"
-                                        fill="#eceeef" dy=".3em">Thumbnail</text>
-                                </svg>
-
-                                <div class="card-body">
-                                    <h3>Book name</h3>
-                                    <p class="card-text">Short description about book.
-                                    </p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary"
-                                                onclick="basket()">Rent</button>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary"
-                                                onclick="defaultMethod()">See details</button>
-                                        </div>
-                                        <small class="text-muted">50,00 KN</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card shadow-sm">
-                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                                    xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                                    preserveAspectRatio="xMidYMid slice" focusable="false">
-                                    <title>Placeholder</title>
-                                    <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%"
-                                        fill="#eceeef" dy=".3em">Thumbnail</text>
-                                </svg>
-
-                                <div class="card-body">
-                                    <h3>Book name</h3>
-                                    <p class="card-text">Short description about book.
-                                    </p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary"
-                                                onclick="basket()">Rent</button>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary"
-                                                onclick="defaultMethod()">See details</button>
-                                        </div>
-                                        <small class="text-muted">50,00 KN</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card shadow-sm">
-                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                                    xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                                    preserveAspectRatio="xMidYMid slice" focusable="false">
-                                    <title>Placeholder</title>
-                                    <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%"
-                                        fill="#eceeef" dy=".3em">Thumbnail</text>
-                                </svg>
-
-                                <div class="card-body">
-                                    <h3>Book name</h3>
-                                    <p class="card-text">Short description about book.
-                                    </p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary"
-                                                onclick="basket()">Rent</button>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary"
-                                                onclick="defaultMethod()">See details</button>
-                                        </div>
-                                        <small class="text-muted">50,00 KN</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="btn btn-inverse"><a routerLink="/user/newArrivals" style="color:white">"See
-                            more ..."</a></button>
-
-                </div>
+              </div>
             </div>
+          </div>
+        </div>
+        <button class="btn btn-inverse"><a routerLink="/user/lastRentals" style="color:white">"See
+            more ..."</a></button>
+      </div>
+    </div>
 
-            <!-- BEGIN panel -->
-            <div class="panel panel-inverse">
-                <div class="panel-heading">
-                    <h4 class="panel-title">Available Books</h4>
-                    <div class="panel-heading-btn">
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i
-                                class="fa fa-expand"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i
-                                class="fa fa-redo"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i
-                                class="fa fa-minus"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i
-                                class="fa fa-times"></i></a>
+    <!-- BEGIN #topRental panel -->
+    <div class="panel panel-inverse">
+      <div class="panel-heading">
+        <h4 class="panel-title">Top Rentals</h4>
+        <div class="panel-heading-btn">
+          <a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i
+              class="fa fa-expand"></i></a>
+          <a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i
+              class="fa fa-redo"></i></a>
+          <a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i
+              class="fa fa-minus"></i></a>
+          <a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i
+              class="fa fa-times"></i></a>
+        </div>
+      </div>
+      <div class="container">
+        <hr>
+        <h3>Top Rentals Today</h3>
+        <hr>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <ng-container *ngFor="let book of books; let i = index">
+                <div *ngIf="i < 3">
+                  <div class="col">
+                    <div class="card shadow-sm">
+                      <span> <img
+                          src="https://th.bing.com/th/id/R.85c908b86a70ea7b6aa3edcacea0f466?rik=iHfO2tTsvu1lxQ&pid=ImgRaw&r=0&sres=1&sresct=1"
+                          class="bd-placeholder-img card-img-top" width="225px" height="225px" aria-label="Placeholder: Thumbnail">
+                        <div class="card-body">
+                          <h3>{{book.title}}</h3>
+                          <p class="card-text">{{book.description}}
+                          </p>
+                          <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                              <button type="button" class="btn btn-sm btn-outline-secondary">Rent</button>
+                              <button type="button" class="btn btn-sm btn-outline-secondary"
+                                routerLink="/admin/book/{{book.id}}">See
+                                details</button>
+                            </div>
+                            <small class="text-muted">Price:{{book.rentalPrice}}</small>
+                          </div>
+                        </div>
+                      </span>
                     </div>
+                  </div>
                 </div>
-                <div class="container">
-                    <hr>
-                    <h3>Available Books</h3>
-                    <hr>
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                        <div class="col">
-                            <div class="card shadow-sm">
-                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                                    xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                                    preserveAspectRatio="xMidYMid slice" focusable="false">
-                                    <title>Placeholder</title>
-                                    <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%"
-                                        fill="#eceeef" dy=".3em">Thumbnail</text>
-                                </svg>
+              </ng-container>
+        </div>
+        <button class="btn btn-inverse"><a routerLink="/user/topRentals" style="color:white">"See
+            more ..."</a></button>
+      </div>
+    </div>
 
-                                <div class="card-body">
-                                    <h3>Book name</h3>
-                                    <p class="card-text">Short description about book.
-                                    </p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary"
-                                                onclick="basket()">Rent</button>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary"
-                                                onclick="defaultMethod()">See details</button>
-                                        </div>
-                                        <small class="text-muted">50,00 KN</small>
-                                    </div>
-                                </div>
+    <!-- BEGIN #newArrivals panel -->
+    <div class="panel panel-inverse">
+      <div class="panel-heading">
+        <h4 class="panel-title">New Arrivals</h4>
+        <div class="panel-heading-btn">
+          <a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i
+              class="fa fa-expand"></i></a>
+          <a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i
+              class="fa fa-redo"></i></a>
+          <a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i
+              class="fa fa-minus"></i></a>
+          <a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i
+              class="fa fa-times"></i></a>
+        </div>
+      </div>
+      <div class="container">
+        <hr>
+        <h3>New Today</h3>
+        <hr>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <ng-container *ngFor="let book of books; let i = index">
+                <div *ngIf="i < 3">
+                  <div class="col">
+                    <div class="card shadow-sm">
+                      <span> <img
+                          src="https://th.bing.com/th/id/R.85c908b86a70ea7b6aa3edcacea0f466?rik=iHfO2tTsvu1lxQ&pid=ImgRaw&r=0&sres=1&sresct=1"
+                          class="bd-placeholder-img card-img-top" width="225px" height="225px" aria-label="Placeholder: Thumbnail">
+                        <div class="card-body">
+                          <h3>{{book.title}}</h3>
+                          <p class="card-text">{{book.description}}
+                          </p>
+                          <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                              <button type="button" class="btn btn-sm btn-outline-secondary">Rent</button>
+                              <button type="button" class="btn btn-sm btn-outline-secondary"
+                                routerLink="/admin/book/{{book.id}}">See
+                                details</button>
                             </div>
+                            <small class="text-muted">Price:{{book.rentalPrice}}</small>
+                          </div>
                         </div>
-                        <div class="col">
-                            <div class="card shadow-sm">
-                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                                    xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                                    preserveAspectRatio="xMidYMid slice" focusable="false">
-                                    <title>Placeholder</title>
-                                    <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%"
-                                        fill="#eceeef" dy=".3em">Thumbnail</text>
-                                </svg>
-
-                                <div class="card-body">
-                                    <h3>Book name</h3>
-                                    <p class="card-text">Short description about book.
-                                    </p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary"
-                                                onclick="basket()">Rent</button>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary"
-                                                onclick="defaultMethod()">See details</button>
-                                        </div>
-                                        <small class="text-muted">50,00 KN</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card shadow-sm">
-                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                                    xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                                    preserveAspectRatio="xMidYMid slice" focusable="false">
-                                    <title>Placeholder</title>
-                                    <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%"
-                                        fill="#eceeef" dy=".3em">Thumbnail</text>
-                                </svg>
-
-                                <div class="card-body">
-                                    <h3>Book name</h3>
-                                    <p class="card-text">Short description about book.
-                                    </p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary"
-                                                onclick="basket()">Rent</button>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary"
-                                                onclick="defaultMethod()">See details</button>
-                                        </div>
-                                        <small class="text-muted">50,00 KN</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                      </span>
                     </div>
-                    <button class="btn btn-inverse"><a routerLink="/user/all"
-                            style="color:white">"See more ..."</a></button>
+                  </div>
+                </div>
+              </ng-container>
+        </div>
+        <button class="btn btn-inverse"><a routerLink="/user/newArrivals" style="color:white">"See
+            more ..."</a></button>
+
+      </div>
+    </div>
+
+    <!-- BEGIN #availableBooks panel -->
+    <div class="panel panel-inverse">
+      <div class="panel-heading">
+        <h4 class="panel-title">Available Books</h4>
+        <div class="panel-heading-btn">
+          <a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i
+              class="fa fa-expand"></i></a>
+          <a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i
+              class="fa fa-redo"></i></a>
+          <a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i
+              class="fa fa-minus"></i></a>
+          <a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i
+              class="fa fa-times"></i></a>
+        </div>
+      </div>
+      <div class="container">
+        <hr>
+        <h3>Available Books</h3>
+        <hr>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <ng-container *ngFor="let book of books; let i = index">
+                <div *ngIf="i < 3">
+                  <div class="col">
+                    <div class="card shadow-sm">
+                      <span> <img
+                          src="https://th.bing.com/th/id/R.85c908b86a70ea7b6aa3edcacea0f466?rik=iHfO2tTsvu1lxQ&pid=ImgRaw&r=0&sres=1&sresct=1"
+                          class="bd-placeholder-img card-img-top" width="225px" height="225px" aria-label="Placeholder: Thumbnail">
+                        <div class="card-body">
+                          <h3>{{book.title}}</h3>
+                          <p class="card-text">{{book.description}}
+                          </p>
+                          <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                              <button type="button" class="btn btn-sm btn-outline-secondary">Rent</button>
+                              <button type="button" class="btn btn-sm btn-outline-secondary"
+                                routerLink="/admin/book/{{book.id}}">See
+                                details</button>
+                            </div>
+                            <small class="text-muted">Price:{{book.rentalPrice}}</small>
+                          </div>
+                        </div>
+                      </span>
                     </div>
-                    
-            </div>
-
-    <!-- END #content -->
-
+                  </div>
+                </div>
+              </ng-container>
+        </div>
+        <button class="btn btn-inverse"><a routerLink="/user/availableBooks" style="color:white">"See more
+            ..."</a></button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END #content -->
 
 <!-- BEGIN scroll to top btn -->
-<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top"
-data-toggle="scroll-to-top" (click)="scrollToTop()">BUTTONAC<i class="fa fa-angle-up"></i></a>
+<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top" data-toggle="scroll-to-top"
+  (click)="scrollToTop()">BUTTONAC<i class="fa fa-angle-up"></i></a>
 <!-- END scroll to top btn -->
 <div style="border-color:red; width:1000px; height:auto;"></div>
 <!-- END #app -->

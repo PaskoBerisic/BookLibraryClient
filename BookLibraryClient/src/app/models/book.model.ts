@@ -1,7 +1,7 @@
 export class Book {
     id?: number;
     title?: string;
-    authorName?: string;
+    authorFirstName?: string;
     authorLastName?: string;
     publisherId?: number;
     yearOfPublish?: number;

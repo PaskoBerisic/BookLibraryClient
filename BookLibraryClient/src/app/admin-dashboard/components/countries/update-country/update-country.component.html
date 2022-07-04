@@ -1,6 +1,6 @@
 <button class="badge badge-secondary mb-3"  (click)="goBack()"> Back</button>
 
-<div *ngIf="currentCountry.id" class="edit-form">
+<div *ngIf="currentCountry?.id" class="edit-form">
         <h4>Edit Book '{{currentCountry.name}} '</h4>
         <form>
             <div class="form-group">
@@ -58,7 +58,8 @@
         Update
     </button>
     </div>
-    <div *ngIf="!currentCountry.id">
+    <div *ngIf="!currentCountry?.id">
         <br />
         <p>Cannot access this Book...</p>
     </div>
+  

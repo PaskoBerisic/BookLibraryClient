@@ -1,64 +1,15 @@
-<div class="container-fluid">
+<div class="album py-5 bg-light">
+  <div class="container">
+
   <div class="row">
-    <div class="col">
-      Available Books
-      <!-- Get Books - Display with button Add, Update, Delete -->
-      <!-- Get Books -->
-      <div class="col-md-12">
-        <div *ngFor="let bookItem of books">
-          <div class="container-fluid">
-            <h3>Name: {{bookItem.title}}</h3>
-            <h5>Power: {{bookItem.description}}</h5>
-            <button class="btn btn-primary" routerLink={{bookItem.title}}>Details</button>
-            <hr>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-8">
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Search by title" [(ngModel)]="title" />
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button">
-              Search
-            </button>
-          </div>
-        </div>
-      </div>
-<div class="col-md-12">
-      <div class="col-md-6">
-        <h4>Book List</h4>
-        <ul class="list-group">
-          <li class="list-group-item" *ngFor="let book of books; let i = index" [class.active]="i == currentIndex"
-            (click)="setActiveBook(book, i)">
-            TRTR
-            {{ book.title }}
-          </li>
-        </ul>
-        <button class="m-3 btn btn-sm btn-danger" (click)="deleteBook(book)">
-          Remove All
-        </button>
-      </div>
-      <div class="col-md-6">
-        <app-book-detail 
-        [viewMode]="true" 
-        [currentBook]="book"
-        >
-    </app-book-detail>
-      </div>
-    </div>
-      <!-- Check add tutorials project to add onclick button show -->
-      <button class="btn btn-success">Add Book</button>
-      <button class="btn btn-warning">Update Book</button>
-      <button class="btn btn-danger">Delete Books</button>
-    </div>
-    <div class="col">
-      Edit Books
-    </div>
-    <div class="col">
-      Edit Orders
-    </div>
-    <div class="col">
-      Edit Users
+    <div class="col-md-12">
+      <app-book-control></app-book-control>
+      <app-author-control></app-author-control>
+      <app-get-country></app-get-country>
+      <app-genre-control></app-genre-control>
+      <app-language-control></app-language-control>
+      <app-order-control></app-order-control>
     </div>
   </div>
+</div>
 </div>

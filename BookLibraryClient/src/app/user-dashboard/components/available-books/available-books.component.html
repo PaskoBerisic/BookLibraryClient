@@ -1,0 +1,60 @@
+<div id="content" class="app-content">
+  <main>
+
+    <section class="py-5 text-center container">
+      <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+          <h1 class="fw-light">Available Books</h1>
+          <p class="lead text-muted">Here you can see all available books for renting.</p>
+          <p>
+            <a href="#" class="btn btn-primary my-2">Main call to action</a>
+            <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+          </p>
+        </div>
+      </div>
+    </section>
+    <div class="album py-5 bg-light">
+      <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          <div *ngFor="let book of books">
+            <div class="col">
+              <div class="card shadow-sm">
+                <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                              src="src\assets\img\2.png" role="img" aria-label="Placeholder: Thumbnail"
+                              preserveAspectRatio="xMidYMid slice" focusable="false">
+                              <title>Placeholder</title>
+                              <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
+                                dy=".3em">Thumbnail</text>
+                            </svg> -->
+                <img
+                  src="https://th.bing.com/th/id/R.85c908b86a70ea7b6aa3edcacea0f466?rik=iHfO2tTsvu1lxQ&pid=ImgRaw&r=0&sres=1&sresct=1"
+                  class="bd-placeholder-img card-img-top" width="100%" height="225" aria-label="Placeholder: Thumbnail">
+                <div class="card-body">
+                  <h3>{{book.title}}</h3>
+                  <p class="card-text">{{book.description}}
+                  </p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Rent</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary"
+                        routerLink="/admin/book/{{book.id}}">See
+                        details</button>
+                    </div>
+                    <small class="text-muted">Price:{{book.rentalPrice}}</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- BEGIN scroll to top btn -->
+  <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top" data-toggle="scroll-to-top"
+    (click)="scrollToTop()">^<i class="fa fa-angle-up"></i></a>
+  <!-- END scroll to top btn -->
+  <div style="border-color:red; width:1000px; height:auto;"></div>
+
+</div>
