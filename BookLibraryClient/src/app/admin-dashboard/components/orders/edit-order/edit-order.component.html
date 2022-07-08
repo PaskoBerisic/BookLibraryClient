@@ -1,0 +1,83 @@
+<button class="badge badge-secondary mb-3"  (click)="goBack()"> Back</button>
+
+<div *ngIf="currentOrder.id" class="edit-form">
+        <h4>Edit Order '{{currentOrder.id}}'</h4>
+        <form>
+            <div class="form-group">
+                <label for="id">Order Id</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="id"
+                    [(ngModel)]="currentOrder.id"
+                    name="id"
+                    />
+            </div>
+            <div class="form-group">
+                <label for="user">User</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="user"
+                    [(ngModel)]="currentOrder.user.username"
+                    name="user"
+                    />
+            </div>
+            <div class="form-group">
+                <label for="date">Order Date</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="date"
+                    [(ngModel)]="currentOrder.date"
+                    name="date"
+                    />
+            </div>
+
+            <div class="form-group">
+                <label for="total">Total</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="total"
+                    [(ngModel)]="currentOrder.totalRentalPrice + ' ' + currentOrder.currency"
+                    name="total"
+                    />
+            </div>
+            
+            <div class="form-group">
+                <label for="totalVAT">Total with VAT</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="totalVAT"
+                    [(ngModel)]="currentOrder.totalRentalPriceWithVAT + ' ' + currentOrder.currency"
+                    name="totalVAT"
+                    /> 
+            </div>
+
+            <div class="form-group">
+                <label for="books">Books</label>
+                <div *ngFor="let book of currentOrder.books">
+                <input
+                    type="checkbox"
+                    class="form-control-sm"
+                    id="books"
+                    [(ngModel)]="book.title"
+                    name="books"
+                    disabled
+                    /> {{book.title}}
+                </div>
+            </div>
+        </form>
+    <button class="badge badge-danger mr-2" (click)="deleteOrder(currentOrder)">
+      Delete
+    </button>
+    <button type="submit" class="badge badge-success mb-2" (click)="updateOrder(currentOrder)">
+        Update
+    </button>
+    </div>
+    <div *ngIf="!currentOrder.id">
+        <br />
+        <p>Cannot access this Order...</p>
+    </div>

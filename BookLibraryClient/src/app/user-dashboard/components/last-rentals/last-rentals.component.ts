@@ -21,7 +21,6 @@ export class LastRentalsComponent implements OnInit {
     .subscribe((books: any) => {
       this.books = books;
     })
-    console.log( 'WTF ! ! ! !');
     console.log(this.orders);
   }
   scrollToTop(): void {

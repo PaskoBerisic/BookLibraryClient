@@ -19,7 +19,8 @@ export class AuthorControlComponent implements OnInit {
     })
   }
   
-  deleteBook(id: any){
+  deleteAuthor(id: any){
     this.bookLibraryService.deleteItem('Author/', id);
+    window.location.reload();
   }
 }

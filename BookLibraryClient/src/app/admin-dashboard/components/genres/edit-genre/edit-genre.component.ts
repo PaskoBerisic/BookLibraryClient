@@ -25,7 +25,7 @@ export class EditGenreComponent implements OnInit {
 
   ngOnInit(): void {
     this.getGenre(this.route.snapshot.params["id"]);
-    console.log(this.currentGenre);
+    console.log('THS' + this.currentGenre);
   }
 
      getGenre(id: string){

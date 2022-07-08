@@ -1,0 +1,58 @@
+<div class="container-fluid">
+  <h3>Add User</h3>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="form-group">
+        <h5>First Name</h5>
+        <input type="text" class="form-control" [(ngModel)]="user.firstName">
+      </div>
+      <h5>Last Name</h5>
+      <div class="form-group">
+        <input type="text" class="form-control" [(ngModel)]="user.lastName" />
+      </div>
+      <h5>Username</h5>
+      <div class="form-group">
+        <input type="text" class="form-control" [(ngModel)]="user.username"/>
+      </div>
+      <h5>Is Active?</h5>
+      <div class="form-group">
+        <input type="checkbox" class="form-control" [(ngModel)]="user.isActive"/>
+      </div>
+      <div class="form-group">
+        <input type="date" class="form-control" [(ngModel)]="user.dateOfBirth"/>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" [(ngModel)]="user.adress"/>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" [(ngModel)]="user.role"/>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" [(ngModel)]="user.orders"/>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <h3>Preview</h3>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.isActive}}</td>
+            <td>{{user.dateOfBirth}}</td>
+            <td>{{user.adress}}</td>
+            <td>{{user.role}}</td>
+            <td>{{user.orders}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <button class="btn btn-success" (click)="addUser(user)">Add User</button>
+</div>

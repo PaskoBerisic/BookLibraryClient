@@ -8,6 +8,8 @@
         <th scope="col">#</th>
         <th scope="col">Book Title</th>
         <th scope="col">Author</th>
+        <th scope="col">Publisher</th>
+        <th scope="col">Language</th>
         <th scope="col">Genres</th>
         <th scope="col">Rental Price</th>
         <th scope="col">Edit</th>
@@ -24,6 +26,8 @@
             {{author.firstName + ' ' +  author.lastName}}
           </ng-container>
         </td>
+        <td>{{book.publisher.name}}</td>
+        <td>{{book.language.name}}</td>
         <td>
           <ng-container *ngFor="let genre of book.genres, let i = index">
             <ng-container *ngIf="i > 0">,</ng-container>

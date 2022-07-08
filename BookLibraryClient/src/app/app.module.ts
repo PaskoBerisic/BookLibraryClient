@@ -8,7 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { BookDetailComponent } from './admin-dashboard/book-detail/book-detail.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminAvailableBooksComponent } from './admin-dashboard/components/books/admin-available-books/admin-available-books.component';
 import { DetailedBookComponent } from './admin-dashboard/components/books/detailed-book/detailed-book.component';
 import { AddBookComponent } from './admin-dashboard/components/books/add-book/add-book.component';
@@ -40,6 +40,17 @@ import { UserPaymentInfoComponent } from './user-dashboard/components/user-baske
 import { UserOrderCompleteComponent } from './user-dashboard/components/user-basket/user-order-complete/user-order-complete.component';
 import { LandingComponent } from './shared/landing/landing.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { MatToolbarModule } from '@angular/material/toolbar'; 
+import { MatIconModule } from '@angular/material/icon'; 
+import { MatMenuModule } from '@angular/material/menu';
+import { PublisherControlComponent } from './admin-dashboard/components/publishers/publisher-control/publisher-control.component';
+import { AddPublisherComponent } from './admin-dashboard/components/publishers/add-publisher/add-publisher.component';
+import { EditPublisherComponent } from './admin-dashboard/components/publishers/edit-publisher/edit-publisher.component';
+import { AddUserComponent } from './admin-dashboard/components/user/add-user/add-user.component';
+import { UserControlComponent } from './admin-dashboard/components/user/user-control/user-control.component';
+import { EditUserComponent } from './admin-dashboard/components/user/edit-user/edit-user.component'
+
 
 @NgModule({
   declarations: [
@@ -78,13 +89,24 @@ import { FooterComponent } from './shared/footer/footer.component';
     UserOrderCompleteComponent,
     LandingComponent,
     FooterComponent,
+    SidebarComponent,
+    PublisherControlComponent,
+    AddPublisherComponent,
+    EditPublisherComponent,
+    AddUserComponent,
+    UserControlComponent,
+    EditUserComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

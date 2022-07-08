@@ -31,6 +31,12 @@ import { UserBasketComponent } from './user-dashboard/components/user-basket/use
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserPaymentInfoComponent } from './user-dashboard/components/user-basket/user-payment-info/user-payment-info.component';
 import { UserOrderCompleteComponent } from './user-dashboard/components/user-basket/user-order-complete/user-order-complete.component';
+import { PublisherControlComponent } from './admin-dashboard/components/publishers/publisher-control/publisher-control.component';
+import { AddPublisherComponent } from './admin-dashboard/components/publishers/add-publisher/add-publisher.component';
+import { EditPublisherComponent } from './admin-dashboard/components/publishers/edit-publisher/edit-publisher.component';
+import { UserControlComponent } from './admin-dashboard/components/user/user-control/user-control.component';
+import { AddUserComponent } from './admin-dashboard/components/user/add-user/add-user.component';
+import { EditUserComponent } from './admin-dashboard/components/user/edit-user/edit-user.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -45,7 +51,6 @@ const routes: Routes = [
       { path: 'userBasket', component: UserBasketComponent, title: 'BookLibrary/UserBasket'},
       { path: 'paymentInfo', component: UserPaymentInfoComponent},
       { path: 'orderComplete', component: UserOrderCompleteComponent}
-    
     ]
   },
   { path: 'test', component:UserPaymentInfoComponent},
@@ -81,8 +86,16 @@ const routes: Routes = [
       { path: 'languageControl/updateLanguage/:id', component: EditLanguageComponent },
       //Order  
       { path: 'orderControl', component: OrderControlComponent },
-      { path: 'orderControl/adOrder', component: AddOrderComponent },
+      { path: 'orderControl/addOrder', component: AddOrderComponent },
       { path: 'orderControl/updateOrder/:id', component: EditOrderComponent },
+      //Publisher  
+      { path: 'publisherControl', component: PublisherControlComponent },
+      { path: 'publisherControl/addPublisher', component: AddPublisherComponent },
+      { path: 'publisherControl/updatePublisher/:id', component: EditPublisherComponent },
+      //User
+      { path: 'userControl', component: UserControlComponent },
+      { path: 'userControl/addUser', component: AddUserComponent },
+      { path: 'userControl/updateUser/:id', component: EditUserComponent },
     ]
   },
 ];

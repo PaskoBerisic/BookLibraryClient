@@ -21,6 +21,7 @@ ngOnInit(): void {
 
 deleteBook(id: any){
   this.bookLibraryService.deleteItem('Book/', id);
+  window.location.reload();
 }
 }
 

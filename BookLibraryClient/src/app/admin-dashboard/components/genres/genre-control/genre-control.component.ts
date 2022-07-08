@@ -19,8 +19,9 @@ export class GenreControlComponent implements OnInit {
     })
   }
   
-  deleteBook(id: any){
-    this.bookLibraryService.deleteItem('Genre/', id);
+  deleteGenre(id: any){
+    this.bookLibraryService.deleteItem('Admin/Genre/', id);
+    window.location.reload();
   }
 
 }

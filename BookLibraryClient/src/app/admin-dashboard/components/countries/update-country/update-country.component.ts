@@ -20,22 +20,23 @@ export class UpdateCountryComponent implements OnInit {
      private bookLibraryService: BookLibraryService) { }
      postId: any;
   ngOnInit(): void {
-    this.getBook(this.route.snapshot.params["id"]);
-    console.log('This kec' + this.getBook(this.route.snapshot.params["id"]));
+    this.getCountry(this.route.snapshot.params["id"]);
+    console.log('This kec' + this.getCountry(this.route.snapshot.params["id"]));
   }
 
-  getBook(id: string){
+  getCountry(id: string){
     this.http.get(API_URL + 'Admin/Country/' + id)
     .subscribe((country: any) => {
       this.currentCountry = country;
       console.log(this.currentCountry.vat);
     }); 
   }
-  updateBook(country: any){
+  updateCountry(country: any){
     this.bookLibraryService.putItem('Admin/Country/', country)
+    console.log(country);
   }
 
-  deleteBook(){
+  deleteCountry(){
 
 
   }

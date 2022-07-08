@@ -13,7 +13,6 @@
                     name="name"
                     />
             </div>
-
             
             <div class="form-group">
                 <label for="shortName">Short Name</label>
@@ -25,6 +24,19 @@
                     [(ngModel)]="currentLanguage.shortName"
                     name="description"
                     />
+            </div>
+
+            <div class="form-group">
+                <label for="books">Books</label>
+                <div *ngFor="let book of currentLanguage.books">
+                <input
+                    type="checkbox"
+                    class="form-control-sm"
+                    id="books"
+                    [(ngModel)]="book.title"
+                    name="books"
+                    /> {{book.title}}
+                </div>
             </div>
         </form>
     <button class="badge badge-danger mr-2" (click)="deleteLanguage(currentLanguage)">

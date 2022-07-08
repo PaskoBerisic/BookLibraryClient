@@ -6,13 +6,15 @@
         <h5>Book Title</h5>
         <input type="text" class="form-control" [(ngModel)]="book.title">
         <h5>Publisher</h5>
-        <input type="text" class="form-control" [(ngModel)]="book.publisherId">
+        <input type="text" class="form-control" [(ngModel)]="book.publisher.name">
         <h5>Year of Publish</h5>
         <input type="number" class="form-control" [(ngModel)]="book.yearOfPublish">
         <h5>Book Description</h5>
         <input type="text" class="form-control" [(ngModel)]="book.description">
-        <h5>Book Language</h5>
-        <input type="text" class="form-control" [(ngModel)]="book.languageId">
+        <h5>Language</h5>
+        <input type="text" class="form-control" id="language" [(ngModel)]="book.language.name">
+        <h5>Genre</h5>
+        <input type="text" class="form-control" id="genre" [(ngModel)]="book.genres.name">
         <h5>Rental Price</h5>
         <input type="number" class="form-control" [(ngModel)]="book.rentalPrice">
         <h5>List Price</h5>
@@ -29,6 +31,7 @@
             <th scope="col" >Title</th>
             <th scope="col" >Publisher</th>
             <th scope="col" >Language</th>
+            <th scope="col" >Genre</th>
             <th scope="col" width="10%">Year of Publish</th>
             <th scope="col" width="10%">Rental Price</th>
             <th scope="col" width="10%">List Price</th>
@@ -38,8 +41,9 @@
         <tbody>
           <tr>
             <td>{{book.title}}</td>
-            <td>{{book.publisherId}}</td>
-            <td>{{book.languageId}}</td>
+            <td>{{book.publisher.name}}</td>
+            <td>{{book.language.name}}</td>
+            <td>{{book.genres.name}}</td>
             <td>{{book.yearOfPublish}}</td>
             <td>{{book.rentalPrice}}</td>
             <td>{{book.listPrice}}</td>
@@ -49,8 +53,33 @@
         </tbody>
       </table>
       <textarea class="form-control" value="{{book.description}}" placeholder="Book Description" cols="100" rows="10"></textarea>
+      <div class="row">
+      <div class="col">
+        Languages:
+        <div *ngFor="let language of languages">
+          <div *ngIf="!book.language.id">
+          <input type="checkbox" name="" id="language" (click)="addLanguage(language.id!)">{{language.name}}
+        </div>
+        </div>
+      </div>
+      <div class="col">
+        Genres:
+        <div *ngFor="let genre of genres">
+          <div *ngIf="!book.genres.id">
+          <input type="checkbox" name="" id="genre" (click)="addGenre(genre.id!)">{{genre.name}}
+        </div>
+        </div>
+      </div>
+      <div class="col">
+        Publisher:
+        <div *ngFor="let publisher of publishers">
+          <div *ngIf="!book.publisher.id">
+          <input type="checkbox" name="" id="publisher" (click)="addPublisher(publisher.id!)">{{publisher.name}}
+        </div>
+        </div>
+      </div>
+    </div>
     </div>
   </div>
-  <button class="btn btn-success">Add Book</button>
+  <button class="btn btn-success" (click)="addBook(book)">Add Book</button>
 </div>
-

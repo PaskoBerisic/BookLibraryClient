@@ -20,8 +20,9 @@ export class LanguageControlComponent implements OnInit {
     })
   }
   
-  deleteBook(id: any){
-    this.bookLibraryService.deleteItem('Language/', id);
+  deleteLanguage(id: any){
+    this.bookLibraryService.deleteItem('Admin/Language/', id);
+    window.location.reload();
   }
 
 }

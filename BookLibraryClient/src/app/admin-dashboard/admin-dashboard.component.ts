@@ -15,19 +15,6 @@ export class AdminDashboardComponent implements OnInit {
   currentIndex = -1;
 
   book: Book = {
-  id: undefined,
-  title: '',
-  publisherId: 0,
-  yearOfPublish: 0,
-  description: '',
-  languageId: 0,
-  rentalPrice: 0,
-  listPrice: 0,
-  unitNumber: 0,
-  createdBy: 0,
-  created: '',
-  updatedBy: 0,
-  updated: '',
 }
 postId: any;
 title = '';

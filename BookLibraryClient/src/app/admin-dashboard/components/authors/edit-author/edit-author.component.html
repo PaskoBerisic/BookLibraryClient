@@ -43,7 +43,7 @@
                     type="text"
                     class="form-control"
                     id="country"
-                    [(ngModel)]="currentAuthor.country"
+                    [(ngModel)]="currentAuthor.country.name"
                     name="country"
                     />
             </div>
@@ -58,22 +58,19 @@
                     name="bibliography"
                     />
             </div>
-
+            
           <div class="form-group">
-              <label for="booksName">Books</label>  
-                <div *ngFor="let book of books">
-                  <ul>
-                    <li>
-                      <input
-                      type="checkbox"
-                      class="form-control"
-                      id="booksName"
-                      name="booksName"
-                      /> {{book.title}}
-                    </li>
-                  </ul>
-                </div>
-          </div>
+            <label for="books">Books</label>
+            <div *ngFor="let book of currentAuthor.books">
+            <input
+                type="checkbox"
+                class="form-control-sm"
+                id="books"
+                [(ngModel)]="book.title"
+                name="books"
+                /> {{book.title}}
+            </div>
+        </div>
  </form>
         <!-- <button
       class="badge badge-primary mr-2"

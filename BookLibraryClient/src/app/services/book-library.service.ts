@@ -24,43 +24,8 @@ export class BookLibraryService {
     rentalPrice: 0,
   }
 
-  // Post
-  addBook: Book = {
-    title: '',
-    publisherId: 0,
-    yearOfPublish: 0,
-    description: '',
-    languageId: 0,
-    rentalPrice: 0,
-    listPrice: 0,
-    unitNumber: 0,
-    createdBy: 0,
-    created: '',
-    updatedBy: 0,
-    updated: '',
-  };
   postId: any;
 
-  // Put
-  updateBook: Book = {
-    title: '',
-    publisherId: 0,
-    yearOfPublish: 0,
-    description: '',
-    languageId: 0,
-    rentalPrice: 0,
-    listPrice: 0,
-    unitNumber: 0,
-    createdBy: 0,
-    created: '',
-    updatedBy: 0,
-    updated: '',
-  };
-
-  // Delete
-  delBook: Book = {
-    id: undefined
-  }
   constructor(private http: HttpClient) { }
 
    //Get

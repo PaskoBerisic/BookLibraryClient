@@ -39,13 +39,15 @@
             
             <div class="form-group">
                 <label for="books">Books</label>
+                <div *ngFor="let book of currentGenre.books">
                 <input
-                    type="text"
-                    class="form-control"
+                    type="checkbox"
+                    class="form-control-sm"
                     id="books"
-                    [(ngModel)]="currentGenre.books"
+                    [(ngModel)]="book.title"
                     name="books"
-                    />
+                    /> {{book.title}}
+                </div>
             </div>
         </form>
     <button class="badge badge-danger mr-2" (click)="deleteGenre(currentGenre)">
