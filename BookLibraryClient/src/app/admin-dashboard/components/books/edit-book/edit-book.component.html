@@ -1,0 +1,144 @@
+<button class="badge badge-secondary mb-3"  (click)="goBack()"> Back</button>
+
+<div *ngIf="currentBook.id" class="edit-form">
+        <h4>Edit Book '{{currentBook.title}} '</h4>
+        <form>
+            <div class="form-group">
+                <label for="name">Book Title</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    [(ngModel)]="currentBook.title"
+                    name="title"
+                    />
+            </div>
+
+            
+            <div class="form-group">
+                <label for="name">Book Desc</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    [(ngModel)]="currentBook.description"
+                    name="description"
+                    />
+            </div>
+            
+            <div class="form-group">
+                <label for="yearOfPublish">Year of Publish</label>
+                <input
+                    type="number"
+                    class="form-control"
+                    id="yearOfPublish"
+                    [(ngModel)]="currentBook.yearOfPublish"
+                    name="yearOfPublish"
+                    />
+            </div>
+            
+            <div class="form-group">
+                <label for="genre">Units</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="genre"
+                    [(ngModel)]="currentBook.unitNumber"
+                    name="units"
+                    />
+            </div>
+            
+            <div class="form-group">
+                <label for="rentalPrice">Rental Price</label>
+                <input
+                    type="number"
+                    class="form-control"
+                    id="rentalPrice"
+                    [(ngModel)]="currentBook.rentalPrice"
+                    name="rentalPrice"
+                    step=".01"
+                    />
+            </div>
+            <div class="form-group">
+              <label for="language.name">Language</label>
+              <input
+                  type="text"
+                  class="form-control"
+                  id="language.name"
+                  [(ngModel)]="currentBook.language.name"
+                  name="language"
+                  />
+          </div>
+          <div class="form-group">
+            <label for="publisher.name">Publisher</label>
+            <input
+                type="text"
+                class="form-control"
+                id="publisher.name"
+                [(ngModel)]="currentBook.publisher.name"
+                name="publisher.name"
+                />
+        </div>
+            <div class="row">
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="authors">Authors</label>
+                  <div *ngFor="let author of authors">
+                  <input
+                      type="checkbox"
+                      class="form-control-sm"
+                      id="authors"
+                      [(ngModel)]="currentBook.authors.firstName + ' ' + currentBook.authors.lastName"
+                      name="authors"
+                      /> {{author.firstName + ' ' + author.lastName}}
+                  </div>
+              </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="genres">Genres</label>
+                  <div *ngFor="let genre of genres">
+                  <input
+                      type="checkbox"
+                      class="form-control-sm"
+                      id="genres"
+                      [(ngModel)]="currentBook.genres.name"
+                      name="genres"
+                      /> {{genre.name}}
+                  </div>
+              </div>
+              </div>
+              <div class="col-md-3">
+                3
+              </div>
+              <div class="col-md-3">
+                4
+              </div>
+            </div>
+        </form>
+        <!-- <button
+      class="badge badge-primary mr-2"
+      *ngIf="currentBook.published"
+      (click)="updatePublished(false)"
+    >
+      UnPublish
+    </button> -->
+    <!-- <button
+      *ngIf="!currentBook.published"
+      class="badge badge-primary mr-2"
+      (click)="updatePublished(true)"
+    >
+      Publish
+    </button> -->
+    <button class="badge badge-danger mr-2" (click)="deleteBook(currentBook)">
+      Delete
+    </button>
+    <button type="submit" class="badge badge-success mb-2" (click)="updateBook(currentBook)">
+        Update
+    </button>
+    </div>
+    <div *ngIf="!currentBook.id">
+        <br />
+        <p>Cannot access this Book...</p>
+    </div>
+   

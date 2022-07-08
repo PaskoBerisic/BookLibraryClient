@@ -1,0 +1,51 @@
+<button class="badge badge-secondary mb-3"  (click)="goBack()"> Back</button>
+
+<div *ngIf="currentCountry?.id" class="edit-form">
+        <h4>Edit Country '{{currentCountry.name}} '</h4>
+        <form>
+            <div class="form-group">
+                <label for="name">Country</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    [(ngModel)]="currentCountry.name"
+                    name="name"
+                    />
+            </div>
+
+            
+            <div class="form-group">
+                <label for="shortName">ShortName (max. 3 char)</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="shortName"
+                    [(ngModel)]="currentCountry.shortName"
+                    name="shortName"
+                    />
+            </div>
+            
+            <div class="form-group">
+                <label for="vat">VAT %</label>
+                <input
+                    type="number"
+                    class="form-control"
+                    id="yearOfPublish"
+                    [(ngModel)]="currentCountry.vat"
+                    name="yearOfPublish"
+                    />
+            </div>
+        </form>
+    <button class="badge badge-danger mr-2" (click)="deleteCountry()">
+      Delete
+    </button>
+    <button type="submit" class="badge badge-success mb-2" (click)="updateCountry(currentCountry)">
+        Update
+    </button>
+    </div>
+    <div *ngIf="!currentCountry?.id">
+        <br />
+        <p>Cannot access this Country...</p>
+    </div>
+  

@@ -1,0 +1,43 @@
+<div class="container-fluid">
+    <h3>Add Publisher</h3>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="form-group">
+          <h5>Publisher Name</h5>
+          <input type="text" class="form-control" [(ngModel)]="publisher.name">
+        </div>
+        <div class="form-group">
+          <h5>Publisher Books</h5>
+          <input type="text" class="form-control" [(ngModel)]="publisher.books">
+        </div>
+        <div class="form-group">
+          <h5>Books</h5>
+          <div *ngFor="let book of books">
+          <input type="checkbox" 
+                 class="form-control"
+                 (click)="addBook(book.id)" 
+                 /> {{book.title}}
+        </div>
+      </div>
+      </div>
+      <div class="col-md-9">
+        <h3>Preview</h3>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col" >Name</th>
+              <th scope="col" >Books</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{publisher.name}}</td>
+              <td>{{publisher.books}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <button class="btn btn-success" (click)="addPublisher(publisher)">Add Publisher</button>
+  </div>
+  

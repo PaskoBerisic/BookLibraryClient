@@ -1,35 +1,17 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col">
-            Available Books
-            <!-- Get Books - Display with button Add, Update, Delete -->
-            <!-- Get Books -->
-            <div class="col-md-12">
-                <div *ngFor="let bookItem of books">
-                  <div class="container-fluid">
-                    <h3>Name: {{bookItem.title}}</h3>
-                    <h5>Power: {{bookItem.description}}</h5>
-                    <button class="btn btn-primary" routerLink={{bookItem.title}}>Details</button>
-                    <hr>
-                  </div>
-                </div>
-              </div>
-        </div>
-        <!-- Check add tutorials project to add onclick button show -->
-        <button class="btn btn-success">Add Book</button>  
-        <button class="btn btn-warning">Update Book</button>  
-        <button class="btn btn-danger">Delete Books</button>  
+<div class="album py-5 bg-light">
+  <div class="container">
 
-        <div class="col">
-            Edit Books
-        </div>
-        <div class="col">
-            Edit Orders
-        </div>
-        <div class="col">
-            Edit Users
-        </div>
+  <div class="row">
+    <div class="col-md-12">
+      <app-book-control></app-book-control>
+      <app-author-control></app-author-control>
+      <app-get-country></app-get-country>
+      <app-genre-control></app-genre-control>
+      <app-language-control></app-language-control>
+      <app-publisher-control></app-publisher-control>
+      <app-order-control></app-order-control>
+      <app-user-control></app-user-control>
     </div>
+  </div>
 </div>
-
-
+</div>

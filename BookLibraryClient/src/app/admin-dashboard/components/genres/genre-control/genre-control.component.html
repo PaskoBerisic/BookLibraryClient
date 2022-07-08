@@ -1,0 +1,41 @@
+<h2>Genre Control</h2>
+<div class="container-fluid">
+<div class="row">
+  <div class="col-md-10">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Genre Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Is Active?</th>
+        <th scope="col">Books</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let genre of genres">
+        <th scope="row">{{genre.id}}</th>
+        <td>{{genre.name}} </td>
+        <td>{{genre.description}}</td>
+        <td><div *ngIf="genre.isActive === true">Yes</div>
+            <div *ngIf="genre.isActive === false">No</div>
+        </td>
+        <td>
+            <ng-container *ngFor="let book of genre.books, let i = index">
+              <ng-container *ngIf="i > 0">,</ng-container>
+              {{book.title}}
+            </ng-container>
+          </td>
+        <td><button class="btn btn-warning" routerLink="/admin/genreControl/updateGenre/{{genre.id}}">Edit</button></td>
+        <td><button class="btn btn-danger" (click)="deleteGenre(genre.id)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="col-md-2">
+  <button class="btn btn-success" routerLink="/admin/genreControl/addGenre">Add Genre</button>
+</div>
+</div>
+</div>

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Book } from '../models/book.model';
 
-const API_URL = "https://localhost:0/UPDATE";
+const API_URL = "https://localhost:44323/api/";
 
 
 @Injectable({
@@ -24,53 +24,18 @@ export class BookLibraryService {
     rentalPrice: 0,
   }
 
-  // Post
-  addBook: Book = {
-    title: '',
-    publisherId: 0,
-    yearOfPublish: 0,
-    description: '',
-    languageId: 0,
-    rentalPrice: 0,
-    listPrice: 0,
-    unitNumber: 0,
-    createdBy: 0,
-    created: '',
-    updatedBy: 0,
-    updated: '',
-  };
   postId: any;
 
-  // Put
-  updateBook: Book = {
-    title: '',
-    publisherId: 0,
-    yearOfPublish: 0,
-    description: '',
-    languageId: 0,
-    rentalPrice: 0,
-    listPrice: 0,
-    unitNumber: 0,
-    createdBy: 0,
-    created: '',
-    updatedBy: 0,
-    updated: '',
-  };
-
-  // Delete
-  delBook: Book = {
-    id: undefined
-  }
   constructor(private http: HttpClient) { }
 
    //Get
-   getBooks(path: string): Observable<Book> {
+   getItems(path: string): Observable<Book> {
     return this.http.get(API_URL + path + '/all').pipe();
   }
 
    //Get ID
-   getBookByID(id: any) {
-    this.http.get(API_URL + id) 
+   getItemByID(path: string,id: any) {
+    this.http.get(API_URL + path + id) 
       .subscribe((character: any) => {
         this.getBook = character;
         console.log(this.getBook);
@@ -78,20 +43,19 @@ export class BookLibraryService {
   }
 
    //Post
-   
-   postBook() {
-    return this.http.post < any > (API_URL, this.addBook)
+   postItem(path: string, item: any) {
+    return this.http.post < any > (API_URL + path, item).subscribe(data => this.postId = data.id);
     }
 
    //Put
-   putBook() {
-    this.http.put < any > (API_URL, this.updateBook)
+   putItem(path: string, item: any) {
+    this.http.put < any > (API_URL + path, item)
       .subscribe(data => this.postId = data.id);
   }
 
    //Delete ID
-   deleteBook(id: any) {
-    this.http.delete(API_URL + id)
+   deleteItem(path: string, id: any) {
+    this.http.delete(API_URL + path + id)
       .subscribe(() => console.log('Delete successful'));
   }
 }

@@ -1,0 +1,35 @@
+<h2>User Control</h2>
+<div class="container-fluid">
+<div class="row">
+  <div class="col-md-10">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Username</th>
+        <th scope="col">Orders</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <th scope="row">{{user.id}}</th>
+        <td>{{user.username}}</td>
+        <td>
+          <ng-container *ngFor="let order of user.orders, let i = index">
+            <ng-container *ngIf="i > 0">,</ng-container>
+            {{order.id}}
+          </ng-container>
+        </td>
+        <td><button class="btn btn-warning" routerLink="/admin/userControl/updateUser/{{user.id}}">Edit</button></td>
+        <td><button class="btn btn-danger" (click)="deleteUser(user.id)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="col-md-2">
+  <button class="btn btn-success" routerLink="/admin/userControl/addUser">Add User</button>
+</div>
+</div>
+</div>

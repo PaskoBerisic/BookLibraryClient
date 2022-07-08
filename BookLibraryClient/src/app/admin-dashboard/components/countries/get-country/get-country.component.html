@@ -1,0 +1,32 @@
+<h2>Country Control</h2>
+<div class="container-fluid">
+<div class="row">
+  <div class="col-md-10">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Language</th>
+        <th scope="col">Short Name</th>
+        <th scope="col">VAT</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let country of countries">
+        <th scope="row">{{country.id}}</th>
+        <td>{{country.name}}</td>
+        <td>{{country.shortName}}</td>
+        <td>{{country.vat}}</td>
+        <td><button class="btn btn-warning" routerLink="/admin/countryControl/updateCountry/{{country.id}}">Edit</button></td>
+        <td><button class="btn btn-danger" (click)="deleteCountry(country.id)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="col-md-2">
+  <button class="btn btn-success" routerLink="/admin/countryControl/addCountry">Add Country</button>
+</div>
+</div>
+</div>

@@ -1,10 +1,12 @@
 export class Book {
     id?: number;
     title?: string;
-    publisherId?: number;
+    authors?: any;
+    publisher?: any;
     yearOfPublish?: number;
     description?: string;
-    languageId?: number;
+    language?: any;
+    genres?: any;
     rentalPrice?: number;
     listPrice?: number;
     unitNumber?: number;

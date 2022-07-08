@@ -1,0 +1,43 @@
+<h2>Author Control</h2>
+<div class="container-fluid">
+<div class="row">
+  <div class="col-md-10">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Author Name</th>
+        <th scope="col">Date of Birth</th>
+        <th scope="col">Country</th>
+        <th scope="col">Bibliography</th>
+        <th scope="col">Books</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let author of authors">
+        <th scope="row">{{author.id}}</th>
+        <td>{{author.firstName}}  {{author.lastName}}</td>
+        <td>{{author.dateOfBirth | date}}</td>
+        <td>{{author.country.name}}</td>
+        <td>{{author.bibliography}}</td>
+        <td>
+            <ng-container *ngFor="let book of author.books, let i = index">
+              <ng-container *ngIf="i > 0">,</ng-container>
+              {{book.title}}
+            </ng-container>
+          </td>
+        <td><button class="btn btn-warning" routerLink="/admin/authorControl/updateAuthor/{{author.id}}">Edit</button></td>
+        <td><button class="btn btn-danger" (click)="deleteAuthor(author.id)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="col-md-2">
+  <button class="btn btn-success" routerLink="/admin/authorControl/addAuthor">Add Author</button>
+
+</div>
+</div>
+</div>
+

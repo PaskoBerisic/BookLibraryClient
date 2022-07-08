@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <h3>Add Language</h3>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="form-group">
+          <h5>Language Name</h5>
+          <input type="text" class="form-control" [(ngModel)]="language.name">
+          <h5>Short Name</h5>
+          <input type="text" class="form-control" maxlength="3" [(ngModel)]="language.shortName">
+        </div>
+      </div>
+      <div class="col-md-9">
+        <h3>Preview</h3>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col" >Name</th>
+              <th scope="col" width="15%">ShortName</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{language.name}}</td>
+              <td>{{language.shortName}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <button class="btn btn-success" (click)="addLanguage(language)">Add Language</button>
+  </div>
+  

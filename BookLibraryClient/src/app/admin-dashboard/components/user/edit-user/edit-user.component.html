@@ -1,0 +1,103 @@
+<button class="badge badge-secondary mb-3"  (click)="goBack()"> Back</button>
+
+<div *ngIf="currentUser.id" class="edit-form">
+        <h4>Edit User '{{currentUser.firstName}} {{currentUser.lastName}}'</h4>
+        <form>
+            <div class="form-group">
+                <label for="name">First Name</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    [(ngModel)]="currentUser.firstName"
+                    name="name"
+                    />
+            </div>
+            <div class="form-group">
+                <label for="lname">Last Name</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="lname"
+                    [(ngModel)]="currentUser.lastName"
+                    name="lname"
+                    />
+            </div>
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="username"
+                    [(ngModel)]="currentUser.username"
+                    name="username"
+                    /> 
+            </div>
+            <div class="form-group">
+                <label for="isActive">Is Active?
+                <input
+                    type="checkbox"
+                    class="form-control"
+                    id="isActive"
+                    [(ngModel)]="currentUser.isActive"
+                    name="isActive"
+                    /></label>
+            </div>
+            <div class="form-group">
+                <label for="dateofBirth">Date of Birth</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="dateofBirth"
+                    [(ngModel)]="currentUser.dateOfBirth"
+                    name="dateofBirth"
+                    />
+            </div>
+            <div class="form-group">
+                <label for="adress">Adress</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="adress"
+                    [(ngModel)]="currentUser.adress"
+                    name="adress"
+                    />
+            </div>
+
+            <div class="form-group">
+                <label for="role">Role</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="role"
+                    [(ngModel)]="currentUser.role"
+                    name="role"
+                    />
+            </div>
+
+            <div class="form-group">
+                <label for="orders">Orders</label>
+                <div *ngFor="let order of currentUser.orders">
+                <input
+                    type="checkbox"
+                    class="form-control-sm"
+                    id="orders"
+                    [(ngModel)]="order.id"
+                    name="orders"
+                    disabled
+                    /> ID: {{order.id}}
+                </div>
+            </div>
+        </form>
+    <button class="badge badge-danger mr-2" (click)="deleteUser(currentUser)">
+      Delete
+    </button>
+    <button type="submit" class="badge badge-success mb-2" (click)="updateUser(currentUser)">
+        Update
+    </button>
+    </div>
+    <div *ngIf="!currentUser.id">
+        <br />
+        <p>Cannot access this User...</p>
+    </div>
