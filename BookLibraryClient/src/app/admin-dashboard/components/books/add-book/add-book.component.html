@@ -5,20 +5,20 @@
       <div class="form-group">
         <h5>Book Title</h5>
         <input type="text" class="form-control" [(ngModel)]="book.title">
+        <h5>Author</h5>
+        <input type="text" class="form-control" [(ngModel)]="book.authors.id">
         <h5>Publisher</h5>
-        <input type="text" class="form-control" [(ngModel)]="book.publisher.name">
+        <input type="text" class="form-control" [(ngModel)]="book.publisherId">
         <h5>Year of Publish</h5>
         <input type="number" class="form-control" [(ngModel)]="book.yearOfPublish">
         <h5>Book Description</h5>
         <input type="text" class="form-control" [(ngModel)]="book.description">
         <h5>Language</h5>
-        <input type="text" class="form-control" id="language" [(ngModel)]="book.language.name">
+        <input type="text" class="form-control" id="language" [(ngModel)]="book.languageId">
         <h5>Genre</h5>
-        <input type="text" class="form-control" id="genre" [(ngModel)]="book.genres.name">
+        <input type="text" class="form-control" id="genre" [(ngModel)]="book.genres"> 
         <h5>Rental Price</h5>
         <input type="number" class="form-control" [(ngModel)]="book.rentalPrice">
-        <h5>List Price</h5>
-        <input type="number" class="form-control" [(ngModel)]="book.listPrice">
         <h5>Unit Number</h5>
         <input type="number" class="form-control" [(ngModel)]="book.unitNumber">
       </div>
@@ -28,10 +28,11 @@
       <table class="table">
         <thead class="thead-dark">
           <tr>
-            <th scope="col" >Title</th>
-            <th scope="col" >Publisher</th>
-            <th scope="col" >Language</th>
-            <th scope="col" >Genre</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">PublisherID</th>
+            <th scope="col">LanguageID</th>
+            <th scope="col">GenreID</th>
             <th scope="col" width="10%">Year of Publish</th>
             <th scope="col" width="10%">Rental Price</th>
             <th scope="col" width="10%">List Price</th>
@@ -41,44 +42,46 @@
         <tbody>
           <tr>
             <td>{{book.title}}</td>
-            <td>{{book.publisher.name}}</td>
-            <td>{{book.language.name}}</td>
-            <td>{{book.genres.name}}</td>
+            <td>{{book.authors.id}}</td>
+            <td>{{book.publisher}}</td>
+            <td>{{book.language}}</td>
+            <td>{{book.genres.id}}</td>
             <td>{{book.yearOfPublish}}</td>
             <td>{{book.rentalPrice}}</td>
-            <td>{{book.listPrice}}</td>
             <td>{{book.unitNumber}}</td>
           </tr>
 
         </tbody>
       </table>
-      <textarea class="form-control" value="{{book.description}}" placeholder="Book Description" cols="100" rows="10"></textarea>
+      <textarea class="form-control" value="{{book.description}}" placeholder="Book Description" cols="100"
+        rows="10"></textarea>
       <div class="row">
-      <div class="col">
-        Languages:
-        <div *ngFor="let language of languages">
-          <div *ngIf="!book.language.id">
-          <input type="checkbox" name="" id="language" (click)="addLanguage(language.id!)">{{language.name}}
+         <div class="col">
+          Authors:
+          <div *ngFor="let author of authors">
+              <input type="radio" name="" id="publisher"
+                (click)="addAuthor(author.id!)">{{' ' + author.firstName + ' ' + author.lastName}}
+            </div>
+        </div> 
+        <div class="col">
+          Languages:
+          <div *ngFor="let language of languages">
+              <input type="radio" name="" id="language" (click)="addLanguage(language.id!)">{{' ' + language.name}}
+            </div>
         </div>
+        <div class="col">
+          Genres:
+          <div *ngFor="let genre of genres">
+              <input type="radio" name="" id="genre" (click)="addGenre(genre.id!)">{{' ' + genre.name}}
+          </div>
+        </div>
+        <div class="col">
+          Publisher:
+          <div *ngFor="let publisher of publishers">
+              <input type="radio" name="" id="publisher" (click)="addPublisher(publisher.id!)">{{' ' + publisher.name}}
+          </div>
         </div>
       </div>
-      <div class="col">
-        Genres:
-        <div *ngFor="let genre of genres">
-          <div *ngIf="!book.genres.id">
-          <input type="checkbox" name="" id="genre" (click)="addGenre(genre.id!)">{{genre.name}}
-        </div>
-        </div>
-      </div>
-      <div class="col">
-        Publisher:
-        <div *ngFor="let publisher of publishers">
-          <div *ngIf="!book.publisher.id">
-          <input type="checkbox" name="" id="publisher" (click)="addPublisher(publisher.id!)">{{publisher.name}}
-        </div>
-        </div>
-      </div>
-    </div>
     </div>
   </div>
   <button class="btn btn-success" (click)="addBook(book)">Add Book</button>
