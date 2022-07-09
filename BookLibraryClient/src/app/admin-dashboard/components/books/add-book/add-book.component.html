@@ -6,17 +6,17 @@
         <h5>Book Title</h5>
         <input type="text" class="form-control" [(ngModel)]="book.title">
         <h5>Author</h5>
-        <input type="text" class="form-control" [(ngModel)]="book.authors.id">
+        <input type="number" class="form-control" [(ngModel)]="book.authors">
         <h5>Publisher</h5>
-        <input type="text" class="form-control" [(ngModel)]="book.publisherId">
+        <input type="number" class="form-control" [(ngModel)]="book.publisherId">
         <h5>Year of Publish</h5>
         <input type="number" class="form-control" [(ngModel)]="book.yearOfPublish">
         <h5>Book Description</h5>
         <input type="text" class="form-control" [(ngModel)]="book.description">
         <h5>Language</h5>
-        <input type="text" class="form-control" id="language" [(ngModel)]="book.languageId">
+        <input type="number" class="form-control" id="language" [(ngModel)]="book.languageId">
         <h5>Genre</h5>
-        <input type="text" class="form-control" id="genre" [(ngModel)]="book.genres"> 
+        <input type="number" class="form-control" id="genre" [(ngModel)]="book.genres"> 
         <h5>Rental Price</h5>
         <input type="number" class="form-control" [(ngModel)]="book.rentalPrice">
         <h5>Unit Number</h5>
@@ -42,19 +42,29 @@
         <tbody>
           <tr>
             <td>{{book.title}}</td>
-            <td>{{book.authors.id}}</td>
+            <td>{{book.authors}}</td>
             <td>{{book.publisher}}</td>
             <td>{{book.language}}</td>
-            <td>{{book.genres.id}}</td>
+            <td>{{book.genres}}</td>
             <td>{{book.yearOfPublish}}</td>
             <td>{{book.rentalPrice}}</td>
             <td>{{book.unitNumber}}</td>
           </tr>
+          
+          <h5>Author Id</h5>
+          <input type="text" value ="1" class="form-control" id="varijabla.author.id"/>
+          <h5>PublisherID</h5>
+          <input type="number" value ="1" class="form-control" id="varijabla.publisherId"/>
+          <h5>LanguageID</h5>
+          <input type="number"value ="1" class="form-control" id="varijabla.languageId"/>
+          <h5>GenreID</h5>
+          <input type="number" value ="1" class="form-control" id="varijabla.genre.id">
 
         </tbody>
       </table>
       <textarea class="form-control" value="{{book.description}}" placeholder="Book Description" cols="100"
         rows="10"></textarea>
+        <button class="btn btn-primary" (click)="checkRequest(varijabla)">Check</button>
       <div class="row">
          <div class="col">
           Authors:

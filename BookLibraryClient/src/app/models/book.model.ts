@@ -1,14 +1,17 @@
+import { Author } from "./author.model";
+import { Genre } from "./genre.model";
+
 export class Book {
     id?: number;
     title?: string;
-    authors?: any = {id: 0}
+    authors?: Author;
     publisher?: any;
     publisherId?: any;
     yearOfPublish?: number;
     description?: string;
     language?: any;
     languageId?: any;
-    genres?: any = {id: 0}
+    genres?: Genre;
     rentalPrice?: number;
     listPrice?: number;
     unitNumber?: number;

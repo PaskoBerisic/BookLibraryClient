@@ -1,5 +1,5 @@
 export class Genre {
-    id?: number;
+    id?: any;
     name?: string;
     description?: string;
     isActive?: boolean;
