@@ -40,14 +40,14 @@
         <div class="col">
           Users:
           <div *ngFor="let user of users">
-              <input type="radio" name="" id="book" (click)="addUsers(user.id!)">
+              <input type="radio" name="" id="booksId" (click)="addUsers(user.id!)">
               {{ ' ' + user.firstName + ' ' + user.lastName}}
             </div>
         </div>
         <div class="col">
           Books:
           <div *ngFor="let book of books">
-              <input type="checkbox" name="" id="book" (click)="addBooks(book.id!)">
+              <input type="checkbox" name="order.books" id="booksId" (click)="addBooks(book.id!)">
               {{' ' + book.title}}
             </div>
         </div>

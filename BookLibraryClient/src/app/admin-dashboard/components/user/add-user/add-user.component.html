@@ -61,7 +61,7 @@
         <div class="col">
           Orders:
           <div *ngFor="let order of orders">
-              <input type="checkbox" id="orderId" (click)="addOrder(order.id!)">
+              <input type="checkbox" name="user.orders" id="orderId" (click)="addOrder(order.id!)">
               {{order.id}}
             </div>
         </div>

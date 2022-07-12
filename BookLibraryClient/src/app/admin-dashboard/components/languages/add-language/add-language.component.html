@@ -31,7 +31,7 @@
           <div class="col">
             Books:
             <div *ngFor="let book of books">
-                <input type="radio" name="" id="book" (click)="addBooks(book.id!)">
+                <input type="checkbox" name="language.books" id="booksId" (click)="addBooks(book.id!)">
                 {{' ' + book.title}}
               </div>
           </div>

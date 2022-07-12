@@ -60,33 +60,33 @@
         <div class="col">
           Publisher:
           <div *ngFor="let publisher of publishers">
-              <input type="radio" name="" id="book.publisherId" (click)="addPublisher(publisher.id!)">{{' ' + publisher.name}}
+              <input type="radio" name="book.publisherId" id="book.publisherId" (click)="addPublisher(publisher.id!)">{{' ' + publisher.name}}
           </div>
         </div> 
         <div class="col">
           Languages:
           <div *ngFor="let language of languages">
-              <input type="radio" name="" id="book.languageId" (click)="addLanguage(language.id!)">{{' ' + language.name}}
+              <input type="radio" name="book.languageId" id="book.languageId" (click)="addLanguage(language.id!)">{{' ' + language.name}}
             </div>
         </div>
         <div class="col">
           Authors:
           <div *ngFor="let author of authors">
-              <input type="checkbox" name="" id="authorId" (click)="addAuthor(author.id!)">
+              <input type="checkbox" name="book.authors" id="authorId" (click)="addAuthor(author.id!)">
               {{' ' + author.firstName + ' ' + author.lastName}}
             </div>
         </div> 
         <div class="col">
           Genres:
           <div *ngFor="let genre of genres">
-              <input type="checkbox" name="" id="genreId" (click)="addGenre(genre.id!)">
+              <input type="checkbox" name="book.genres" id="genreId" (click)="addGenre(genre.id!)">
               {{' ' + genre.name}}
           </div>
         </div>
         <div class="col">
           Orders:
           <div *ngFor="let order of orders">
-              <input type="checkbox" name="" id="orderId" (click)="addOrder(order.id!)">
+              <input type="checkbox" name="book.orders" id="orderId" (click)="addOrder(order.id!)">
               {{order.id}}
             </div>
         </div>         

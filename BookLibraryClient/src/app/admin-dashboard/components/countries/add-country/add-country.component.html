@@ -36,7 +36,7 @@
           <div class="col">
             Authors:
             <div *ngFor="let author of authors">
-                <input type="checkbox" name="" id="authorId" (click)="addAuthor(author.id!)">
+                <input type="checkbox" name="country.authors" id="authorId" (click)="addAuthor(author.id!)">
                 {{' ' + author.firstName + ' ' + author.lastName}}
               </div>
           </div>

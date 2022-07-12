@@ -45,14 +45,14 @@
           <div class="col">
             Countries:
             <div *ngFor="let country of countries">
-                <input type="radio" name="" id="author.countryId" (click)="addCountry(country.id!)">
+                <input  name="author.countryId" id="author.countryId" (click)="addCountry(country.id!)">
                 {{' ' + country.name}}
               </div>
           </div>
           <div class="col">
             Books:
             <div *ngFor="let book of books">
-                <input type="radio" name="" id="booksId" (click)="addBooks(book.id!)">
+                <input type="checkbox" name="author.books" id="booksId" (click)="addBooks(book.id!)">
                 {{' ' + book.title}}
               </div>
           </div> 
