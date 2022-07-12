@@ -1,17 +1,20 @@
-export class Book {
+import { Author } from "./author.model";
+
+export interface Book {
     id?: number;
     title?: string;
-    authors?: any = {id: 0}
-    publisher?: any;
-    publisherId?: any;
     yearOfPublish?: number;
     description?: string;
-    language?: any;
-    languageId?: any;
-    genres?: any = {id: 0}
     rentalPrice?: number;
     listPrice?: number;
     unitNumber?: number;
+    publisher?: any;
+    publisherId?: any;
+    language?: any;
+    languageId?: any;
+    authors?: any;
+    genres?: any;
+    orders?:any;
     createdBy?: number;
     created?: string;
     updatedBy?: number;

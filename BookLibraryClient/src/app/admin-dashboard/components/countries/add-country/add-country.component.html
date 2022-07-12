@@ -3,13 +3,15 @@
     <div class="row">
       <div class="col-md-3">
         <div class="form-group">
-          <h5>Country Name</h5>
+          <label>Country Name</label>
           <input type="text" class="form-control" [(ngModel)]="country.name">
-          <h5>Short Name</h5>
+          <label>Short Name</label>
           <input type="text" class="form-control" maxlength="3" [(ngModel)]="country.shortName">
-          <h5>VAT</h5>
+          <label>VAT</label>
           <input type="number" class="form-control" max="100" [(ngModel)]="country.vat">
-          <h5>Book Description</h5>
+          <label for="book.authors.id">Author</label> 
+          <input type="text" class="form-control" id="book.authors.id" [(ngModel)]="authorId">
+  
         </div>
       </div>
       <div class="col-md-9">
@@ -27,10 +29,18 @@
               <td>{{country.name}}</td>
               <td>{{country.shortName}}</td>
               <td>{{country.vat}}</td>
-            </tr>
-  
+            </tr>  
           </tbody>
         </table>
+        <div class="row">
+          <div class="col">
+            Authors:
+            <div *ngFor="let author of authors">
+                <input type="radio" name="" id="author" (click)="addAuthor(author.id!)">
+                {{' ' + author.firstName + ' ' + author.lastName}}
+              </div>
+          </div>
+        </div>
       </div>
     </div>
     <button class="btn btn-success" (click)="addCountry(country)">Add Country</button>

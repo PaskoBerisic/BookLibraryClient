@@ -3,10 +3,12 @@
     <div class="row">
       <div class="col-md-3">
         <div class="form-group">
-          <h5>Language Name</h5>
+          <label>Language Name</label>
           <input type="text" class="form-control" [(ngModel)]="language.name">
-          <h5>Short Name</h5>
+          <label>Short Name</label>
           <input type="text" class="form-control" maxlength="3" [(ngModel)]="language.shortName">
+          <label>Books</label>
+          <input type="text" class="form-control" [(ngModel)]="booksId">
         </div>
       </div>
       <div class="col-md-9">
@@ -25,6 +27,15 @@
             </tr>
           </tbody>
         </table>
+        <div class="row">
+          <div class="col">
+            Books:
+            <div *ngFor="let book of books">
+                <input type="radio" name="" id="book" (click)="addBooks(book.id!)">
+                {{' ' + book.title}}
+              </div>
+          </div>
+        </div>
       </div>
     </div>
     <button class="btn btn-success" (click)="addLanguage(language)">Add Language</button>

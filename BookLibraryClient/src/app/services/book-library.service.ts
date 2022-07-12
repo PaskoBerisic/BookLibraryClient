@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Book } from '../models/book.model';
 
 const API_URL = "https://localhost:44323/api/";
 
@@ -29,7 +28,7 @@ export class BookLibraryService {
   constructor(private http: HttpClient) { }
 
    //Get
-   getItems(path: string): Observable<Book> {
+   getItems(path: string): Observable<any> {
     return this.http.get(API_URL + path + '/all').pipe();
   }
 
@@ -42,6 +41,11 @@ export class BookLibraryService {
       });
   }
 
+    // postItem(path: string, item: any) {
+    //   let jsonItem = JSON.stringify(item);
+    //   const headers = { 'content-type': 'application/json'}  
+    //   return this.http.post < any > (API_URL + path, jsonItem, {'headers':headers}).subscribe(data => this.postId = data.id);
+    //   }
    //Post
    postItem(path: string, item: any) {
     return this.http.post < any > (API_URL + path, item).subscribe(data => this.postId = data.id);

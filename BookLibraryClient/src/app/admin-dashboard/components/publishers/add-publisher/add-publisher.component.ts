@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Book } from 'src/app/models/book.model';
 import { Publisher } from 'src/app/models/publisher.model';
 import { BookLibraryService } from 'src/app/services/book-library.service';
 
@@ -9,7 +10,8 @@ import { BookLibraryService } from 'src/app/services/book-library.service';
 })
 export class AddPublisherComponent implements OnInit {
   publisher: Publisher = {};
-  books: any[]=[];
+  books: Book[] = [];
+  booksId:any;
   constructor(private bookLibraryService: BookLibraryService) { }
 
   ngOnInit(): void {
@@ -23,10 +25,8 @@ export class AddPublisherComponent implements OnInit {
     this.bookLibraryService.postItem('Admin/Publisher', publisher);
     console.log(publisher);
   }
-  addBook(id: any){
-    console.log(id);
-    this.publisher.books = id;
-    console.log(this.publisher.books);
+  addBooks(id: number){
+    this.booksId = id;
   }
 
 }

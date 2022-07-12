@@ -3,24 +3,27 @@
   <div class="row">
     <div class="col-md-3">
       <div class="form-group">
-        <h5>Book Title</h5>
-        <input type="text" class="form-control" [(ngModel)]="book.title">
-        <h5>Author</h5>
-        <input type="text" class="form-control" [(ngModel)]="book.authors.id">
-        <h5>Publisher</h5>
-        <input type="text" class="form-control" [(ngModel)]="book.publisherId">
-        <h5>Year of Publish</h5>
-        <input type="number" class="form-control" [(ngModel)]="book.yearOfPublish">
-        <h5>Book Description</h5>
-        <input type="text" class="form-control" [(ngModel)]="book.description">
-        <h5>Language</h5>
-        <input type="text" class="form-control" id="language" [(ngModel)]="book.languageId">
-        <h5>Genre</h5>
-        <input type="text" class="form-control" id="genre" [(ngModel)]="book.genres"> 
-        <h5>Rental Price</h5>
-        <input type="number" class="form-control" [(ngModel)]="book.rentalPrice">
-        <h5>Unit Number</h5>
-        <input type="number" class="form-control" [(ngModel)]="book.unitNumber">
+        <label for="book.title">Title</label> 
+        <input type="text" class="form-control" id="book.title" [(ngModel)]="book.title">
+        <label for="book.yearOfPublish">Year of Publish</label> 
+        <input type="number" class="form-control" id="book.yearOfPublish" [(ngModel)]="book.yearOfPublish">
+        <label for="book.description">Description</label> 
+        <input type="text" class="form-control" id="book.description" [(ngModel)]="book.description">
+        <label for="book.rentalPrice">Rental Price</label> 
+        <input type="number" class="form-control"  id="book.rentalPrice"[(ngModel)]="book.rentalPrice">
+        <label for="book.unitNumber">Unit Number</label> 
+        <input type="number" class="form-control" id="book.unitNumber" [(ngModel)]="book.unitNumber">
+        <hr>
+        <label for="book.publisherId">Publisher</label> 
+        <input type="text" class="form-control" id="book.publisherId" [(ngModel)]="book.publisherId">
+        <label for="book.languageId">Language</label> 
+        <input type="text" class="form-control" id="book.languageId" [(ngModel)]="book.languageId">
+        <label for="book.authors.id">Author</label> 
+        <input type="text" class="form-control" id="book.authors.id" [(ngModel)]="authorId">
+        <label for="book.genres.id">Genre</label> 
+        <input type="text" class="form-control" id="book.genres.id"  [(ngModel)]="genreId">
+        <label for="book.orders.id">Orders</label> 
+        <input type="text" class="form-control" id="book.orders.id" [(ngModel)]="orderId">
       </div>
     </div>
     <div class="col-md-9">
@@ -42,10 +45,8 @@
         <tbody>
           <tr>
             <td>{{book.title}}</td>
-            <td>{{book.authors.id}}</td>
             <td>{{book.publisher}}</td>
             <td>{{book.language}}</td>
-            <td>{{book.genres.id}}</td>
             <td>{{book.yearOfPublish}}</td>
             <td>{{book.rentalPrice}}</td>
             <td>{{book.unitNumber}}</td>
@@ -56,12 +57,11 @@
       <textarea class="form-control" value="{{book.description}}" placeholder="Book Description" cols="100"
         rows="10"></textarea>
       <div class="row">
-         <div class="col">
-          Authors:
-          <div *ngFor="let author of authors">
-              <input type="radio" name="" id="publisher"
-                (click)="addAuthor(author.id!)">{{' ' + author.firstName + ' ' + author.lastName}}
-            </div>
+        <div class="col">
+          Publisher:
+          <div *ngFor="let publisher of publishers">
+              <input type="radio" name="" id="publisher" (click)="addPublisher(publisher.id!)">{{' ' + publisher.name}}
+          </div>
         </div> 
         <div class="col">
           Languages:
@@ -70,17 +70,26 @@
             </div>
         </div>
         <div class="col">
+          Authors:
+          <div *ngFor="let author of authors">
+              <input type="radio" name="" id="author" (click)="addAuthor(author.id!)">
+              {{' ' + author.firstName + ' ' + author.lastName}}
+            </div>
+        </div> 
+        <div class="col">
           Genres:
           <div *ngFor="let genre of genres">
-              <input type="radio" name="" id="genre" (click)="addGenre(genre.id!)">{{' ' + genre.name}}
+              <input type="radio" name="" id="genre" (click)="addGenre(genre.id!)">
+              {{' ' + genre.name}}
           </div>
         </div>
         <div class="col">
-          Publisher:
-          <div *ngFor="let publisher of publishers">
-              <input type="radio" name="" id="publisher" (click)="addPublisher(publisher.id!)">{{' ' + publisher.name}}
-          </div>
-        </div>
+          Orders:
+          <div *ngFor="let order of orders">
+              <input type="radio" name="" id="orderId" (click)="addOrder(order.id!)" for="">
+              {{order.id}}
+            </div>
+        </div>         
       </div>
     </div>
   </div>

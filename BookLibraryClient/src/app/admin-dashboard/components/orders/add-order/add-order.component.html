@@ -1,60 +1,61 @@
 <div class="container-fluid">
-    <h3>Add Order</h3>
-    <div class="row">
-      <div class="col-md-3">
-        <div class="form-group">
-          <h5>Order ID</h5>
-          <input type="text" class="form-control" [(ngModel)]="order.id">
-        </div>
-        <div class="form-group">
-          <h5>User</h5>
-          <input type="text" class="form-control" [(ngModel)]="order.user.id">
-        </div>
-        <div class="form-group">
-            <h5>Date</h5>
-            <input type="date" class="form-control" [(ngModel)]="order.date">
-          </div>
-          <div class="form-group">
-            <h5>Total</h5>
-            <input type="text" class="form-control" [(ngModel)]="order.totalRentalPrice">
-          </div>
-          <div class="form-group">
-            <h5>Total with VAT</h5>
-            <input type="text" class="form-control" [(ngModel)]="order.totalRentalPriceWithVAT">
-          </div>
-         <div class="form-group">
-          <h5>Books</h5>
-          <div *ngFor="let book of books">
-          <input type="checkbox" 
-                 class="form-control-sm"
-                 /> {{book.title}}
-        </div>
-      </div>
-      </div>
-      <div class="col-md-9">
-        <h3>Preview</h3>
-        <table class="table">
-          <thead class="thead-dark">
-            <tr>
-              <th scope="col" >Id</th>
-              <th scope="col" >User</th>
-              <th scope="col" >Date</th>
-              <th scope="col" >Total</th>
-              <th scope="col" >Total With VAT</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{{order.id}}</td>
-              <td>{{order.user.username}}</td>
-              <td>{{order.date}}</td>
-              <td>{{order.totalRentalPrice}}</td>
-              <td>{{order.totalRentalPriceWithVAT}}</td>
-            </tr>
-          </tbody>
-        </table>
+  <h3>Add Order</h3>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="form-group">
+        <label>Order ID</label>
+        <input type="text" class="form-control" [(ngModel)]="order.id">
+        <label>Date</label>
+        <input type="date" class="form-control" [(ngModel)]="order.date">
+        <label>Total</label>
+        <input type="date" class="form-control" [(ngModel)]="order.totalRentalPrice">
+        <label>Total With VAT</label>
+        <input type="date" class="form-control" [(ngModel)]="order.totalRentalPriceWithVAT">
+        <hr>
+        <label for="book.publisherId">User</label> 
+        <input type="text" class="form-control" id="book.publisherId" [(ngModel)]="userId">
+        <label>Books</label>
+        <input type="text" class="form-control" [(ngModel)]="booksId">
       </div>
     </div>
-    <button class="btn btn-success" (click)="addOrder(order)">Add Order</button>
+    <div class="col-md-9">
+      <h3>Preview</h3>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">User</th>
+            <th scope="col">Date</th>
+            <th scope="col">Total</th>
+            <th scope="col">Total With VAT</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{order.id}}</td>
+            <td>{{order.date}}</td>
+            <td>{{order.totalRentalPrice}}</td>
+            <td>{{order.totalRentalPriceWithVAT}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="row">
+        <div class="col">
+          Users:
+          <div *ngFor="let user of users">
+              <input type="radio" name="" id="book" (click)="addUsers(user.id!)">
+              {{ ' ' + user.firstName + ' ' + user.lastName}}
+            </div>
+        </div>
+        <div class="col">
+          Books:
+          <div *ngFor="let book of books">
+              <input type="radio" name="" id="book" (click)="addBooks(book.id!)">
+              {{' ' + book.title}}
+            </div>
+        </div>
+      </div>
+    </div>
   </div>
-  
+  <button class="btn btn-success" (click)="addOrder(order)">Add Order</button>
+</div>

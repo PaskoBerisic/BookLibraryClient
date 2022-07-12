@@ -11,10 +11,10 @@ const API_URL = "https://localhost:44323/api/";
 })
 export class AdminDashboardComponent implements OnInit {
   books: any[] = [];
-  currentBook: Book = {};
+  currentBook: any = {};
   currentIndex = -1;
 
-  book: Book = {
+  book: any = {
 }
 postId: any;
 title = '';
