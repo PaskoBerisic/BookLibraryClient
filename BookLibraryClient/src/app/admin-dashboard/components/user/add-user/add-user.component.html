@@ -3,29 +3,30 @@
   <div class="row">
     <div class="col-md-3">
       <div class="form-group">
-        <label>First Name</label>
-        <input type="text" class="form-control" [(ngModel)]="user.firstName">
+        <label for="user.firstNname">First Name</label>
+        <input type="text" id="user.firstName" class="form-control" [(ngModel)]="user.firstName">
       
-      <label>Last Name</label>
+      <label for="user.lastName">Last Name</label>
+        <input type="text" id="user.lastName" class="form-control" [(ngModel)]="user.lastName" />
       
-        <input type="text" class="form-control" [(ngModel)]="user.lastName" />
+      <label for="user.username">Username</label>
+        <input type="text" id="user.username" class="form-control" [(ngModel)]="user.username"/>
       
-      <label>Username</label>
-      
-        <input type="text" class="form-control" [(ngModel)]="user.username"/>
-      
-      <label>Is Active?</label>
-        <input type="checkbox" class="form-control" [(ngModel)]="user.isActive"/>
+      <label for="user.isActive">Is Active?</label> <br>
+        <input type="checkbox" id="user.isActive" class="form-control-sm" [(ngModel)]="user.isActive"/> <br>
       
         <label for="user.dateOfBirth">Date of Birth</label>
-        <input type="date" class="form-control" [(ngModel)]="user.dateOfBirth"/>
+        <input type="date" id="user.dateOfBirth" class="form-control" [(ngModel)]="user.dateOfBirth"/>
+
        <label for="user.address">Address</label>
-        <input type="text" class="form-control" [(ngModel)]="user.address"/>
-        <label for="user.role"> Role</label>  <br>
-        <input type="radio" class="form-control-sm" value="User" [(ngModel)]="user.role"/>User <br>
-        <input type="radio" class="form-control-sm" value="Admin" [(ngModel)]="user.role" />Admin <br>
-        <label for="book.orders.id">Orders</label> 
-      <input type="text" class="form-control" id="book.orders.id" [(ngModel)]="orderId">
+        <input type="text" id="user.address" class="form-control" [(ngModel)]="user.address"/>
+
+        <label for="user.orders.id">Orders</label> 
+      <input type="text" class="form-control" id="user.orders.id" [(ngModel)]="orderId">
+    
+      <label for="user.role"> Role</label>  <br>
+        <input type="radio" id="user.role" class="form-control-sm" value="User" [(ngModel)]="user.role"/>User <br>
+        <input type="radio" id="user.role" class="form-control-sm" value="Admin" [(ngModel)]="user.role" />Admin <br>
     </div>
     </div>
     <div class="col-md-9">
@@ -60,7 +61,7 @@
         <div class="col">
           Orders:
           <div *ngFor="let order of orders">
-              <input type="radio" name="" id="orderId" (click)="addOrder(order.id!)" for="">
+              <input type="checkbox" id="orderId" (click)="addOrder(order.id!)">
               {{order.id}}
             </div>
         </div>

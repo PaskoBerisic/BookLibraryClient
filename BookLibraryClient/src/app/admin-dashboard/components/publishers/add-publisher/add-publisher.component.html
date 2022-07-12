@@ -3,12 +3,10 @@
   <div class="row">
     <div class="col-md-3">
       <div class="form-group">
-        <label>Publisher Name</label>
-        <input type="text" class="form-control" [(ngModel)]="publisher.name">
-        <label>Publisher Books</label>
-        <input type="text" class="form-control" [(ngModel)]="publisher.books">
-        <label>Books</label>
-        <input type="text" class="form-control" [(ngModel)]="booksId">
+        <label for="publisher.name">Publisher Name</label>
+        <input type="text" id="publisher.name "class="form-control" [(ngModel)]="publisher.name">
+        <label for="publisher.books ">Books</label>
+        <input type="text" id="publisher.books" class="form-control" [(ngModel)]="booksId">
       </div>
     </div>
     <div class="col-md-9">
@@ -31,7 +29,7 @@
         <div class="col">
           Books:
           <div *ngFor="let book of books">
-            <input type="radio" name="" id="book" (click)="addBooks(book.id!)">
+            <input type="checkbox" name="" id="booksId" (click)="addBooks(book.id!)">
             {{' ' + book.title}}
           </div>
         </div>

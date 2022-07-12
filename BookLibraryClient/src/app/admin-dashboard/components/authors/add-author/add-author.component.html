@@ -12,8 +12,8 @@
           <label for="author.bibliography">Bibliography</label> 
           <input type="text" class="form-control" id="author.bibliography" [(ngModel)]="author.bibliography">
           <hr>
-          <label for="author.country.id">Country</label> 
-          <input type="text" class="form-control" id="author.country.id" [(ngModel)]="author.countryId">
+          <label for="author.countryId">Country</label> 
+          <input type="text" class="form-control" id="author.countryId" [(ngModel)]="author.countryId">
           <label for="author.books.id">Books</label> 
           <input type="text" class="form-control" id="author.books.id"[(ngModel)]="booksId">
         </div>
@@ -45,14 +45,14 @@
           <div class="col">
             Countries:
             <div *ngFor="let country of countries">
-                <input type="radio" name="" id="country" (click)="addCountry(country.id!)">
+                <input type="radio" name="" id="author.countryId" (click)="addCountry(country.id!)">
                 {{' ' + country.name}}
               </div>
           </div>
           <div class="col">
             Books:
             <div *ngFor="let book of books">
-                <input type="radio" name="" id="book" (click)="addBooks(book.id!)">
+                <input type="radio" name="" id="booksId" (click)="addBooks(book.id!)">
                 {{' ' + book.title}}
               </div>
           </div> 
