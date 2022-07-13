@@ -3,4 +3,5 @@ export class Country {
     name?: string;
     shortName?: string;
     vat?: number;
+    authors?: any;
 }

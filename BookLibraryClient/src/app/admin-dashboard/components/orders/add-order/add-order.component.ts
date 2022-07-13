@@ -15,6 +15,7 @@ export class AddOrderComponent implements OnInit {
   booksId:any;
   users: User[] = [];
   userId: any;
+  bookArr: Book[] = [];
   constructor(private bookLibraryService: BookLibraryService) { }
 
   ngOnInit(): void {
@@ -28,15 +29,17 @@ export class AddOrderComponent implements OnInit {
     });
   }
   addOrder(order: Order){
+    order.books = this.bookArr;
     this.bookLibraryService.postItem('Order', order);
     console.log(order);
   }
-  addBooks(id: number){
-    this.booksId = id;
+  addToArray(id: number){
+    this.bookArr.push({id});
+    console.log(this.bookArr);  
   }
   
   addUsers(id: number){
-    this.userId = id;
+    this.order.UserId = id;
   }
 
 }

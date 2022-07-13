@@ -16,6 +16,10 @@
           <input type="text" class="form-control" id="author.countryId" [(ngModel)]="author.countryId">
           <label for="author.books.id">Books</label> 
           <input type="text" class="form-control" id="author.books.id"[(ngModel)]="booksId">
+          <ng-container *ngFor="let item of bookArr, let i = index">
+            <ng-container *ngIf="i > 0">,</ng-container>
+            {{item.id}}
+          </ng-container> <br>
         </div>
       </div>
       <div class="col-md-9">
@@ -38,7 +42,6 @@
               <td>{{author.dateOfBirth}}</td>
               <td>{{author.country}}</td>
               <td>{{author.bibliography}}</td>
-              <!-- <td>{{author.books.name}}</td> -->
             </tr>
           </tbody>
         </table>
@@ -53,7 +56,7 @@
           <div class="col">
             Books:
             <div *ngFor="let book of books">
-                <input type="checkbox" name="author.books" id="booksId" (click)="addBooks(book.id!)">
+                <input type="checkbox" name="author.books" id="booksId" (click)="addToArray(book.id!)">
                 {{' ' + book.title}}
               </div>
           </div> 

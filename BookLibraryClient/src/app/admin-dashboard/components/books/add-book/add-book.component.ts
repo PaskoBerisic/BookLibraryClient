@@ -23,6 +23,9 @@ export class AddBookComponent implements OnInit {
   authorId: any;
   genreId: any;
   orderId: any;
+  authorArr: Author[] = [];
+  genreArr: Genre[] = [];
+  orderArr: Order[] = [];
 
   constructor(private bookLibraryService: BookLibraryService) { }
 
@@ -51,19 +54,9 @@ export class AddBookComponent implements OnInit {
   }
   
   addBook(book: Book){
-
-    this.book.authors = [{
-      id:this.authorId
-    }];
-    this.book.genres = [{
-      id:this.genreId 
-    }];
-    this.book.orders = [{
-      id:this.orderId 
-    }];
-
-    console.log(JSON.stringify(book));
-    console.log(' ' + this.authorId);
+    book.authors = this.authorArr;
+    book.genres = this.genreArr;
+    book.orders = this.orderArr;
     this.bookLibraryService.postItem('Book',book);
     console.log(book);
   }
@@ -73,13 +66,16 @@ export class AddBookComponent implements OnInit {
   addPublisher(id: number){
     this.book.publisherId = id;
   }
-  addAuthor(id: number){
-    this.authorId = id;
+  addToAuthorArray(id: number){
+    this.authorArr.push({id});
+    console.log(this.authorArr);  
   }
-  addGenre(id: number){
-    this.genreId = id;
+  addToGenreArray(id: number){
+    this.genreArr.push({id});
+    console.log(this.orderArr);  
   }
-  addOrder(id: number){
-    this.orderId = id;
+  addToOrderArray(id: number){
+    this.orderArr.push({id});
+    console.log(this.orderArr);  
   }
 }

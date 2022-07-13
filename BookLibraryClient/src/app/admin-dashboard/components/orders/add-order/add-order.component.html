@@ -3,16 +3,22 @@
   <div class="row">
     <div class="col-md-3">
       <div class="form-group">
-        <label for="order.userId">User ID</label>
-        <input type="text" id="userId" class="form-control" [(ngModel)]="userId">
+        <label for="order.UserId">User ID</label>
+        <input type="text" id="UserId" class="form-control" [(ngModel)]="order.UserId">
         <label for="order.date">Date</label>
         <input type="date" id="order.date" class="form-control" [(ngModel)]="order.date">
         <label for="order.totalRentalPrice">Total</label>
-        <input type="string" id="order.totalRentalPrice" class="form-control" [(ngModel)]="order.totalRentalPrice">
+        <input type="text" id="order.totalRentalPrice" class="form-control" [(ngModel)]="order.totalRentalPrice">
         <label for="order.totalRentalPriceWithVAT">Total With VAT</label>
-        <input type="string" id="order.totalRentalPriceWithVAT" class="form-control" [(ngModel)]="order.totalRentalPriceWithVAT">
+        <input type="text" id="order.totalRentalPriceWithVAT" class="form-control" [(ngModel)]="order.totalRentalPriceWithVAT">
+        <label for="order.currency">Currency</label>
+        <input type="text" id="order.currency" maxlength="3" class="form-control" [(ngModel)]="order.currency">
         <label for="order.books">Books</label>
         <input type="text" id="order.books" class="form-control" [(ngModel)]="booksId">
+        <ng-container *ngFor="let item of bookArr, let i = index">
+          <ng-container *ngIf="i > 0">,</ng-container>
+          {{item.id}}
+        </ng-container> <br>
       </div>
     </div>
     <div class="col-md-9">
@@ -47,7 +53,7 @@
         <div class="col">
           Books:
           <div *ngFor="let book of books">
-              <input type="checkbox" name="order.books" id="booksId" (click)="addBooks(book.id!)">
+              <input type="checkbox" name="order.books" id="booksId" (click)="addToArray(book.id!)">
               {{' ' + book.title}}
             </div>
         </div>
