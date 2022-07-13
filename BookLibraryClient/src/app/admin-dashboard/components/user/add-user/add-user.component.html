@@ -22,8 +22,16 @@
         <input type="text" id="user.address" class="form-control" [(ngModel)]="user.address"/>
 
         <label for="user.orders.id">Orders</label> 
-      <input type="text" class="form-control" id="user.orders.id" [(ngModel)]="orderId">
-    
+      <!-- <input type="text" class="form-control" id="user.orders.id" [(ngModel)]="orderId">
+         <div *ngFor="let item of orderArr, let i = index">
+          <div *ngIf="i > 0">,</div>
+      {{item.id}}
+        </div>  -->
+          
+        <ng-container *ngFor="let item of orderArr, let i = index">
+          <ng-container *ngIf="i > 0">,</ng-container>
+          {{item.id}}
+        </ng-container> <br>
       <label for="user.role"> Role</label>  <br>
         <input type="radio" id="user.role" class="form-control-sm" value="User" [(ngModel)]="user.role"/>User <br>
         <input type="radio" id="user.role" class="form-control-sm" value="Admin" [(ngModel)]="user.role" />Admin <br>
@@ -61,8 +69,8 @@
         <div class="col">
           Orders:
           <div *ngFor="let order of orders">
-              <input type="checkbox" name="user.orders" id="orderId" (click)="addOrder(order.id!)">
-              {{order.id}}
+              <input type="checkbox" name="user.orders" id="orderId" (click)="addToArray(order.id!)">
+              Order ID: {{order.id}}
             </div>
         </div>
       </div>

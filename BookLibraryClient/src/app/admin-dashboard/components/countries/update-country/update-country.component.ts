@@ -1,11 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { BookLibraryService } from 'src/app/services/book-library.service';
 
 const API_URL = "https://localhost:44323/api/";
-
 
 @Component({
   selector: 'app-update-country',
@@ -14,6 +13,7 @@ const API_URL = "https://localhost:44323/api/";
 })
 export class UpdateCountryComponent implements OnInit {
   currentCountry: any = {};
+  status: any = ' a';
   constructor(private http: HttpClient, 
     private location: Location,
      private route: ActivatedRoute,
@@ -21,7 +21,6 @@ export class UpdateCountryComponent implements OnInit {
      postId: any;
   ngOnInit(): void {
     this.getCountry(this.route.snapshot.params["id"]);
-    console.log('This kec' + this.getCountry(this.route.snapshot.params["id"]));
   }
 
   getCountry(id: string){
@@ -36,9 +35,8 @@ export class UpdateCountryComponent implements OnInit {
     console.log(country);
   }
 
-  deleteCountry(){
-
-
+  deleteCountry(id: number){
+    this.bookLibraryService.deleteItem('Admin/Country/', id);
   }
   goBack(): void {
     this.location.back();

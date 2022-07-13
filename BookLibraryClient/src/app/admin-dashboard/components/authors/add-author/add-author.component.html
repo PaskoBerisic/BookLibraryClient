@@ -45,7 +45,7 @@
           <div class="col">
             Countries:
             <div *ngFor="let country of countries">
-                <input  name="author.countryId" id="author.countryId" (click)="addCountry(country.id!)">
+                <input type="radio" name="author.countryId" id="author.countryId" (click)="addCountry(country.id!)">
                 {{' ' + country.name}}
               </div>
           </div>

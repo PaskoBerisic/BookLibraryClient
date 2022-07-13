@@ -12,6 +12,7 @@ export class AddPublisherComponent implements OnInit {
   publisher: Publisher = {};
   books: Book[] = [];
   booksId:any;
+  bookArr: any = [];
   constructor(private bookLibraryService: BookLibraryService) { }
 
   ngOnInit(): void {
@@ -24,6 +25,10 @@ export class AddPublisherComponent implements OnInit {
   addPublisher(publisher: Publisher){
     this.bookLibraryService.postItem('Admin/Publisher', publisher);
     console.log(publisher);
+  }
+  addToArray(id: number){
+    this.bookArr.push({id});
+    console.log(this.bookArr);  
   }
   addBooks(id: number){
     this.booksId = id;

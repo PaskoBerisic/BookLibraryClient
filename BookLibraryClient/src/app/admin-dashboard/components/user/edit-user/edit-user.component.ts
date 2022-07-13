@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { BookLibraryService } from 'src/app/services/book-library.service';
 import { Location } from '@angular/common';
+import { Order } from 'src/app/models/order.model';
 
 const API_URL = "https://localhost:44323/api/";
 
@@ -13,8 +14,8 @@ const API_URL = "https://localhost:44323/api/";
   styleUrls: ['./edit-user.component.css']
 })
 export class EditUserComponent implements OnInit {
-
   currentUser: User = {};
+  orders: Order[] = [];
 
   constructor(
     private http: HttpClient, 
@@ -33,7 +34,12 @@ export class EditUserComponent implements OnInit {
       .subscribe((user: any) => {
         this.currentUser = user;
         console.log(this.currentUser);
-      }); 
+      });
+      this.bookLibraryService.getItems('Order')
+    .subscribe((orders: any) => {
+      this.orders = orders;
+      console.log(this.orders);
+    }); 
     }
     updateUser(user: User){
       this.bookLibraryService.putItem('Admin/User', user);

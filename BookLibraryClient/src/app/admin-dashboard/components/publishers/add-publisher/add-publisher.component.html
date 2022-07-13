@@ -29,7 +29,7 @@
         <div class="col">
           Books:
           <div *ngFor="let book of books">
-            <input type="checkbox" name="publisher.books" id="booksId" (click)="addBooks(book.id!)">
+            <input type="checkbox" name="publisher.books" id="booksId" (click)="addToArray(book.id!)">
             {{' ' + book.title}}
           </div>
         </div>

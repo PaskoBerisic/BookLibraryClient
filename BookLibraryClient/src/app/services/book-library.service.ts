@@ -24,7 +24,6 @@ export class BookLibraryService {
   }
 
   postId: any;
-
   constructor(private http: HttpClient) { }
 
    //Get
@@ -48,18 +47,51 @@ export class BookLibraryService {
     //   }
    //Post
    postItem(path: string, item: any) {
-    return this.http.post < any > (API_URL + path, item).subscribe(data => this.postId = data.id);
+    return this.http.post < any > (API_URL + path, item).
+    subscribe(
+      data => this.postId = data.id,
+      response => { 
+        console.log('POST call in error', response); 
+        window.alert("POST call in error");
+      },
+     () => { 
+      console.log('Added successful'); 
+      window.alert("Added successful");
+      window.location.reload();
+    }
+      );
     }
 
    //Put
    putItem(path: string, item: any) {
     this.http.put < any > (API_URL + path, item)
-      .subscribe(data => this.postId = data.id);
+      .subscribe(data => {this.postId = data.id},
+      response => { 
+        console.log('PUT call in error', response); 
+        window.alert("PUT call in error");
+      },
+     () => { 
+      console.log('Update successful'); 
+      window.alert("Update successful");
+      window.location.reload();
+    }
+        
+        );
   }
 
    //Delete ID
    deleteItem(path: string, id: any) {
     this.http.delete(API_URL + path + id)
-      .subscribe(() => console.log('Delete successful'));
+      .subscribe(
+        response => { 
+          console.log('DELETE call in error', response); 
+          window.alert("DELETE call in error");
+        },
+       () => { 
+        console.log('Delete successful'); 
+        window.alert("Delete successful");
+        window.location.reload();
+      }
+        );
   }
 }
