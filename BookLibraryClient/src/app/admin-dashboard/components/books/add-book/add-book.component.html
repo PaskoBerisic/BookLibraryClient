@@ -51,11 +51,21 @@
             <td>{{book.rentalPrice}}</td>
             <td>{{book.unitNumber}}</td>
           </tr>
+          
+          <h5>Author Id</h5>
+          <input type="text" value ="1" class="form-control" id="varijabla.author.id"/>
+          <h5>PublisherID</h5>
+          <input type="number" value ="1" class="form-control" id="varijabla.publisherId"/>
+          <h5>LanguageID</h5>
+          <input type="number"value ="1" class="form-control" id="varijabla.languageId"/>
+          <h5>GenreID</h5>
+          <input type="number" value ="1" class="form-control" id="varijabla.genre.id">
 
         </tbody>
       </table>
       <textarea class="form-control" value="{{book.description}}" placeholder="Book Description" cols="100"
         rows="10"></textarea>
+        <button class="btn btn-primary" (click)="checkRequest(varijabla)">Check</button>
       <div class="row">
         <div class="col">
           Publisher:

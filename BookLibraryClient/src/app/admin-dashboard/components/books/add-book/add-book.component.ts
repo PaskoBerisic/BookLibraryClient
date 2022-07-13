@@ -1,4 +1,4 @@
-import { Component, OnInit,OnChanges, SimpleChanges} from '@angular/core';
+import { Component, OnInit,} from '@angular/core';
 import { Author } from 'src/app/models/author.model';
 import { Book } from 'src/app/models/book.model';
 import { Genre } from 'src/app/models/genre.model';
@@ -12,16 +12,18 @@ import { BookLibraryService } from 'src/app/services/book-library.service';
   templateUrl: './add-book.component.html',
   styleUrls: ['./add-book.component.css']
 })
-export class AddBookComponent implements OnInit, OnChanges {
+export class AddBookComponent implements OnInit {
   book: Book = {}
   languages: Language[] = [];
   genres: Genre[] = [];
   publishers: Publisher[] = [];
   authors: Author[] = [];
+
   orders: Order[] = [];
   authorId: any;
   genreId: any;
   orderId: any;
+
   constructor(private bookLibraryService: BookLibraryService) { }
 
   ngOnInit(): void {
@@ -47,10 +49,9 @@ export class AddBookComponent implements OnInit, OnChanges {
       console.log(this.orders);
     })
   }
-  ngOnChanges(changes: SimpleChanges): void{
-
-  }
+  
   addBook(book: Book){
+
     this.book.authors = [{
       id:this.authorId
     }];
