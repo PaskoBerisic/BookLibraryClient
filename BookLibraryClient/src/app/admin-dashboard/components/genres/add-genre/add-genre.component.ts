@@ -12,6 +12,7 @@ export class AddGenreComponent implements OnInit {
   books: Book[] = [];
   booksId:any;
   genre: Genre = {};
+  bookArr: Book[] = [];
   
   constructor(private bookLibraryService: BookLibraryService) { }
 
@@ -22,11 +23,13 @@ export class AddGenreComponent implements OnInit {
     });
   }
   addGenre(genre: Genre){
+    genre.books = this.bookArr;
     this.bookLibraryService.postItem('Admin/Genre', genre);
     console.log(genre);
   }
-  addBooks(id: number){
-    this.booksId = id;
+  addToArray(id: number){
+    this.bookArr.push({id});
+    console.log(this.bookArr);  
   }
 
 }

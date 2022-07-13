@@ -11,7 +11,10 @@
           <input type="number" id="country.vat" class="form-control" max="100" [(ngModel)]="country.vat">
           <label for="country.authors.id">Author</label> 
           <input type="text" class="form-control" id="country.authors.id" [(ngModel)]="authorId">
-  
+          <ng-container *ngFor="let item of authorArr, let i = index">
+            <ng-container *ngIf="i > 0">,</ng-container>
+            {{item.id}}
+          </ng-container> <br>
         </div>
       </div>
       <div class="col-md-9">
@@ -36,7 +39,7 @@
           <div class="col">
             Authors:
             <div *ngFor="let author of authors">
-                <input type="checkbox" name="country.authors" id="authorId" (click)="addAuthor(author.id!)">
+                <input type="checkbox" name="country.authors" id="authorId" (click)="addToArray(author.id!)">
                 {{' ' + author.firstName + ' ' + author.lastName}}
               </div>
           </div>

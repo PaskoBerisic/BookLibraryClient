@@ -9,6 +9,10 @@
           <input type="text" id="language.shortName" class="form-control" maxlength="3" [(ngModel)]="language.shortName">
           <label for="language.books">Books</label>
           <input type="text" id="language.books" class="form-control" [(ngModel)]="booksId">
+          <ng-container *ngFor="let item of bookArr, let i = index">
+            <ng-container *ngIf="i > 0">,</ng-container>
+            {{item.id}}
+          </ng-container> <br>
         </div>
       </div>
       <div class="col-md-9">
@@ -31,7 +35,7 @@
           <div class="col">
             Books:
             <div *ngFor="let book of books">
-                <input type="checkbox" name="language.books" id="booksId" (click)="addBooks(book.id!)">
+                <input type="checkbox" name="language.books" id="booksId" (click)="addToArray(book.id!)">
                 {{' ' + book.title}}
               </div>
           </div>

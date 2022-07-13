@@ -7,6 +7,10 @@
         <input type="text" id="publisher.name "class="form-control" [(ngModel)]="publisher.name">
         <label for="publisher.books ">Books</label>
         <input type="text" id="publisher.books" class="form-control" [(ngModel)]="booksId">
+        <ng-container *ngFor="let item of bookArr, let i = index">
+          <ng-container *ngIf="i > 0">,</ng-container>
+          {{item.id}}
+        </ng-container> <br>
       </div>
     </div>
     <div class="col-md-9">

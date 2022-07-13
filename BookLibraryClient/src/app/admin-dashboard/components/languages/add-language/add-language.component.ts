@@ -11,6 +11,7 @@ export class AddLanguageComponent implements OnInit {
   books: Book[] = [];
   booksId:any;
   language: Language = {};
+  bookArr: Book[] = [];
   constructor(private bookLibraryService: BookLibraryService) { }
 
   ngOnInit(): void {
@@ -20,10 +21,12 @@ export class AddLanguageComponent implements OnInit {
     });
   }
   addLanguage(language: Language){
+    language.books = this.bookArr;
     this.bookLibraryService.postItem('Admin/Language', language);
     console.log(language);
   }
-  addBooks(id: number){
-    this.booksId = id;
+  addToArray(id: number){
+    this.bookArr.push({id});
+    console.log(this.bookArr);  
   }
 }
