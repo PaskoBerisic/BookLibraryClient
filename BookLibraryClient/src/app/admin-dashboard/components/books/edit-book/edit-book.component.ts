@@ -15,7 +15,7 @@ const API_URL = "https://localhost:44323/api/";
   styleUrls: ['./edit-book.component.css']
 })
 export class EditBookComponent implements OnInit {
-currentBook: Book = {};
+currentBook: any = {};
 genres: Genre[] = [];
 authors: Author[] = [];
 constructor(

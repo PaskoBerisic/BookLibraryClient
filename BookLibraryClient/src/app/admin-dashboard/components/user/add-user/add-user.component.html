@@ -3,40 +3,53 @@
   <div class="row">
     <div class="col-md-3">
       <div class="form-group">
-        <h5>First Name</h5>
-        <input type="text" class="form-control" [(ngModel)]="user.firstName">
-      </div>
-      <h5>Last Name</h5>
-      <div class="form-group">
-        <input type="text" class="form-control" [(ngModel)]="user.lastName" />
-      </div>
-      <h5>Username</h5>
-      <div class="form-group">
-        <input type="text" class="form-control" [(ngModel)]="user.username"/>
-      </div>
-      <h5>Is Active?</h5>
-      <div class="form-group">
-        <input type="checkbox" class="form-control" [(ngModel)]="user.isActive"/>
-      </div>
-      <div class="form-group">
-        <input type="date" class="form-control" [(ngModel)]="user.dateOfBirth"/>
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" [(ngModel)]="user.adress"/>
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" [(ngModel)]="user.role"/>
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" [(ngModel)]="user.orders"/>
-      </div>
+        <label for="user.firstNname">First Name</label>
+        <input type="text" id="user.firstName" class="form-control" [(ngModel)]="user.firstName">
+      
+      <label for="user.lastName">Last Name</label>
+        <input type="text" id="user.lastName" class="form-control" [(ngModel)]="user.lastName" />
+      
+      <label for="user.username">Username</label>
+        <input type="text" id="user.username" class="form-control" [(ngModel)]="user.username"/>
+      
+      <label for="user.isActive">Is Active?</label> <br>
+        <input type="checkbox" id="user.isActive" class="form-control-sm" [(ngModel)]="user.isActive"/> <br>
+      
+        <label for="user.dateOfBirth">Date of Birth</label>
+        <input type="date" id="user.dateOfBirth" class="form-control" [(ngModel)]="user.dateOfBirth"/>
+
+       <label for="user.address">Address</label>
+        <input type="text" id="user.address" class="form-control" [(ngModel)]="user.address"/>
+
+        <label for="user.orders.id">Orders</label> 
+      <!-- <input type="text" class="form-control" id="user.orders.id" [(ngModel)]="orderId">
+         <div *ngFor="let item of orderArr, let i = index">
+          <div *ngIf="i > 0">,</div>
+      {{item.id}}
+        </div>  -->
+          
+        <ng-container *ngFor="let item of orderArr, let i = index">
+          <ng-container *ngIf="i > 0">,</ng-container>
+          {{item.id}}
+        </ng-container> <br>
+      <label for="user.role"> Role</label>  <br>
+        <input type="radio" id="user.role" class="form-control-sm" value="User" [(ngModel)]="user.role"/>User <br>
+        <input type="radio" id="user.role" class="form-control-sm" value="Admin" [(ngModel)]="user.role" />Admin <br>
+    </div>
     </div>
     <div class="col-md-9">
       <h3>Preview</h3>
       <table class="table">
         <thead class="thead-dark">
           <tr>
-            <th scope="col">Name</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Username</th>
+            <th scope="col">Is Active?</th>
+            <th scope="col">Date of Birth</th>
+            <th scope="col">Address</th>
+            <th scope="col">Role</th>
+            <th scope="col">Orders</th>
           </tr>
         </thead>
         <tbody>
@@ -45,14 +58,24 @@
             <td>{{user.lastName}}</td>
             <td>{{user.username}}</td>
             <td>{{user.isActive}}</td>
-            <td>{{user.dateOfBirth}}</td>
-            <td>{{user.adress}}</td>
+            <td>{{user.dateOfBirth | date}}</td>
+            <td>{{user.address}}</td>
             <td>{{user.role}}</td>
             <td>{{user.orders}}</td>
           </tr>
         </tbody>
       </table>
+      <div class="row">
+        <div class="col">
+          Orders:
+          <div *ngFor="let order of orders">
+              <input type="checkbox" name="user.orders" id="orderId" (click)="addToArray(order.id!)">
+              Order ID: {{order.id}}
+            </div>
+        </div>
+      </div>
     </div>
+    <button class="btn btn-success" (click)="addUser(user)">Add User</button>
+
   </div>
-  <button class="btn btn-success" (click)="addUser(user)">Add User</button>
-</div>
+

@@ -5,5 +5,6 @@ export class Author {
     books?: any;
     dateOfBirth?: any;
     country?: any;
+    countryId?: any;
     bibliography?: string;
 }

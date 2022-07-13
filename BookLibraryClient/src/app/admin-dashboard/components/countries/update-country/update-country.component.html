@@ -37,12 +37,13 @@
                     />
             </div>
         </form>
-    <button class="badge badge-danger mr-2" (click)="deleteCountry()">
+    <button class="badge badge-danger mr-2" (click)="deleteCountry(currentCountry.id)">
       Delete
     </button>
     <button type="submit" class="badge badge-success mb-2" (click)="updateCountry(currentCountry)">
         Update
     </button>
+    Status: {{status}}
     </div>
     <div *ngIf="!currentCountry?.id">
         <br />

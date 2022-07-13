@@ -20,6 +20,6 @@ export class GetCountryComponent implements OnInit {
   deleteCountry(id: any){
     this.bookLibraryService.deleteItem('Admin/Country/', id);
     console.log(this.bookLibraryService.deleteItem('Admin/Country/', id));
-    window.location.reload();
+    //window.location.reload();
   }
 }

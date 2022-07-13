@@ -15,7 +15,7 @@ const API_URL = "https://localhost:44323/api/";
   styleUrls: ['./detailed-book.component.css']
 })
 export class DetailedBookComponent implements OnInit {
-  book: Book = {};
+  book: any = {};
   constructor(private http: HttpClient, private route: ActivatedRoute, private location: Location, private bookLibraryService: BookLibraryService) { }
 
   ngOnInit(): void {
