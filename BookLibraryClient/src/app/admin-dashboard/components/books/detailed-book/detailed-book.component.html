@@ -12,7 +12,12 @@
         <div class="row r3">
             <div class="col-md-5 p-0 klo">
                 <ul>
-                    <li>Author:</li>
+                    <li>Author:
+                        <ng-container *ngFor="let author of book.authors, let i = index">
+                            <ng-container *ngIf="i > 0">,</ng-container>
+                            {{author.firstName + ' ' +  author.lastName}}
+                          </ng-container>
+                    </li>
                     <li>Year of Publish: {{book.yearOfPublish}}</li>
                     <li>Publisher: {{book.publisher.name}}</li>
                     <li>Language: {{book.language.name}}</li>
