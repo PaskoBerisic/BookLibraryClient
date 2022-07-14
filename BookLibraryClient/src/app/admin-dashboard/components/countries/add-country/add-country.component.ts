@@ -11,7 +11,7 @@ export class AddCountryComponent implements OnInit {
   country: Country = {};
   authors: Author[] = [];
   authorId: any;
-  
+  authorArr: Author[] = [];
   constructor(private bookLibraryService: BookLibraryService) { }
 
   ngOnInit(): void {
@@ -21,11 +21,13 @@ export class AddCountryComponent implements OnInit {
     })
   }
   addCountry(country: Country){
+    country.authors = this.authorArr;
     this.bookLibraryService.postItem('Admin/Country', country);
     console.log(country);
   }
-  addAuthor(id: number){
-    this.authorId = id;
+  addToArray(id: number){
+    this.authorArr.push({id});
+    console.log(this.authorArr);  
   }
 
 }

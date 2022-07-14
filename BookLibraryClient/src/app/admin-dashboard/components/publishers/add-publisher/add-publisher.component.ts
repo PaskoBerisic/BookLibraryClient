@@ -23,6 +23,7 @@ export class AddPublisherComponent implements OnInit {
     });
   }
   addPublisher(publisher: Publisher){
+    publisher.books = this.bookArr;
     this.bookLibraryService.postItem('Admin/Publisher', publisher);
     console.log(publisher);
   }

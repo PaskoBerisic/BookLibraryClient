@@ -14,6 +14,7 @@ export class AddAuthorComponent implements OnInit {
   booksId: any;
   countries: Country[] = [];
   countryId: any;
+  bookArr: Book[] = [];
   
   constructor(private bookLibraryService: BookLibraryService) { }
 
@@ -28,11 +29,13 @@ export class AddAuthorComponent implements OnInit {
     });
   }
   addAuthor(author: Author){
+    author.books = this.bookArr;
     this.bookLibraryService.postItem('Author', author);
     console.log(author);
   }
-  addBooks(id: number){
-    this.booksId = id;
+  addToArray(id: number){
+    this.bookArr.push({id});
+    console.log(this.bookArr);  
   }
   addCountry(id: number){
     this.author.countryId = id;
