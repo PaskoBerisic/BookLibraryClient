@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Order } from 'src/app/models/order.model';
 import { Location } from '@angular/common';
 import { BookLibraryService } from 'src/app/services/book-library.service';
+import { Book } from 'src/app/models/book.model';
 const API_URL = "https://localhost:44323/api/";
 
 
@@ -13,9 +14,10 @@ const API_URL = "https://localhost:44323/api/";
   styleUrls: ['./edit-order.component.css']
 })
 export class EditOrderComponent implements OnInit {
-  
   currentOrder: Order = {};
-
+  books: Book[] = [];
+  bookArr: Book[] = [];
+  
   constructor(
     private http: HttpClient, 
     private route: ActivatedRoute,
@@ -26,22 +28,32 @@ export class EditOrderComponent implements OnInit {
   ngOnInit(): void {
     this.getOrder(this.route.snapshot.params["id"]);
     console.log(this.currentOrder);
+    this.bookLibraryService.getItems('Book')
+    .subscribe((books: any) => {
+      this.books = books;
+    });
   }
-
-     getOrder(id: string){
-      this.http.get(API_URL + 'Order/' + id)
+  addToArray(id: number){
+    this.bookArr.push({id});
+    console.log(this.bookArr);  
+  }
+  getOrder(id: string){
+    this.http.get(API_URL + 'Order/' + id)
       .subscribe((order: any) => {
         this.currentOrder = order;
         console.log(this.currentOrder);
       }); 
     }
-    updateOrder(order: Order){
-      this.bookLibraryService.putItem('Order', order);
-    }
+  updateOrder(order: Order){
+    order.UserId = this.currentOrder.user.id;
+    order.books = this.bookArr;
+    this.bookLibraryService.putItem('Order', order);
+  }
 
-    deleteOrder(order: Order){
-    }
-    goBack(): void {
-      this.location.back();
-    }
+  deleteOrder(order: Order){
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
 }

@@ -104,9 +104,8 @@
                     type="checkbox"
                     class="form-control-sm"
                     id="orders"
-                    [(ngModel)]="currentUser.orders.id"
                     name="orders"
-                    disabled
+                    (click)="addToArray(order1.id!)"
                     /> ID: {{order1.id}}
                 </div>
             </div>

@@ -23,52 +23,31 @@
         <h3>Your Last 3 Rentals</h3>
         <hr>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-          <div class="col">
-            <div class="card shadow-sm">
-              <div class="card-body" id="lastRentalView">
-                <h3>Order #5489</h3>
-                <hr>
-                <ol>
-                  <li style="list-style-type:square">Harry Potter #4</li>
-                  <li style="list-style-type:square">Harry Potter #5</li>
-                  <li style="list-style-type:square">Harry Potter #6</li>
-                  <li style="list-style-type:square">Learn Animals for Kids</li>
-                </ol>
-                <hr>
-                <div class="d-flex justify-content-between align-items-center" id="bookControls">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="HPMessage()">Rent
-                      Again?</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="harryPotterCollection()">See
-                      rental details</button>
+          <ng-container *ngFor="let order of orders; let i = index">
+            <div *ngIf="i < 3">
+              <div class="col">
+                <div class="card shadow-sm">
+                  <div class="card-body" id="lastRentalView">
+                    <h3>Order #{{order.id}}</h3>
+                    <hr>
+                    <ol>
+                      <ng-container *ngFor="let book of order.books; let i = index">
+                      <li style="list-style-type:square">{{book.title}}</li>
+                      </ng-container>
+                    </ol>
+                    <hr>
+                    <div class="d-flex justify-content-between align-items-center" id="bookControls">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">Rent Again?</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">See rental details</button>
+                      </div>  
+                      <small class="text-muted">Total: {{order.totalRentalPriceWithVAT + ' ' + order.currency!}}</small> 
                   </div>
-                  <small class="text-muted">Total: 50,00 KN</small>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col">
-            <div class="card shadow-sm">
-              <div class="card-body" id="lastRentalView">
-                <h3>Order #5103</h3>
-                <hr>
-                <ol>
-                  <li style="list-style-type:square">Learn Fruits for Kids</li>
-                  <li style="list-style-type:square">Hungar Games Collection</li>
-                </ol>
-                <hr>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="HGMessage()">Rent
-                      Again?</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="hungerGames()">See
-                      rental details</button>
-                  </div>
-                  <small class="text-muted">Total: 50,00 KN</small>
-                </div>
-              </div>
-            </div>
-          </div>
+          </ng-container>
           <div class="col">
             <div class="card shadow-sm">
               <div class="card-body" id="lastRentalView">
@@ -121,32 +100,33 @@
         <h3>Top Rentals Today</h3>
         <hr>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            <ng-container *ngFor="let book of books; let i = index">
-                <div *ngIf="i < 3">
-                  <div class="col">
-                    <div class="card shadow-sm">
-                      <span> <img
-                          src="https://th.bing.com/th/id/R.85c908b86a70ea7b6aa3edcacea0f466?rik=iHfO2tTsvu1lxQ&pid=ImgRaw&r=0&sres=1&sresct=1"
-                          class="bd-placeholder-img card-img-top" width="225px" height="225px" aria-label="Placeholder: Thumbnail">
-                        <div class="card-body">
-                          <h3>{{book.title}}</h3>
-                          <p class="card-text">{{book.description}}
-                          </p>
-                          <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                              <button type="button" class="btn btn-sm btn-outline-secondary">Rent</button>
-                              <button type="button" class="btn btn-sm btn-outline-secondary"
-                                routerLink="/admin/book/{{book.id}}">See
-                                details</button>
-                            </div>
-                            <small class="text-muted">Price:{{book.rentalPrice}}</small>
-                          </div>
+          <ng-container *ngFor="let book of topBooks; let i = index">
+            <div *ngIf="i < 3">
+              <div class="col">
+                <div class="card shadow-sm">
+                  <span> <img
+                      src="https://th.bing.com/th/id/R.85c908b86a70ea7b6aa3edcacea0f466?rik=iHfO2tTsvu1lxQ&pid=ImgRaw&r=0&sres=1&sresct=1"
+                      class="bd-placeholder-img card-img-top" width="225px" height="225px"
+                      aria-label="Placeholder: Thumbnail">
+                    <div class="card-body">
+                      <h3>{{book.title}}</h3>
+                      <p class="card-text">{{book.description}}
+                      </p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-sm btn-outline-secondary">Rent</button>
+                          <button type="button" class="btn btn-sm btn-outline-secondary"
+                            routerLink="/admin/book/{{book.id}}">See
+                            details</button>
                         </div>
-                      </span>
+                        <small class="text-muted">Price:{{book.rentalPrice}}</small>
+                      </div>
                     </div>
-                  </div>
+                  </span>
                 </div>
-              </ng-container>
+              </div>
+            </div>
+          </ng-container>
         </div>
         <button class="btn btn-inverse"><a routerLink="/user/topRentals" style="color:white">"See
             more ..."</a></button>
@@ -173,32 +153,33 @@
         <h3>New Today</h3>
         <hr>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            <ng-container *ngFor="let book of books; let i = index">
-                <div *ngIf="i < 3">
-                  <div class="col">
-                    <div class="card shadow-sm">
-                      <span> <img
-                          src="https://th.bing.com/th/id/R.85c908b86a70ea7b6aa3edcacea0f466?rik=iHfO2tTsvu1lxQ&pid=ImgRaw&r=0&sres=1&sresct=1"
-                          class="bd-placeholder-img card-img-top" width="225px" height="225px" aria-label="Placeholder: Thumbnail">
-                        <div class="card-body">
-                          <h3>{{book.title}}</h3>
-                          <p class="card-text">{{book.description}}
-                          </p>
-                          <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                              <button type="button" class="btn btn-sm btn-outline-secondary">Rent</button>
-                              <button type="button" class="btn btn-sm btn-outline-secondary"
-                                routerLink="/admin/book/{{book.id}}">See
-                                details</button>
-                            </div>
-                            <small class="text-muted">Price:{{book.rentalPrice}}</small>
-                          </div>
+          <ng-container *ngFor="let book of newBooks; let i = index">
+            <div *ngIf="i < 3">
+              <div class="col">
+                <div class="card shadow-sm">
+                  <span> <img
+                      src="https://th.bing.com/th/id/R.85c908b86a70ea7b6aa3edcacea0f466?rik=iHfO2tTsvu1lxQ&pid=ImgRaw&r=0&sres=1&sresct=1"
+                      class="bd-placeholder-img card-img-top" width="225px" height="225px"
+                      aria-label="Placeholder: Thumbnail">
+                    <div class="card-body">
+                      <h3>{{book.title}}</h3>
+                      <p class="card-text">{{book.description}}
+                      </p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-sm btn-outline-secondary">Rent</button>
+                          <button type="button" class="btn btn-sm btn-outline-secondary"
+                            routerLink="/admin/book/{{book.id}}">See
+                            details</button>
                         </div>
-                      </span>
+                        <small class="text-muted">Price:{{book.rentalPrice}}</small>
+                      </div>
                     </div>
-                  </div>
+                  </span>
                 </div>
-              </ng-container>
+              </div>
+            </div>
+          </ng-container>
         </div>
         <button class="btn btn-inverse"><a routerLink="/user/newArrivals" style="color:white">"See
             more ..."</a></button>
@@ -226,32 +207,33 @@
         <h3>Available Books</h3>
         <hr>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            <ng-container *ngFor="let book of books; let i = index">
-                <div *ngIf="i < 3">
-                  <div class="col">
-                    <div class="card shadow-sm">
-                      <span> <img
-                          src="https://th.bing.com/th/id/R.85c908b86a70ea7b6aa3edcacea0f466?rik=iHfO2tTsvu1lxQ&pid=ImgRaw&r=0&sres=1&sresct=1"
-                          class="bd-placeholder-img card-img-top" width="225px" height="225px" aria-label="Placeholder: Thumbnail">
-                        <div class="card-body">
-                          <h3>{{book.title}}</h3>
-                          <p class="card-text">{{book.description}}
-                          </p>
-                          <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                              <button type="button" class="btn btn-sm btn-outline-secondary">Rent</button>
-                              <button type="button" class="btn btn-sm btn-outline-secondary"
-                                routerLink="/admin/book/{{book.id}}">See
-                                details</button>
-                            </div>
-                            <small class="text-muted">Price:{{book.rentalPrice}}</small>
-                          </div>
+          <ng-container *ngFor="let book of books; let i = index">
+            <div *ngIf="i < 3">
+              <div class="col">
+                <div class="card shadow-sm">
+                  <span> <img
+                      src="https://th.bing.com/th/id/R.85c908b86a70ea7b6aa3edcacea0f466?rik=iHfO2tTsvu1lxQ&pid=ImgRaw&r=0&sres=1&sresct=1"
+                      class="bd-placeholder-img card-img-top" width="225px" height="225px"
+                      aria-label="Placeholder: Thumbnail">
+                    <div class="card-body">
+                      <h3>{{book.title}}</h3>
+                      <p class="card-text">{{book.description}}
+                      </p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-sm btn-outline-secondary">Rent</button>
+                          <button type="button" class="btn btn-sm btn-outline-secondary"
+                            routerLink="/admin/book/{{book.id}}">See
+                            details</button>
                         </div>
-                      </span>
+                        <small class="text-muted">Price:{{book.rentalPrice}}</small>
+                      </div>
                     </div>
-                  </div>
+                  </span>
                 </div>
-              </ng-container>
+              </div>
+            </div>
+          </ng-container>
         </div>
         <button class="btn btn-inverse"><a routerLink="/user/availableBooks" style="color:white">"See more
             ..."</a></button>

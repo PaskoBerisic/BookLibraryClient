@@ -14,10 +14,9 @@ const API_URL = "https://localhost:44323/api/";
   styleUrls: ['./edit-author.component.css']
 })
 export class EditAuthorComponent implements OnInit {
-  
   currentAuthor: Author = {};
   books: Book[] = [];
-  flag: any;
+  bookArr: Book[] = [];
   constructor(
     private http: HttpClient, 
     private route: ActivatedRoute,
@@ -27,7 +26,10 @@ export class EditAuthorComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAuthor(this.route.snapshot.params["id"]);
-    this.getBooks();
+    this.bookLibraryService.getItems('Book')
+    .subscribe((books: any) => {
+      this.books = books;
+    });
   }
 
   // foo(){
@@ -45,31 +47,29 @@ export class EditAuthorComponent implements OnInit {
   
 
 
-     getAuthor(id: string){
-      this.http.get(API_URL + 'Author/' + id)
+  getAuthor(id: string){
+    this.http.get(API_URL + 'Author/' + id)
       .subscribe((author: any) => {
         this.currentAuthor = author;
         console.log(this.currentAuthor);
       }); 
-    }
+  }
 
-    getBooks(){
-      this.http.get(API_URL + 'Book/all')
-      .subscribe((books: any) => {
-        this.books = books;
-        console.log(this.books);
-      }); 
-    }
-    updateAuthor(author: Author){
-      this.bookLibraryService.putItem('Author/', author);
-    }
+  addToArray(id: number){
+    this.bookArr.push({id});
+    console.log(this.bookArr);
+  }
 
-    deleteAuthor(author: Author){
+  updateAuthor(author: Author){
+    author.countryId = this.currentAuthor.country.id;
+    author.books = this.bookArr;
+    this.bookLibraryService.putItem('Author/', author);
+  }
 
+  deleteAuthor(author: Author){
+  }
 
-    }
-    goBack(): void {
-      this.location.back();
-    }
-
+  goBack(): void {
+    this.location.back();
+  }
 }
