@@ -6,6 +6,7 @@ import { Location } from '@angular/common';
 import { BookLibraryService } from 'src/app/services/book-library.service';
 import { Genre } from 'src/app/models/genre.model';
 import { Author } from 'src/app/models/author.model';
+import { Order } from 'src/app/models/order.model';
 const API_URL = "https://localhost:44323/api/";
 
 
@@ -17,7 +18,11 @@ const API_URL = "https://localhost:44323/api/";
 export class EditBookComponent implements OnInit {
 currentBook: any = {};
 genres: Genre[] = [];
+genreArr: Genre[] = [];
 authors: Author[] = [];
+authorArr: Author[] = [];
+orders: Order[] = [];
+orderArr: Order[] = [];
 constructor(
     private http: HttpClient, 
     private route: ActivatedRoute,
@@ -37,6 +42,11 @@ constructor(
       this.authors = authors;
       console.log(this.authors);
     });
+    this.bookLibraryService.getItems('Order')
+    .subscribe((orders:any) => {
+      this.orders = orders;
+      console.log(this.orders);
+    });
   }
 
     getBook(id: string){
@@ -47,13 +57,28 @@ constructor(
       }); 
     }
     updateBook(book: Book){
+      book.languageId = this.currentBook.language.id;
+      book.publisherId = this.currentBook.publisher.id;
+      book.authors = this.authorArr;
+      book.genres = this.genreArr;
+      book.orders = this.orderArr;
       this.bookLibraryService.putItem('Book/', book);
     }
-
-    deleteBook(book: Book){
-
-
+    addToAuthorArray(id: number){
+      this.authorArr.push({id});
+      console.log(this.authorArr);
     }
+    addToGenreArray(id: number){
+      this.genreArr.push({id});
+      console.log(this.genreArr);
+    }
+    addToOrderArray(id: number){
+      this.orderArr.push({id});
+      console.log(this.orderArr);
+    }
+    deleteBook(book: Book){
+    }
+
     goBack(): void {
       this.location.back();
     }

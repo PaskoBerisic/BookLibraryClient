@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import {  HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/models/user.model';
@@ -16,38 +16,44 @@ const API_URL = "https://localhost:44323/api/";
 export class EditUserComponent implements OnInit {
   currentUser: User = {};
   orders: Order[] = [];
-
+  orderArr: Order [] = [];
   constructor(
-    private http: HttpClient, 
+    private http: HttpClient,
     private route: ActivatedRoute,
     private location: Location,
     private bookLibraryService: BookLibraryService
-    ) { }
+  ) {}
 
   ngOnInit(): void {
     this.getUser(this.route.snapshot.params["id"]);
     console.log(this.currentUser);
+    this.bookLibraryService.getItems('Order')
+      .subscribe((orders: any) => {
+        this.orders = orders;
+        console.log(this.orders);
+      });
   }
 
-     getUser(id: string){
-      this.http.get(API_URL + 'Admin/User/' + id)
+  getUser(id: string) {
+    this.http.get(API_URL + 'Admin/User/' + id)
       .subscribe((user: any) => {
         this.currentUser = user;
         console.log(this.currentUser);
       });
-      this.bookLibraryService.getItems('Order')
-    .subscribe((orders: any) => {
-      this.orders = orders;
-      console.log(this.orders);
-    }); 
-    }
-    updateUser(user: User){
-      this.bookLibraryService.putItem('Admin/User', user);
-    }
+  }
 
-    deleteUser(user: User){
-    }
-    goBack(): void {
-      this.location.back();
-    }
+  addToArray(id: number){
+    this.orderArr.push({id});
+    console.log(this.orderArr);  
+  }
+
+  updateUser(user: User) {
+    this.bookLibraryService.putItem('Admin/User', user);
+  }
+
+  deleteUser(user: User) {}
+
+  goBack(): void {
+    this.location.back();
+  }
 }

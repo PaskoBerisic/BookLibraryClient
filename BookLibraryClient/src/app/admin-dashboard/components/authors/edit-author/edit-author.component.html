@@ -1,4 +1,4 @@
-<button class="badge badge-secondary mb-3"  (click)="goBack()"> Back</button>
+  <button class="badge badge-secondary mb-3"  (click)="goBack()"> Back</button>
 
 <div *ngIf="currentAuthor.id" class="edit-form">
         <h4>Edit Author '{{currentAuthor.firstName}}{{currentAuthor.lastName}} '</h4>
@@ -61,13 +61,13 @@
             
           <div class="form-group">
             <label for="books">Books</label>
-            <div *ngFor="let book of currentAuthor.books">
+            <div *ngFor="let book of books">
             <input
                 type="checkbox"
                 class="form-control-sm"
                 id="books"
-                [(ngModel)]="book.title"
                 name="books"
+                (click)="addToArray(book.id!)"
                 /> {{book.title}}
             </div>
         </div>

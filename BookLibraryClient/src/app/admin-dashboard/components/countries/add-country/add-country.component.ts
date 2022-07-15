@@ -9,25 +9,14 @@ import { BookLibraryService } from 'src/app/services/book-library.service';
 })
 export class AddCountryComponent implements OnInit {
   country: Country = {};
-  authors: Author[] = [];
-  authorId: any;
-  authorArr: Author[] = [];
   constructor(private bookLibraryService: BookLibraryService) { }
 
   ngOnInit(): void {
-    this.bookLibraryService.getItems('Author')
-    .subscribe((authors: any) => {
-      this.authors = authors;
-    })
+    
   }
   addCountry(country: Country){
-    country.authors = this.authorArr;
     this.bookLibraryService.postItem('Admin/Country', country);
     console.log(country);
   }
-  addToArray(id: number){
-    this.authorArr.push({id});
-    console.log(this.authorArr);  
-  }
-
+  
 }

@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BookLibraryService } from 'src/app/services/book-library.service';
 import { Location } from '@angular/common';
 import { Genre } from 'src/app/models/genre.model';
+import { Book } from 'src/app/models/book.model';
 
 const API_URL = "https://localhost:44323/api/";
 
@@ -12,10 +13,10 @@ const API_URL = "https://localhost:44323/api/";
   templateUrl: './edit-genre.component.html',
   styleUrls: ['./edit-genre.component.css']
 })
-export class EditGenreComponent implements OnInit {
- 
+export class EditGenreComponent implements OnInit { 
   currentGenre: Genre = {};
-
+  books: Book[] = [];
+  bookArr: Book[] = [];
   constructor(
     private http: HttpClient, 
     private route: ActivatedRoute,
@@ -25,27 +26,33 @@ export class EditGenreComponent implements OnInit {
 
   ngOnInit(): void {
     this.getGenre(this.route.snapshot.params["id"]);
-    console.log('THS' + this.currentGenre);
+    console.log(this.currentGenre);
+    this.bookLibraryService.getItems('Book')
+    .subscribe((books: any) => {
+      this.books = books;
+    });
   }
 
-     getGenre(id: string){
-      this.http.get(API_URL + 'Admin/Genre/' + id)
+  getGenre(id: string){
+    this.http.get(API_URL + 'Admin/Genre/' + id)
       .subscribe((genre: any) => {
         this.currentGenre = genre;
         console.log(this.currentGenre);
       }); 
-    }
-    updateGenre(genre: Genre){
-      this.bookLibraryService.putItem('Admin/Genre', genre);
-    }
+  }
+  updateGenre(genre: Genre){
+    genre.books = this.bookArr;
+    this.bookLibraryService.putItem('Admin/Genre', genre);
+  }
+  addToArray(id: number){
+    this.bookArr.push({id});
+    console.log(this.bookArr);
+  }
 
-    deleteGenre(genre: Genre){
-
-
-    }
-    goBack(): void {
-      this.location.back();
-    }
-
-
+  deleteGenre(genre: Genre){
+  }
+  
+  goBack(): void {
+    this.location.back();
+  }
 }

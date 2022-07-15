@@ -28,13 +28,13 @@
 
             <div class="form-group">
                 <label for="books">Books</label>
-                <div *ngFor="let book of currentLanguage.books">
+                <div *ngFor="let book of books">
                 <input
                     type="checkbox"
                     class="form-control-sm"
                     id="books"
-                    [(ngModel)]="book.title"
                     name="books"
+                    (click)="addToArray(book.id!)"
                     /> {{book.title}}
                 </div>
             </div>

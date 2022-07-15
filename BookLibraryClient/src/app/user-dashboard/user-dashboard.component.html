@@ -100,7 +100,7 @@
         <h3>Top Rentals Today</h3>
         <hr>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-          <ng-container *ngFor="let book of books; let i = index">
+          <ng-container *ngFor="let book of topBooks; let i = index">
             <div *ngIf="i < 3">
               <div class="col">
                 <div class="card shadow-sm">
@@ -153,7 +153,7 @@
         <h3>New Today</h3>
         <hr>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-          <ng-container *ngFor="let book of books; let i = index">
+          <ng-container *ngFor="let book of newBooks; let i = index">
             <div *ngIf="i < 3">
               <div class="col">
                 <div class="card shadow-sm">

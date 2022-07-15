@@ -31,6 +31,10 @@ export class BookLibraryService {
     return this.http.get(API_URL + path + '/all').pipe();
   }
 
+  getItemsByFilter(path: string): Observable<any> {
+    return this.http.get(API_URL + path).pipe();
+  }
+
    //Get ID
    getItemByID(path: string,id: any) {
     this.http.get(API_URL + path + id) 

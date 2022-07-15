@@ -10,7 +10,7 @@ export class NewArrivalsComponent implements OnInit {
   books: any[]= [];
   constructor(private bookLibraryService: BookLibraryService) { }
   ngOnInit(): void {
-    this.bookLibraryService.getItems('Book')
+    this.bookLibraryService.getItemsByFilter('Book/ByYearDesc')
     .subscribe((books: any) => {
       this.books = books;
     })

@@ -19,9 +19,9 @@
                     type="text"
                     class="form-control"
                     id="user"
-                    [(ngModel)]="currentOrder.user.username"
+                    [(ngModel)]="currentOrder.user.id"
                     name="user"
-                    />
+                    /> {{currentOrder.user.username}}
             </div>
             <div class="form-group">
                 <label for="date">Order Date</label>
@@ -58,14 +58,13 @@
 
             <div class="form-group">
                 <label for="books">Books</label>
-                <div *ngFor="let book of currentOrder.books">
+                <div *ngFor="let book of books">
                 <input
                     type="checkbox"
                     class="form-control-sm"
                     id="books"
-                    [(ngModel)]="book.title"
                     name="books"
-                    disabled
+                    (click)="addToArray(book.id!)"
                     /> {{book.title}}
                 </div>
             </div>
