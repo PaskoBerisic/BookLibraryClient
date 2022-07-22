@@ -35,7 +35,7 @@ export class EditUserComponent implements OnInit {
   }
 
   getUser(id: string) {
-    this.http.get(API_URL + 'Admin/User/' + id)
+    this.http.get(API_URL + 'Admin/Users/' + id)
       .subscribe((user: any) => {
         this.currentUser = user;
         console.log(this.currentUser);
@@ -48,7 +48,7 @@ export class EditUserComponent implements OnInit {
   }
 
   updateUser(user: User) {
-    this.bookLibraryService.putItem('Admin/User', user);
+    this.bookLibraryService.putItem('Admin/Users', user);
   }
 
   deleteUser(user: User) {}

@@ -30,15 +30,15 @@ export class AddBookComponent implements OnInit {
   constructor(private bookLibraryService: BookLibraryService) { }
 
   ngOnInit(): void {
-    this.bookLibraryService.getItems('Admin/Language')
+    this.bookLibraryService.getItems('Admin/Languages')
     .subscribe((languages: any) => {
       this.languages = languages;
     })
-    this.bookLibraryService.getItems('Admin/Genre')
+    this.bookLibraryService.getItems('Admin/Genres')
     .subscribe((genres: any) => {
       this.genres = genres;
     })
-    this.bookLibraryService.getItems('Admin/Publisher')
+    this.bookLibraryService.getItems('Admin/Publishers')
     .subscribe((publishers: any) => {
       this.publishers = publishers;
     }) 
@@ -60,22 +60,57 @@ export class AddBookComponent implements OnInit {
     this.bookLibraryService.postItem('Book',book);
     console.log(book);
   }
+
   addLanguage(id: number){
     this.book.languageId= id;
   }
   addPublisher(id: number){
     this.book.publisherId = id;
   }
+
   addToAuthorArray(id: number){
-    this.authorArr.push({id});
-    console.log(this.authorArr);  
+  let index = this.authorArr.findIndex(element => element.id === id);
+    console.log('Index ' + index);
+
+    if(index === -1){
+      //console.log('findIndex ' + variabla);
+      this.authorArr.push({id});
+      console.log('After push: ' + this.authorArr)  
+      //this.bookArr.splice(variabla);
+    }
+    else{
+      this.authorArr.splice(index,1);
+      console.log('After slice: ' + this.authorArr)
+    }
   }
   addToGenreArray(id: number){
-    this.genreArr.push({id});
-    console.log(this.orderArr);  
+    let index = this.genreArr.findIndex(element => element.id === id);
+    console.log('Index ' + index);
+
+    if(index === -1){
+      //console.log('findIndex ' + variabla);
+      this.genreArr.push({id});
+      console.log('After push: ' + this.genreArr)  
+      //this.bookArr.splice(variabla);
+    }
+    else{
+      this.genreArr.splice(index,1);
+      console.log('After slice: ' + this.genreArr)
+    }    
   }
   addToOrderArray(id: number){
-    this.orderArr.push({id});
-    console.log(this.orderArr);  
+    let index = this.orderArr.findIndex(element => element.id === id);
+    console.log('Index ' + index);
+
+    if(index === -1){
+      //console.log('findIndex ' + variabla);
+      this.orderArr.push({id});
+      console.log('After push: ' + this.orderArr)  
+      //this.bookArr.splice(variabla);
+    }
+    else{
+      this.orderArr.splice(index,1);
+      console.log('After slice: ' + this.orderArr)
+    }
   }
 }

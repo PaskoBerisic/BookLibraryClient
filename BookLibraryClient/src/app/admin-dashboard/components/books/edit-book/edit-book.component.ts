@@ -32,7 +32,7 @@ constructor(
 
   ngOnInit(): void {
     this.getBook(this.route.snapshot.params["id"]);
-    this.bookLibraryService.getItems('Admin/Genre')
+    this.bookLibraryService.getItems('Admin/Genres')
     .subscribe((genres:any) => {
       this.genres = genres;
       console.log(this.genres);

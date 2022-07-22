@@ -34,7 +34,7 @@ export class EditLanguageComponent implements OnInit {
   }
 
   getLanguage(id: string){
-    this.http.get(API_URL + 'Admin/Language/' + id)
+    this.http.get(API_URL + 'Admin/Languages/' + id)
       .subscribe((language: any) => {
       this.currentLanguage = language;
       console.log(this.currentLanguage);
@@ -47,7 +47,7 @@ export class EditLanguageComponent implements OnInit {
   }
   updateLanguage(language: Language){
     language.books = this.bookArr;
-    this.bookLibraryService.putItem('Admin/Language', language);
+    this.bookLibraryService.putItem('Admin/Languages', language);
   }
 
   deleteLanguage(language: Language){

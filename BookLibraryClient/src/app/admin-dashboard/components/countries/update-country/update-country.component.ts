@@ -24,19 +24,19 @@ export class UpdateCountryComponent implements OnInit {
   }
 
   getCountry(id: string){
-    this.http.get(API_URL + 'Admin/Country/' + id)
+    this.http.get(API_URL + 'Admin/Countries/' + id)
     .subscribe((country: any) => {
       this.currentCountry = country;
       console.log(this.currentCountry.vat);
     }); 
   }
   updateCountry(country: any){
-    this.bookLibraryService.putItem('Admin/Country/', country)
+    this.bookLibraryService.putItem('Admin/Countries/', country)
     console.log(country);
   }
 
   deleteCountry(id: number){
-    this.bookLibraryService.deleteItem('Admin/Country/', id);
+    this.bookLibraryService.deleteItem('Admin/Countries/', id);
   }
   goBack(): void {
     this.location.back();

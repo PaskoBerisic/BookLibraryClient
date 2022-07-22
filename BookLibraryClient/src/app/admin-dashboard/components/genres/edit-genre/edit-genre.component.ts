@@ -34,7 +34,7 @@ export class EditGenreComponent implements OnInit {
   }
 
   getGenre(id: string){
-    this.http.get(API_URL + 'Admin/Genre/' + id)
+    this.http.get(API_URL + 'Admin/Genres/' + id)
       .subscribe((genre: any) => {
         this.currentGenre = genre;
         console.log(this.currentGenre);
@@ -42,7 +42,7 @@ export class EditGenreComponent implements OnInit {
   }
   updateGenre(genre: Genre){
     genre.books = this.bookArr;
-    this.bookLibraryService.putItem('Admin/Genre', genre);
+    this.bookLibraryService.putItem('Admin/Genres', genre);
   }
   addToArray(id: number){
     this.bookArr.push({id});

@@ -12,7 +12,7 @@ export class GenreControlComponent implements OnInit {
   constructor(private bookLibraryService: BookLibraryService) { }
 
   ngOnInit(): void {
-    this.bookLibraryService.getItems('Admin/Genre')
+    this.bookLibraryService.getItems('Admin/Genres')
     .subscribe((genres: any) => {
       this.genres = genres;
       console.log(this.genres);
@@ -20,7 +20,7 @@ export class GenreControlComponent implements OnInit {
   }
   
   deleteGenre(id: any){
-    this.bookLibraryService.deleteItem('Admin/Genre/', id);
+    this.bookLibraryService.deleteItem('Admin/Genres/', id);
     window.location.reload();
   }
 

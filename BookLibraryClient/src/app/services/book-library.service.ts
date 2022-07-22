@@ -28,7 +28,7 @@ export class BookLibraryService {
 
    //Get
    getItems(path: string): Observable<any> {
-    return this.http.get(API_URL + path + '/all').pipe();
+    return this.http.get(API_URL + path).pipe();
   }
 
   getItemsByFilter(path: string): Observable<any> {
@@ -78,9 +78,7 @@ export class BookLibraryService {
       console.log('Update successful'); 
       window.alert("Update successful");
       window.location.reload();
-    }
-        
-        );
+    });
   }
 
    //Delete ID

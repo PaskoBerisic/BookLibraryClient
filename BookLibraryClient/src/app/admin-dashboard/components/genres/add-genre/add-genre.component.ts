@@ -24,7 +24,7 @@ export class AddGenreComponent implements OnInit {
   }
   addGenre(genre: Genre){
     genre.books = this.bookArr;
-    this.bookLibraryService.postItem('Admin/Genre', genre);
+    this.bookLibraryService.postItem('Admin/Genres', genre);
     console.log(genre);
   }
   addToArray(id: number){

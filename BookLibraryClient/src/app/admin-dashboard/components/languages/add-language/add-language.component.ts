@@ -22,11 +22,22 @@ export class AddLanguageComponent implements OnInit {
   }
   addLanguage(language: Language){
     language.books = this.bookArr;
-    this.bookLibraryService.postItem('Admin/Language', language);
+    this.bookLibraryService.postItem('Admin/Languages', language);
     console.log(language);
   }
   addToArray(id: number){
-    this.bookArr.push({id});
-    console.log(this.bookArr);  
+    let index = this.bookArr.findIndex(element => element.id === id);
+    console.log('Index ' + index);
+
+    if(index === -1){
+      //console.log('findIndex ' + variabla);
+      this.bookArr.push({id});
+      console.log('After push: ' + this.bookArr)  
+      //this.bookArr.splice(variabla);
+    }
+    else{
+      this.bookArr.splice(index,1);
+      console.log('After slice: ' + this.bookArr)
+    }
   }
 }
