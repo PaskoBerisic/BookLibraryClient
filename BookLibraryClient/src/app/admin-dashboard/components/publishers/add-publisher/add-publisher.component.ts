@@ -24,12 +24,23 @@ export class AddPublisherComponent implements OnInit {
   }
   addPublisher(publisher: Publisher){
     publisher.books = this.bookArr;
-    this.bookLibraryService.postItem('Admin/Publisher', publisher);
+    this.bookLibraryService.postItem('Admin/Publishers', publisher);
     console.log(publisher);
   }
   addToArray(id: number){
-    this.bookArr.push({id});
-    console.log(this.bookArr);  
+    let index = this.bookArr.findIndex(element => element.id === id);
+    console.log('Index ' + index);
+
+    if(index === -1){
+      //console.log('findIndex ' + variabla);
+      this.bookArr.push({id});
+      console.log('After push: ' + this.bookArr)  
+      //this.bookArr.splice(variabla);
+    }
+    else{
+      this.bookArr.splice(index,1);
+      console.log('After slice: ' + this.bookArr)
+    }
   }
   addBooks(id: number){
     this.booksId = id;

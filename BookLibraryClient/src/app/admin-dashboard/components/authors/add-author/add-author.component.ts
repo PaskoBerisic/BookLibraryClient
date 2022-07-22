@@ -23,7 +23,7 @@ export class AddAuthorComponent implements OnInit {
     .subscribe((books: any) => {
       this.books = books;
     });
-    this.bookLibraryService.getItems('Admin/Country')
+    this.bookLibraryService.getItems('Admin/Countries')
     .subscribe((countries: any) => {
       this.countries = countries;
     });
@@ -34,9 +34,19 @@ export class AddAuthorComponent implements OnInit {
     console.log(author);
   }
   addToArray(id: number){
-    this.bookArr.push({id});
-    console.log(this.bookArr);  
-  }
+    let index = this.bookArr.findIndex(element => element.id === id);
+    console.log('Index ' + index);
+
+    if(index === -1){
+      //console.log('findIndex ' + variabla);
+      this.bookArr.push({id});
+      console.log('After push: ' + this.bookArr)  
+      //this.bookArr.splice(variabla);
+    }
+    else{
+      this.bookArr.splice(index,1);
+      console.log('After slice: ' + this.bookArr)
+    }}
   addCountry(id: number){
     this.author.countryId = id;
   }

@@ -11,15 +11,15 @@ export class GetCountryComponent implements OnInit {
   constructor(private bookLibraryService: BookLibraryService) { }
 
   ngOnInit(): void {
-    this.bookLibraryService.getItems('Admin/Country')
+    this.bookLibraryService.getItems('Admin/Countries')
   .subscribe((countries: any) => {
     this.countries = countries;
     console.log(this.countries);
   });
   }
   deleteCountry(id: any){
-    this.bookLibraryService.deleteItem('Admin/Country/', id);
-    console.log(this.bookLibraryService.deleteItem('Admin/Country/', id));
+    this.bookLibraryService.deleteItem('Admin/Countries/', id);
+    console.log(this.bookLibraryService.deleteItem('Admin/Countries/', id));
     //window.location.reload();
   }
 }

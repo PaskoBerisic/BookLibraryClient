@@ -13,7 +13,6 @@ export class AddUserComponent implements OnInit {
   orders: Order[] = [];
   orderId: any;
   orderArr: any = [];
-  tempArr: any = [];
   constructor(private bookLibraryService: BookLibraryService) { }
 
   ngOnInit(): void {
@@ -25,38 +24,24 @@ export class AddUserComponent implements OnInit {
   }
   addToArray(id: any){
     // {} needed for working collection insert
-    let tempArr = [...this.orderArr]
-      const index = tempArr.findIndex((element) => element === id)
-      if(index !== -1){
-        this.orderArr.splice(index, 1)
-        console.log(this.orderArr);
-      }
-      else{
-        this.orderArr.push(id);
-        console.log(this.orderArr);    
-      }
-      //console.log(tempArr);  
-      //console.log(this.orderArr);
-      
-  }
-  transferArr(){
-    for (let index = 0; index < this.orderArr.length; index++) {
-      let id = this.orderArr[index].id;
-      //this.tempArr.push({id});
-      console.log('OrderApp' + ' ' +  this.orderArr[index].id);
-      console.log('Id' + ' ' + this.orderArr[index].id);
-      this.tempArr.push({id});
-    } 
-    console.log('Temp' + ' ' + this.tempArr);
-    console.log('Org' +  ' ' + this.orderArr);
-    this.orderArr = this.tempArr;
-    console.log('Org after change' + ' ' + this.orderArr);
+    let index = this.orderArr.findIndex(element => element.id === id);
+    console.log('Index ' + index);
 
+    if(index === -1){
+      //console.log('findIndex ' + variabla);
+      this.orderArr.push({id});
+      console.log('After push: ' + this.orderArr)  
+      //this.orderArr.splice(variabla);
+    }
+    else{
+      this.orderArr.splice(index,1);
+      console.log('After slice: ' + this.orderArr)
+    } 
   }
+  
   addUser(user: User){
-    //this.transferArr();
     user.orders = this.orderArr;
-    this.bookLibraryService.postItem('Admin/User', user);
+    this.bookLibraryService.postItem('Admin/Users', user);
     console.log(user);
 }
 

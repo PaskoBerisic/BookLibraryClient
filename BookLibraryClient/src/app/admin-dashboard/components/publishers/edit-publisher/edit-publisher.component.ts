@@ -35,7 +35,7 @@ export class EditPublisherComponent implements OnInit {
     });
   }
   getPublisher(id: string){
-    this.http.get(API_URL + 'Admin/Publisher/' + id)
+    this.http.get(API_URL + 'Admin/Publishers/' + id)
       .subscribe((publisher: any) => {
       this.currentPublisher = publisher;
       console.log(this.currentPublisher);
@@ -47,7 +47,7 @@ export class EditPublisherComponent implements OnInit {
   }
   updatePublisher(publisher: Publisher){
     publisher.books = this.bookArr;
-    this.bookLibraryService.putItem('Admin/Publisher', publisher);
+    this.bookLibraryService.putItem('Admin/Publishers', publisher);
   }
   deletePublisher(publisher: Publisher){
   }

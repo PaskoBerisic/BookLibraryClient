@@ -13,7 +13,7 @@ export class LanguageControlComponent implements OnInit {
   constructor(private bookLibraryService: BookLibraryService) { }
 
   ngOnInit(): void {
-    this.bookLibraryService.getItems('Admin/Language')
+    this.bookLibraryService.getItems('Admin/Languages')
     .subscribe((languages: any) => {
       this.languages = languages;
       console.log(this.languages);
@@ -21,7 +21,7 @@ export class LanguageControlComponent implements OnInit {
   }
   
   deleteLanguage(id: any){
-    this.bookLibraryService.deleteItem('Admin/Language/', id);
+    this.bookLibraryService.deleteItem('Admin/Languages/', id);
     window.location.reload();
   }
 
