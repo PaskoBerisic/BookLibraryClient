@@ -29,6 +29,7 @@ export class AddAuthorComponent implements OnInit {
     });
   }
   addAuthor(author: Author){
+    let i = author.books + author.country;
     author.books = this.bookArr;
     this.bookLibraryService.postItem('Author', author);
     console.log(author);
@@ -50,5 +51,4 @@ export class AddAuthorComponent implements OnInit {
   addCountry(id: number){
     this.author.countryId = id;
   }
-
 }
