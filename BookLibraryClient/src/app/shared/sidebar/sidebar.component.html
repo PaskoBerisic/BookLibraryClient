@@ -3,6 +3,7 @@
         <!-- BEGIN scrollbar -->
         <div class="app-sidebar-content" data-scrollbar="true" data-height="100%">
             <!-- BEGIN menu -->
+            <div>
             <div class="menu">
                 <div class="menu-profile">
                     <a href="javascript:;" class="menu-profile-link" data-toggle="app-sidebar-profile"
@@ -11,15 +12,32 @@
                         <div class="menu-profile-image menu-profile-image-icon bg-gray-900 text-gray-600">
                             <i class="fa fa-user"></i>
                         </div>
+                        <ng-container *ngIf="!user.id">
+                            <div class="menu-profile-info">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-grow-1">
+                                        Welcome
+                                    </div>
+                                    <div class="menu-caret ms-auto"></div>
+                                </div>
+                            </div>
+                        </ng-container>
+                        <ng-container *ngIf="user.id">
                         <div class="menu-profile-info">
                             <div class="d-flex align-items-center">
                                 <div class="flex-grow-1">
-                                    Hrvoje Horvat
+                                    {{user.firstName! + ' ' + user.lastName!}}
                                 </div>
                                 <div class="menu-caret ms-auto"></div>
                             </div>
+                            <ng-container *ngIf="user.role === 0">
                             <small>Admin</small>
+                        </ng-container>
+                        <ng-container *ngIf="user.role === 2">
+                            <small>User</small>
+                        </ng-container>
                         </div>
+                    </ng-container>
                     </a>
                 </div>
                 <div id="appSidebarProfileMenu" class="collapse">
@@ -53,7 +71,7 @@
                     </a>
                 </div>
 
-                <div class="menu-item has-sub">
+                <div class="menu-item has-sub" *ngIf="isAdminLogged">
                     <a href="javascript:;" class="menu-link">
                         <div class="menu-icon">
                             <i class="fa fa-align-left"></i>
@@ -80,7 +98,7 @@
                     </div>
                 </div>
 
-                <div class="menu-item has-sub">
+                <div class="menu-item has-sub" >
                     <a href="javascript:;" class="menu-link">
                         <div class="menu-icon">
                             <i class="fa fa-align-left"></i>
@@ -147,6 +165,7 @@
 
             </div>
             <!-- END menu -->
+        </div>
         </div>
         <!-- END scrollbar -->
     </div>

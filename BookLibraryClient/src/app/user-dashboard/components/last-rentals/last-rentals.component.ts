@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/models/user.model';
 import { BookLibraryService } from 'src/app/services/book-library.service';
 
 @Component({
@@ -8,20 +9,22 @@ import { BookLibraryService } from 'src/app/services/book-library.service';
 })
 export class LastRentalsComponent implements OnInit {
   books: any[]= [];
-  orders: any[] = [
-    {id:1, user: 'Test User', books:{name:'Book 2'}, date:1-12-2002, status:true, total: 2.9, currency: '$' },
-                                    
-    {id:2, user: 'Test User 3', books:{name:'Book 30'}, date:2019-12-3, status:false, total: 5.9, currency: '€' },
-    
-    {id:3, user: 'Test User 99', books:{name:'Book 1', fname: 'Bppl3 '}, date:2012-2-8, status:true, total: 1.9, currency: '€' },
-  ]
+  users: User[] = [];
+  user: User = {};
+  date: any;
+  
   constructor(private bookLibraryService: BookLibraryService) { }
   ngOnInit(): void {
     this.bookLibraryService.getItems('Book')
     .subscribe((books: any) => {
       this.books = books;
-    })
-    console.log(this.orders);
+    });
+    this.bookLibraryService.getItems('Admin/Users')
+    .subscribe((users: any) => {
+      this.users = users;
+      console.log(this.users);
+      this.user = this.users[1];
+    });
   }
   scrollToTop(): void {
     window.scrollTo(0, 0);

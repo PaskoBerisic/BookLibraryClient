@@ -76,7 +76,7 @@
                     />
             </div>
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="orders">Orders</label>
                 <div *ngFor="let order of currentUser.orders">
                 <input
@@ -87,26 +87,17 @@
                     name="orders"
                     /> ID: {{order.id}}
                 </div>
-            </div>
+            </div> -->
             <div class="form-group">
                 <label for="orders">Orders</label>
-                <div *ngFor="let order1 of orders">
-                <div *ngIf="!currentUser.orders.id">
-                    <input
-                    type="checkbox"
-                    class="form-control-sm"
-                    id="orders"
-                    [(ngModel)]="order1.id"
-                    name="orders"
-                    /> ID: {{order1.id}}
-                </div>
+                <div *ngFor="let order of orders">
                     <input
                     type="checkbox"
                     class="form-control-sm"
                     id="orders"
                     name="orders"
-                    (click)="addToArray(order1.id!)"
-                    /> ID: {{order1.id}}
+                    (click)="addToArray(order.id!)"
+                    /> ID: {{order.id}}
                 </div>
             </div>
         </form>

@@ -37,10 +37,14 @@ import { EditPublisherComponent } from './admin-dashboard/components/publishers/
 import { UserControlComponent } from './admin-dashboard/components/user/user-control/user-control.component';
 import { AddUserComponent } from './admin-dashboard/components/user/add-user/add-user.component';
 import { EditUserComponent } from './admin-dashboard/components/user/edit-user/edit-user.component';
+import { LoginComponent } from './shared/login/login.component';
+import { RegisterComponent } from './shared/register/register.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'user',
     children: [
       { path: '', component: UserDashboardComponent, pathMatch: 'full'},
