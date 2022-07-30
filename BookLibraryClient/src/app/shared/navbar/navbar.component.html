@@ -54,12 +54,22 @@
       <div class="navbar-item dropdown">
         <a href="#" data-bs-toggle="dropdown" class="navbar-link dropdown-toggle fs-14px">
           <i class="fa fa-cart-plus"></i>
-          <span class="badge">0</span>
+          <ng-container *ngIf="isLogged === false && isAdminLogged === false"><span class="badge">0</span></ng-container>
+          <ng-container *ngIf="isLogged || isAdminLogged"><span class="badge">{{user.userBasket.books.length!}}</span></ng-container>
         </a>
         <div class="dropdown-menu media-list dropdown-menu-end">
           <div class="dropdown-header">CART</div>
           <div class="text-center w-300px py-3">
-            No Books in Cart
+            <ng-container *ngIf="isLogged === false && isAdminLogged === false">Login to see cart</ng-container>
+            <ng-container *ngIf="isLogged || isAdminLogged">
+              <div *ngFor="let book of user.userBasket.books; let i = index">
+                <ul>
+                  <li>{{i+1}}. {{book.title}} <br> Rental Price:{{book.rentalPrice}}</li>
+                </ul>
+              </div>
+              <hr>
+              <button class="btn btn-primary" routerLink="/user/userBasket">Go to cart</button>
+            </ng-container>
           </div>
         </div>
       </div>
@@ -79,8 +89,9 @@
         </ng-container>
         <ng-container *ngIf="isLogged || isAdminLogged">
         <a href="#" class="navbar-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown">
-          <div class="image image-icon bg-gray-800 text-gray-600">
-            <i class="fa fa-user"></i>
+          <div class="image image-icon bg-gray-2000 text-gray-2000">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp" class="img-fluid rounded-3"
+                          style="width: 80px;" alt="Avatar">
           </div>
           <span class="d-none d-md-inline">{{user.firstName + ' ' + user.lastName}}</span>
         </a>
@@ -88,8 +99,6 @@
           <a routerLink="/admin/userControl/updateUser/{{user.id!}}" class="dropdown-item">Edit Profile</a>
           <a routerLink="/user/lastRentals/" class="dropdown-item"><span class="badge badge-danger float-end">2</span>
             My Rentlas</a>
-          <a href="javascript:;" class="dropdown-item">Currently Renting</a>
-          <a href="javascript:;" class="dropdown-item">Setting</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" (click)="logout()">Log Out</a>
         </div>

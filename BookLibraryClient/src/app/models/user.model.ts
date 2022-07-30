@@ -11,4 +11,5 @@ export class User {
     token?: any;
     role?: any;
     orders?: any;
+    userBasket?: any;
 }
