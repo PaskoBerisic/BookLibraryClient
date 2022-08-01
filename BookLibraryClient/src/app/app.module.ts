@@ -52,6 +52,7 @@ import { UserControlComponent } from './admin-dashboard/components/user/user-con
 import { EditUserComponent } from './admin-dashboard/components/user/edit-user/edit-user.component';
 import { LoginComponent } from './shared/login/login.component';
 import { RegisterComponent } from './shared/register/register.component'
+import { JwtHelperService, JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 
 
 @NgModule({
@@ -110,9 +111,10 @@ import { RegisterComponent } from './shared/register/register.component'
     ReactiveFormsModule,
     MatToolbarModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    JwtModule
   ],
-  providers: [],
+  providers: [{provide: JWT_OPTIONS, useValue: JWT_OPTIONS}, JwtHelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

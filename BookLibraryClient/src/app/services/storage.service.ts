@@ -24,13 +24,15 @@ public saveToken(token: string): void {
   }
   public saveUser(user: any): void {
     window.sessionStorage.removeItem(USER_KEY);
+    window.sessionStorage.removeItem(TOKEN_KEY);
+   
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
+    window.sessionStorage.setItem(TOKEN_KEY, JSON.stringify(user.token));
   }
 
   public getUser(): any {
     const user = window.sessionStorage.getItem(USER_KEY);
     if (user) {
-      console.log('getUser storageService ' + user);
       return JSON.parse(user);
     }
 
@@ -40,7 +42,6 @@ public saveToken(token: string): void {
     const user = window.sessionStorage.getItem(USER_KEY);
     this.role = this.getUser().role;
     if (user && this.role === 0) {
-      console.log('ROLA ' + this.role);
       return true;
     }
     return false;
@@ -50,7 +51,6 @@ public saveToken(token: string): void {
     const user = window.sessionStorage.getItem(USER_KEY);
     this.role = this.getUser().role;
     if (user && this.role != 0) {
-      console.log('ROLA ' + this.role);
       return true;
     }
     return false;

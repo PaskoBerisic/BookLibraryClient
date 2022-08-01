@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { StorageService } from 'src/app/services/storage.service';
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
   role: any = undefined;
 
-  constructor(private authService: AuthService, private storageService: StorageService) { }
+  constructor(private authService: AuthService, private storageService: StorageService, private router: Router) { }
 
   ngOnInit(): void {
     if (this.storageService.isLoggedIn()) {
@@ -31,6 +32,7 @@ export class LoginComponent implements OnInit {
       this.isAdminLoggedIn = true;
       this.role = this.storageService.getUser().roles;
     }
+    this.isLogged();
   }
 
   onSubmit(): void {
@@ -61,7 +63,11 @@ export class LoginComponent implements OnInit {
       }
     });
   }
-
+  isLogged(){
+    if(this.isAdminLoggedIn || this.isLoggedIn){
+      this.router.navigate(['dashboard']);
+    }
+  }
   reloadPage(): void {
     window.location.reload();
   }
