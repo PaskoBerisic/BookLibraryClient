@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Book } from '../models/book.model';
 import { Order } from '../models/order.model';
 import { UserBasket } from '../models/user-basket.model';
+import { User } from '../models/user.model';
 import { BookLibraryService } from '../services/book-library.service';
+import { StorageService } from '../services/storage.service';
 
 const API_URL = "https://localhost:44323/api/";
 
@@ -19,8 +21,14 @@ export class UserDashboardComponent implements OnInit {
   orders: Order[] = [];
   basket: UserBasket = {};
   tempBooks: any;
-  constructor(private bookLibraryService: BookLibraryService,
-    private http: HttpClient) { }
+
+  isLogged: any;
+  isAdminLogged: any;
+  user: User = {};  
+  constructor(
+    private bookLibraryService: BookLibraryService,
+    private http: HttpClient,
+    private storageService: StorageService) { }
   ngOnInit(): void {
     this.bookLibraryService.getItems('Book')
     .subscribe((books: any) => {
@@ -34,12 +42,19 @@ export class UserDashboardComponent implements OnInit {
     .subscribe((books: any) => {
       this.newBooks = books;
     });
-    this.bookLibraryService.getItems('Order')
-    .subscribe((orders: any) => {
-      this.orders = orders;
-      console.log(this.orders);
-    })
+    this.isAdminLogged = this.storageService.isAdminLoggedIn();
+    this.isLogged = this.storageService.isLoggedIn();
+    let id = this.storageService.getUser().id;
+    this.getUser(id);
+    console.log(this.user);
   }
+  getUser(id: string) {
+    this.http.get(API_URL + 'Admin/Users/' + id)
+      .subscribe((user: any) => {
+        this.user = user;
+        console.log(this.user);
+      });
+  }   
   addToBasket(){
     this.http.get(API_URL + 'Admin/UserBaskets/' + 1)
     .subscribe((basket: any) => {

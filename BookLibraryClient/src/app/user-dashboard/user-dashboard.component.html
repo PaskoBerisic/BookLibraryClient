@@ -22,54 +22,55 @@
         <hr>
         <h3>Your Last 3 Rentals</h3>
         <hr>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-          <ng-container *ngFor="let order of orders; let i = index">
-            <div *ngIf="i < 3">
-              <div class="col">
+        <div class="container">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <ng-container *ngFor="let order of user.orders!; let i = index">
+              <div class="col-md-4">
                 <div class="card shadow-sm">
                   <div class="card-body" id="lastRentalView">
                     <h3>Order #{{order.id}}</h3>
                     <hr>
                     <ol>
                       <ng-container *ngFor="let book of order.books; let i = index">
-                      <li style="list-style-type:square">{{book.title}}</li>
+                        <li style="list-style-type:square">{{book.title}}</li>
                       </ng-container>
                     </ol>
                     <hr>
                     <div class="d-flex justify-content-between align-items-center" id="bookControls">
                       <div class="btn-group">
                         <button type="button" class="btn btn-sm btn-outline-secondary">Rent Again?</button>
-                        <button type="button" class="btn btn-sm btn-outline-secondary">See rental details</button>
-                      </div>  
-                      <small class="text-muted">Total: {{order.totalRentalPriceWithVAT + ' ' + order.currency!}}</small> 
-                  </div>
+                        <button type="button" class="btn btn-sm btn-outline-secondary" routerLink="lastRentals">See rental details</button>
+                      </div>
+                      <small class="text-muted">Total: {{order.totalRentalPriceWithVAT + ' ' + order.currency!}}</small>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </ng-container>
-          <div class="col">
-            <div class="card shadow-sm">
-              <div class="card-body" id="lastRentalView">
-                <h3>Order Template</h3>
-                <hr>
-                <ol>
-                  <li style="list-style-type:square">Book 1</li>
-                  <li style="list-style-type:square">Book 2</li>
-                  <li style="list-style-type:square">Book 3</li>
-                  <li style="list-style-type:square">Book 4</li>
-                  <li style="list-style-type:square">Book ..</li>
-                  <li style="list-style-type:square">Book 999</li>
-                </ol>
-                <hr>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="HGMessage()">Rent
-                      Again?</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="hungerGames()">See
-                      rental details</button>
+            </ng-container>
+
+            <div class="col">
+              <div class="card shadow-sm">
+                <div class="card-body" id="lastRentalView">
+                  <h3>Order Template</h3>
+                  <hr>
+                  <ol>
+                    <li style="list-style-type:square">Book 1</li>
+                    <li style="list-style-type:square">Book 2</li>
+                    <li style="list-style-type:square">Book 3</li>
+                    <li style="list-style-type:square">Book 4</li>
+                    <li style="list-style-type:square">Book ..</li>
+                    <li style="list-style-type:square">Book 999</li>
+                  </ol>
+                  <hr>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary" onclick="HGMessage()">Rent
+                        Again?</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary" onclick="hungerGames()">See
+                        rental details</button>
+                    </div>
+                    <small class="text-muted">Total: X,X KN</small>
                   </div>
-                  <small class="text-muted">Total: X,X KN</small>
                 </div>
               </div>
             </div>
@@ -167,7 +168,8 @@
                       </p>
                       <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
-                          <button type="button" class="btn btn-sm btn-outline-secondary" (click)="addToBasket()" >Rent</button>
+                          <button type="button" class="btn btn-sm btn-outline-secondary"
+                            (click)="addToBasket()">Rent</button>
                           <button type="button" class="btn btn-sm btn-outline-secondary"
                             routerLink="/admin/book/{{book.id}}">See
                             details</button>
@@ -240,12 +242,11 @@
       </div>
     </div>
   </div>
-</div>
-<!-- END #content -->
+  <!-- END #content -->
 
-<!-- BEGIN scroll to top btn -->
-<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top" data-toggle="scroll-to-top"
-  (click)="scrollToTop()">BUTTONAC<i class="fa fa-angle-up"></i></a>
-<!-- END scroll to top btn -->
-<div style="border-color:red; width:1000px; height:auto;"></div>
-<!-- END #app -->
+  <!-- BEGIN scroll to top btn -->
+  <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top" data-toggle="scroll-to-top"
+    (click)="scrollToTop()"><i class="fa fa-angle-up"></i></a>
+  <!-- END scroll to top btn -->
+  <div style="border-color:red; width:1000px; height:auto;"></div>
+  <!-- END #app -->

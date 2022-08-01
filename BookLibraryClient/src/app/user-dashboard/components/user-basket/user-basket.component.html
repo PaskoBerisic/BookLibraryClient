@@ -49,13 +49,13 @@
                           <div class="d-flex justify-content-between align-items-center mb-4">
                             <div>
                               <p class="mb-1">Shopping cart</p>
-                              <p class="mb-0">You have ( {{currentBasket.books.length}} ) items in your cart</p>
+                              <p class="mb-0">You have ( {{user.userBasket.books.length}} ) items in your cart</p>
                             </div>
                             <div>
                               Element
                             </div>
                           </div>
-                          <div *ngFor="let book of currentBasket.books">
+                          <div *ngFor="let book of user.userBasket.books">
                             <div class="card mb-3">
                               <div class="card-body">
                                 <div class="d-flex justify-content-between">
@@ -74,7 +74,7 @@
                                       <p class="fw-normal mb-0">Unit Price: {{book.rentalPrice}}</p>
                                     </div>
                                     <div style="width: 80px;">
-                                      <h5 class="mb-0">{{currentBasket.totalRentalPriceWithVAT}}</h5>
+                                      <h5 class="mb-0">{{user.userBasket.totalRentalPriceWithVAT}}</h5>
                                     </div>
                                     <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
                                   </div>
@@ -163,7 +163,7 @@
 
                           <button type="button" class="btn btn-info btn-block btn-lg" routerLink="/user/paymentInfo">
                             <div class="d-flex justify-content-between">
-                              <span>Total: {{currentBasket.totalRentalPriceWithVAT + ' ' +  currentBasket.currency!}}</span>
+                              <span>Total: {{user.userBasket.totalRentalPriceWithVAT + ' ' +  user.userBasket.currency!}}</span>
                               <span>Payment <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
                             </div>
                           </button>

@@ -1,5 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/models/user.model';
 import { BookLibraryService } from 'src/app/services/book-library.service';
+import { StorageService } from 'src/app/services/storage.service';
+
+const API_URL = "https://localhost:44323/api/";
 
 @Component({
   selector: 'app-last-rentals',
@@ -8,20 +13,29 @@ import { BookLibraryService } from 'src/app/services/book-library.service';
 })
 export class LastRentalsComponent implements OnInit {
   books: any[]= [];
-  orders: any[] = [
-    {id:1, user: 'Test User', books:{name:'Book 2'}, date:1-12-2002, status:true, total: 2.9, currency: '$' },
-                                    
-    {id:2, user: 'Test User 3', books:{name:'Book 30'}, date:2019-12-3, status:false, total: 5.9, currency: '€' },
-    
-    {id:3, user: 'Test User 99', books:{name:'Book 1', fname: 'Bppl3 '}, date:2012-2-8, status:true, total: 1.9, currency: '€' },
-  ]
-  constructor(private bookLibraryService: BookLibraryService) { }
+  date: any;
+
+  isLogged: any;
+  isAdminLogged: any;
+  user: User = {};  
+  constructor(private bookLibraryService: BookLibraryService, private storageService: StorageService, private http: HttpClient) { }
   ngOnInit(): void {
     this.bookLibraryService.getItems('Book')
     .subscribe((books: any) => {
       this.books = books;
-    })
-    console.log(this.orders);
+    });
+    this.isAdminLogged = this.storageService.isAdminLoggedIn();
+    this.isLogged = this.storageService.isLoggedIn();
+    let id = this.storageService.getUser().id;
+    this.getUser(id);
+    console.log(this.user);
+  }
+  getUser(id: string) {
+    this.http.get(API_URL + 'Admin/Users/' + id)
+      .subscribe((user: any) => {
+        this.user = user;
+        console.log(this.user);
+      });
   }
   scrollToTop(): void {
     window.scrollTo(0, 0);

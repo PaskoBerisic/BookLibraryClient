@@ -1,4 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { User } from 'src/app/models/user.model';
+import { StorageService } from 'src/app/services/storage.service';
+
+const API_URL = "https://localhost:44323/api/";
 
 @Component({
   selector: 'app-navbar',
@@ -6,10 +12,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
-  constructor() { }
+  users: User[] = [];
+  user: User = {};
+  isLogged: any;
+  isAdminLogged: any;
+  constructor(private router: Router, private storageService: StorageService, private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.isAdminLogged = this.storageService.isAdminLoggedIn();
+    this.isLogged = this.storageService.isLoggedIn();
+    let id = this.storageService.getUser().id;
+    this.getUser(id);
+    console.log(this.user);
+  
   }
-
+  getUser(id: string) {
+    this.http.get(API_URL + 'Admin/Users/' + id)
+      .subscribe((user: any) => {
+        this.user = user;
+        console.log(this.user);
+      });
+  }
+  logout(){
+    this.storageService.clean();
+    window.location.reload();
+  }
 }

@@ -49,7 +49,10 @@ import { AddPublisherComponent } from './admin-dashboard/components/publishers/a
 import { EditPublisherComponent } from './admin-dashboard/components/publishers/edit-publisher/edit-publisher.component';
 import { AddUserComponent } from './admin-dashboard/components/user/add-user/add-user.component';
 import { UserControlComponent } from './admin-dashboard/components/user/user-control/user-control.component';
-import { EditUserComponent } from './admin-dashboard/components/user/edit-user/edit-user.component'
+import { EditUserComponent } from './admin-dashboard/components/user/edit-user/edit-user.component';
+import { LoginComponent } from './shared/login/login.component';
+import { RegisterComponent } from './shared/register/register.component'
+import { JwtHelperService, JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 
 
 @NgModule({
@@ -96,6 +99,8 @@ import { EditUserComponent } from './admin-dashboard/components/user/edit-user/e
     AddUserComponent,
     UserControlComponent,
     EditUserComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -106,9 +111,10 @@ import { EditUserComponent } from './admin-dashboard/components/user/edit-user/e
     ReactiveFormsModule,
     MatToolbarModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    JwtModule
   ],
-  providers: [],
+  providers: [{provide: JWT_OPTIONS, useValue: JWT_OPTIONS}, JwtHelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -9,36 +9,60 @@
 <div class="album py-5 bg-light">
   <div class="container">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-      <ng-container *ngFor="let book of books; let i = index">
-        <div *ngIf="i < 3">
-          <div class="col">
+      <!-- <ng-container *ngFor="let order of user.orders; let i = index">
+        <div class="col">
             <div class="card shadow-sm">
-              <span> <img
-                  src="https://th.bing.com/th/id/R.85c908b86a70ea7b6aa3edcacea0f466?rik=iHfO2tTsvu1lxQ&pid=ImgRaw&r=0&sres=1&sresct=1"
-                  class="bd-placeholder-img card-img-top" width="100%" height="225" aria-label="Placeholder: Thumbnail">
-                <div class="card-body">
-                  <h3>{{book.title}}</h3>
-                  <p class="card-text">{{book.description}}
-                  </p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Rent</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary"
-                        routerLink="/admin/book/{{book.id}}">See
-                        details</button>
-                    </div>
-                    <small class="text-muted">Price:{{book.rentalPrice}}</small>
-                  </div>
-                </div>
-              </span>
+              <div class="card-body" id="lastRentalView">
+                <h3>Order #{{order.id}}</h3>
+                <hr>
+                <ol>
+                  <ng-container *ngFor="let book of order.books; let i = index">
+                  <li style="list-style-type:square">{{book.title}}</li>
+                  </ng-container>
+                </ol>
+                <hr>
+                <div class="d-flex justify-content-between align-items-center" id="bookControls">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Rent Again?</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">See rental details</button>
+                  </div>  
+                  <small class="text-muted">Total: {{order.totalRentalPriceWithVAT + ' ' + order.currency!}}</small> 
+              </div>
+              </div>
             </div>
           </div>
+      </ng-container> -->
+      <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          <ng-container *ngFor="let order of user.orders!; let i = index">
+              <div class="col-md-4">
+                <div class="card shadow-sm">
+                  <div class="card-body" id="lastRentalView">
+                    <h3>Order #{{order.id}}</h3>
+                    <hr>
+                    <ol>
+                      <ng-container *ngFor="let book of order.books; let i = index">
+                      <li style="list-style-type:square">{{book.title}}</li>
+                      </ng-container>
+                    </ol>
+                    <hr>
+                    <div class="d-flex justify-content-between align-items-center" id="bookControls">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">Rent Again?</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">See rental details</button>
+                      </div>  
+                      <small class="text-muted">Total: {{order.totalRentalPriceWithVAT + ' ' + order.currency!}}</small> 
+                  </div>
+                  </div>
+                </div>
+              </div>
+          </ng-container>
         </div>
-      </ng-container>
+      </div>
     </div>
     <hr>
     <!-- BEGIN #table -->
-    <h2>Book Control</h2>
+    <h2>Orders</h2>
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
@@ -54,17 +78,21 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let order of orders">
+              <tr *ngFor="let order of user.orders">
                 <th scope="row">{{order.id}}</th>
-                <td>{{order.user}}</td>
-                <td>{{order.books.name}} AND {{order.books.fname}}
+                <td>{{user.username }}</td>
+                <td> 
+                  <ng-container *ngFor="let book of order.books, let i = index">
+                    <ng-container *ngIf="i > 0">,</ng-container>
+                    {{book.title}}
+                  </ng-container>
                 </td>
                 <td>{{order.date | date}}</td>
                 <td>
                   <div *ngIf="order.status === true">Closed!</div>
                   <div *ngIf="order.status === false">Opened!</div>
                 </td>
-                <td>{{order.total}} {{order.currency}}</td>
+                <td>{{order.totalRentalPrice}} {{order.currency}}</td>
               </tr>
             </tbody>
           </table>
@@ -78,6 +106,6 @@
 
 <!-- BEGIN scroll to top btn -->
 <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top" data-toggle="scroll-to-top"
-  (click)="scrollToTop()">^<i class="fa fa-angle-up"></i></a>
+  (click)="scrollToTop()"><i class="fa fa-angle-up"></i></a>
 <!-- END scroll to top btn -->
 <div style="border-color:red; width:1000px; height:auto;"></div>

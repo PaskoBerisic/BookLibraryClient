@@ -46,7 +46,7 @@
                 <div class="card">
                   <div class="card-body p-4">
                     <div class="col">
-                      <h5 class="mb-3"><a href="#!" class="text-body"><i
+                      <h5 class="mb-3"><a routerLink="/user/availableBooks" class="text-body"><i
                             class="fas fa-long-arrow-alt-left me-2"></i>Continue
                           shopping</a></h5>
                       <hr>
@@ -54,26 +54,26 @@
                       <div class="d-flex justify-content-between align-items-center mb-4">
                         <div>
                           <p class="mb-1">Shopping cart</p>
-                          <p class="mb-0">You have 4 items in your cart</p>
+                          <p class="mb-0">You have {{user.userBasket.books.length}} items in your cart</p>
                         </div>
 
                       </div>
 
-                      <div class="card mb-3">
+                      <div *ngFor="let book of user.userBasket.books" class="card mb-3">
                         <div class="card-body">
                           <div class="d-flex justify-content-between">
                             <div class="d-flex flex-row align-items-center">
 
                               <div class="ms-3">
-                                <h5>Book 1</h5>
+                                <h5>{{book.title}}</h5>
                               </div>
                             </div>
                             <div class="d-flex flex-row align-items-center">
                               <div style="width: 50px;">
-                                <h5 class="fw-normal mb-0">7 days</h5>
+                                <h5 class="fw-normal mb-0">5 days</h5>
                               </div>
                               <div style="width: 80px;">
-                                <h5 class="mb-0">0.99€</h5>
+                                <h5 class="mb-0">{{book.rentalPrice + ' ' + user.userBasket.currency}}</h5>
                               </div>
                               <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
                             </div>
@@ -81,80 +81,14 @@
                         </div>
                       </div>
 
-                      <div class="card mb-3">
-                        <div class="card-body">
-                          <div class="d-flex justify-content-between">
-                            <div class="d-flex flex-row align-items-center">
-
-                              <div class="ms-3">
-                                <h5>Book 2</h5>
-                              </div>
-                            </div>
-                            <div class="d-flex flex-row align-items-center">
-                              <div style="width: 50px;">
-                                <h5 class="fw-normal mb-0">7 days</h5>
-                              </div>
-                              <div style="width: 80px;">
-                                <h5 class="mb-0">0.99€</h5>
-                              </div>
-                              <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-
-                      <div class="card mb-3">
-                        <div class="card-body">
-                          <div class="d-flex justify-content-between">
-                            <div class="d-flex flex-row align-items-center">
-
-                              <div class="ms-3">
-                                <h5>Book 3</h5>
-                              </div>
-                            </div>
-                            <div class="d-flex flex-row align-items-center">
-                              <div style="width: 50px;">
-                                <h5 class="fw-normal mb-0">7 days</h5>
-                              </div>
-                              <div style="width: 80px;">
-                                <h5 class="mb-0">0.99€</h5>
-                              </div>
-                              <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="card mb-3">
-                        <div class="card-body">
-                          <div class="d-flex justify-content-between">
-                            <div class="d-flex flex-row align-items-center">
-
-                              <div class="ms-3">
-                                <h5>Book 4</h5>
-                              </div>
-                            </div>
-                            <div class="d-flex flex-row align-items-center">
-                              <div style="width: 50px;">
-                                <h5 class="fw-normal mb-0">7 days</h5>
-                              </div>
-                              <div style="width: 80px;">
-                                <h5 class="mb-0">0.99€</h5>
-                              </div>
-                              <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <button type="button" class="btn btn-gray btn-block btn-lg">Your order: $4818.00</button>
+                      <button type="button" class="btn btn-gray btn-block btn-lg">Your order: {{user.userBasket.totalRentalPriceWithVAT + ' ' + user.userBasket.currency}}</button>
                       <div class="floatRight">
-                        <button type="button" class="btn btn-info btn-block btn-lg" onclick="reviewOrder()">
+                        <button type="button" class="btn btn-info btn-block btn-lg" (click)="onSubmit()">
                           <div class="d-flex align-content-center">
                             <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
-                            <div class="popup" onclick="reviewOrder()">
-                              <span class="popuptext" id="reviewOrder">Order Complete</span>
-                            </div>
+                            <!-- <div class="popup" (click)="onSubmit()">
+                              <span class="popuptext" id="onSubmit">Order Complete</span>
+                            </div> -->
                           </div>
                         </button>
                       </div>

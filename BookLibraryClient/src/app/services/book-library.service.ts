@@ -9,20 +9,7 @@ const API_URL = "https://localhost:44323/api/";
   providedIn: 'root'
 })
 export class BookLibraryService {
-
-  // Get
-  books: any[] = [];
-
-  // Get ID
-  getBook: any = {
-    title: '',
-    description: '',
-    publisher: '',
-    yearOfPublish: 0,
-    language: '',
-    rentalPrice: 0,
-  }
-
+  item: any;
   postId: any;
   constructor(private http: HttpClient) { }
 
@@ -36,12 +23,14 @@ export class BookLibraryService {
   }
 
    //Get ID
-   getItemByID(path: string,id: any) {
+   getItemByID(path: string,id: any): any {
     this.http.get(API_URL + path + id) 
       .subscribe((character: any) => {
-        this.getBook = character;
-        console.log(this.getBook);
+        //this.getBook = character;
+        //console.log(this.getBook);
+        return character;
       });
+      return this.item;
   }
 
     // postItem(path: string, item: any) {
