@@ -25,7 +25,8 @@ export class UserOrderCompleteComponent implements OnInit {
     this.isLogged = this.storageService.isLoggedIn();
     let id = this.storageService.getUser().id;
     this.getUser(id);
-    this.calculateOrder();
+    console.log(this.user.userBasket.books.title);
+    this.order.totalRentalPriceWithVAT = 0;
   }
   
   getUser(id: string) {
@@ -35,15 +36,16 @@ export class UserOrderCompleteComponent implements OnInit {
         console.log(this.user);
       });
   }
-  calculateOrder(){
-    for(let i =0; i < this.user.userBasket.books.length; i++){
-      this.sum += this.user.userBasket.books[i].rentalPrice;
-      console.log(this.user);
-      console.log(this.sum);
-    }
+   
+  calculateOrder(price: number){
+    this.sum+= price;
+    console.log(price);
+    console.log(this.sum);
+    this.order.totalRentalPriceWithVAT = this.sum;
+    console.log(this.order.totalRentalPriceWithVAT);
   }
   onSubmit(){
-    this.order.UserId = this.user.id;
+    this.order.userId = this.user.id;
     this.order.currency = this.user.userBasket.currency;  
     this.order.books = this.user.userBasket.books;
     this.bookLibraryService.postItem('Order', this.order);

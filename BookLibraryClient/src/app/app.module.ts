@@ -52,7 +52,7 @@ import { UserControlComponent } from './admin-dashboard/components/user/user-con
 import { EditUserComponent } from './admin-dashboard/components/user/edit-user/edit-user.component';
 import { LoginComponent } from './shared/login/login.component';
 import { RegisterComponent } from './shared/register/register.component'
-import { JwtHelperService, JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
+  import { JwtHelperService, JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 
 
 @NgModule({

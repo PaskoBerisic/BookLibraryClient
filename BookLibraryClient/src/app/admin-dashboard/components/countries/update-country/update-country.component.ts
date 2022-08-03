@@ -18,7 +18,6 @@ export class UpdateCountryComponent implements OnInit {
     private location: Location,
      private route: ActivatedRoute,
      private bookLibraryService: BookLibraryService) { }
-     postId: any;
   ngOnInit(): void {
     this.getCountry(this.route.snapshot.params["id"]);
   }

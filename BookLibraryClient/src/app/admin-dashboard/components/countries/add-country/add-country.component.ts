@@ -17,6 +17,5 @@ export class AddCountryComponent implements OnInit {
   addCountry(country: Country){
     this.bookLibraryService.postItem('Admin/Countries', country);
     console.log(country);
-  }
-  
+  }  
 }

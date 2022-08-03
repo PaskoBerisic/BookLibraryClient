@@ -45,7 +45,7 @@ export class EditOrderComponent implements OnInit {
       }); 
     }
   updateOrder(order: Order){
-    order.UserId = this.currentOrder.user.id;
+    order.userId = this.currentOrder.user.id;
     order.books = this.bookArr;
     this.bookLibraryService.putItem('Order', order);
   }

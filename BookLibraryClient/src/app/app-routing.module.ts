@@ -59,7 +59,6 @@ const routes: Routes = [
       { path: 'orderComplete', component: UserOrderCompleteComponent}
     ]
   },
-  { path: 'test', component:UserPaymentInfoComponent},
   { path: 'admin',
     children: [
       //Book

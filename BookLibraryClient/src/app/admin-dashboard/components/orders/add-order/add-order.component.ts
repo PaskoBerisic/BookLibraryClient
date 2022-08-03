@@ -59,7 +59,7 @@ export class AddOrderComponent implements OnInit {
   }
   
   addUsers(id: number){
-    this.order.UserId = id;
+    this.order.userId = id;
   }
 
 }

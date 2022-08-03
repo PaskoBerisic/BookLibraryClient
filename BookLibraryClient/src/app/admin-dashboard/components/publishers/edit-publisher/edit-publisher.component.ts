@@ -18,7 +18,6 @@ export class EditPublisherComponent implements OnInit {
   books: Book[] = [];
   bookArr: Book[] = [];
 
-
   constructor(
     private http: HttpClient, 
     private route: ActivatedRoute,
