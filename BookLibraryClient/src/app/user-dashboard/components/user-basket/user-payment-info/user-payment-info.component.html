@@ -91,21 +91,21 @@
 
                       <div class="d-flex justify-content-between">
                         <p class="mb-2">Subtotal</p>
-                        <p class="mb-2">$4798.00</p>
+                        <p class="mb-2">{{user.userBasket.totalRentalPrice + ' ' + user.userBasket.currency}}</p>
                       </div>
 
                       <div class="d-flex justify-content-between">
-                        <p class="mb-2">Shipping</p>
-                        <p class="mb-2">$20.00</p>
+                        <p class="mb-2">Tax</p>
+                        <p class="mb-2">25%</p>
                       </div>
 
                       <div class="d-flex justify-content-between mb-4">
                         <p class="mb-2">Total(Incl. taxes)</p>
-                        <p class="mb-2">$4818.00</p>
+                        <p class="mb-2">{{user.userBasket.totalRentalPriceWithVAT + ' ' + user.userBasket.currency}}</p>
                       </div>
                       <button type="button" class="btn btn-info btn-block btn-lg" routerLink="/user/orderComplete">
                         <div class="d-flex justify-content-between">
-                          <span>$4818.00</span>
+                          <span>{{user.userBasket.totalRentalPriceWithVAT + ' ' + user.userBasket.currency}}</span>
                           <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
                         </div>
                       </button>
@@ -121,7 +121,7 @@
   </div>
 <!-- BEGIN scroll to top btn -->
 <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top" data-toggle="scroll-to-top"><i
-    class="fa fa-angle-up">^</i></a>
+    class="fa fa-angle-up"></i></a>
 <!-- END scroll to top btn -->
 <div style="border-color:red; width:1000px; height:auto;"></div>
 <!-- END #app -->

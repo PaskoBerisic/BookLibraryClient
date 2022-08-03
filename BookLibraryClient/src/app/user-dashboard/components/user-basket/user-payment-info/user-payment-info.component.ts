@@ -31,8 +31,5 @@ export class UserPaymentInfoComponent implements OnInit {
         console.log(this.user);
       });
   }
-  
-  checkout(){
-    
-  }
+  checkout() { }
 }
