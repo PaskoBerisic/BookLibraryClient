@@ -25,10 +25,8 @@ export class BookLibraryService {
    //Get ID
    getItemByID(path: string,id: any): any {
     this.http.get(API_URL + path + id) 
-      .subscribe((character: any) => {
-        //this.getBook = character;
-        //console.log(this.getBook);
-        return character;
+      .subscribe((item: any) => {
+        return item;
       });
       return this.item;
   }
