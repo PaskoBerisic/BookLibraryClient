@@ -10,7 +10,7 @@ export class AuthGuard2Service implements CanActivate {
   constructor(private auth: AuthService, private router: Router) { }
   canActivate(): boolean{
     if(!this.auth.isAuthenticated()){
-      alert("hitted");
+      alert("hitted authGuard");
       this.router.navigate(['/login']);
       return false;
     }
