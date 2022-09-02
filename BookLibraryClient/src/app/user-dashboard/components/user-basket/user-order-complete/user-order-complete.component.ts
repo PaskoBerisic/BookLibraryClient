@@ -25,8 +25,6 @@ export class UserOrderCompleteComponent implements OnInit {
     this.isLogged = this.storageService.isLoggedIn();
     let id = this.storageService.getUser().id;
     this.getUser(id);
-    console.log(this.user.userBasket.books.title);
-    this.order.totalRentalPriceWithVAT = 0;
   }
   
   getUser(id: string) {
@@ -36,14 +34,7 @@ export class UserOrderCompleteComponent implements OnInit {
         console.log(this.user);
       });
   }
-   
-  calculateOrder(price: number){
-    this.sum+= price;
-    console.log(price);
-    console.log(this.sum);
-    this.order.totalRentalPriceWithVAT = this.sum;
-    console.log(this.order.totalRentalPriceWithVAT);
-  }
+  
   onSubmit(){
     this.order.userId = this.user.id;
     this.order.currency = this.user.userBasket.currency;  

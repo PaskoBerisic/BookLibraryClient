@@ -22,7 +22,5 @@ export class OrderControlComponent implements OnInit {
   
   deleteOrder(id: any){
     this.bookLibraryService.deleteItem('Order/', id);
-    window.location.reload();
   }
-
 }

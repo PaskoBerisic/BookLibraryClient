@@ -9,11 +9,10 @@ import { BookLibraryService } from 'src/app/services/book-library.service';
 })
 export class UserControlComponent implements OnInit {
   users: User[] = [];
-  books: undefined;
   constructor(private bookLibraryService: BookLibraryService) { }
 
   ngOnInit(): void {
-    this.bookLibraryService.getItems('Admin/Users')
+    this.bookLibraryService.getItems('User')
     .subscribe((users: any) => {
       this.users = users;
       console.log(this.users);
@@ -21,8 +20,7 @@ export class UserControlComponent implements OnInit {
   }
   
   deleteUser(id: any){
-    this.bookLibraryService.deleteItem('Admin/Users/', id);
-    window.location.reload();
+    this.bookLibraryService.deleteItem('User/', id);
   }
-
+  
 }

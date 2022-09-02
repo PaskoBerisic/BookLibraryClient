@@ -19,7 +19,7 @@
         <tbody>
           <tr *ngFor="let order of orders">
             <th scope="row">{{order.id}}</th>
-            <td>{{order.user.firstName}} {{order.user.lastName}} </td>
+            <td>{{order.user.username}} </td>
             <td>{{order.date | date}}</td>
             <td>
               <ng-container *ngFor="let book of order.books, let i = index">
@@ -42,11 +42,3 @@
     </div>
   </div>
 </div>
-
-<!-- 
-<td>
-    <ng-container *ngFor="let book of order, let i = index">
-      <ng-container *ngIf="i > 0">,</ng-container>
-      {{book.title}}
-    </ng-container>
-  </td> -->

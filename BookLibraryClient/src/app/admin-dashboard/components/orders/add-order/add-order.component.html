@@ -13,12 +13,6 @@
         <input type="text" id="order.totalRentalPriceWithVAT" class="form-control" [(ngModel)]="order.totalRentalPriceWithVAT">
         <label for="order.currency">Currency</label>
         <input type="text" id="order.currency" maxlength="3" class="form-control" [(ngModel)]="order.currency">
-        <label for="order.books">Books</label>
-        <input type="text" id="order.books" class="form-control" [(ngModel)]="booksId">
-        <ng-container *ngFor="let item of bookArr, let i = index">
-          <ng-container *ngIf="i > 0">,</ng-container>
-          {{item.id}}
-        </ng-container> <br>
       </div>
     </div>
     <div class="col-md-9">
@@ -44,11 +38,11 @@
       </table>
       <div class="row">
         <div class="col">
-          Users:
+          User:
           <div *ngFor="let user of users">
-              <input type="radio" name="" id="booksId" (click)="addUsers(user.id!)">
+              <input type="radio" name="order.userId" id="order.userId" (click)="addUsers(user.id!)">
               {{ ' ' + user.firstName + ' ' + user.lastName}}
-            </div>
+          </div>
         </div>
         <div class="col">
           Books:

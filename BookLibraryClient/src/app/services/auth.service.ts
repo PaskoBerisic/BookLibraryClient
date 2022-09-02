@@ -3,8 +3,7 @@ import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable, of } from 'rxjs';
 
-const AUTH_API = "https://localhost:44323/api/Admin/Authenticate";
-//https://localhost:44323/api/Admin/Authenticate
+const AUTH_API = "https://localhost:44323/api/Users/Authenticate";
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };

@@ -7,16 +7,11 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-import { BookDetailComponent } from './admin-dashboard/book-detail/book-detail.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AdminAvailableBooksComponent } from './admin-dashboard/components/books/admin-available-books/admin-available-books.component';
-import { DetailedBookComponent } from './admin-dashboard/components/books/detailed-book/detailed-book.component';
 import { AddBookComponent } from './admin-dashboard/components/books/add-book/add-book.component';
 import { BookControlComponent } from './admin-dashboard/components/books/book-control/book-control.component';
 import { EditBookComponent } from './admin-dashboard/components/books/edit-book/edit-book.component';
 import { AddCountryComponent } from './admin-dashboard/components/countries/add-country/add-country.component';
-import { UpdateCountryComponent } from './admin-dashboard/components/countries/update-country/update-country.component';
-import { GetCountryComponent } from './admin-dashboard/components/countries/get-country/get-country.component';
 import { AuthorControlComponent } from './admin-dashboard/components/authors/author-control/author-control.component';
 import { EditAuthorComponent } from './admin-dashboard/components/authors/edit-author/edit-author.component';
 import { AddAuthorComponent } from './admin-dashboard/components/authors/add-author/add-author.component';
@@ -52,8 +47,10 @@ import { UserControlComponent } from './admin-dashboard/components/user/user-con
 import { EditUserComponent } from './admin-dashboard/components/user/edit-user/edit-user.component';
 import { LoginComponent } from './shared/login/login.component';
 import { RegisterComponent } from './shared/register/register.component'
-  import { JwtHelperService, JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { JwtHelperService, JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { InterceptorService } from './services/interceptor.service';
+import { CountryControlComponent } from './admin-dashboard/components/countries/country-control/country-control.component';
+import { EditCountryComponent } from './admin-dashboard/components/countries/edit-country/edit-country.component';
 
 
 @NgModule({
@@ -62,15 +59,10 @@ import { InterceptorService } from './services/interceptor.service';
     DashboardComponent,
     AdminDashboardComponent,
     NavbarComponent,
-    BookDetailComponent,
-    AdminAvailableBooksComponent,
-    DetailedBookComponent,
     AddBookComponent,
     BookControlComponent,
     EditBookComponent,
     AddCountryComponent,
-    UpdateCountryComponent,
-    GetCountryComponent,
     AuthorControlComponent,
     EditAuthorComponent,
     AddAuthorComponent,
@@ -102,6 +94,8 @@ import { InterceptorService } from './services/interceptor.service';
     EditUserComponent,
     LoginComponent,
     RegisterComponent,
+    CountryControlComponent,
+    EditCountryComponent,
   ],
   imports: [
     BrowserModule,

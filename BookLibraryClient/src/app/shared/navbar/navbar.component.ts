@@ -23,14 +23,11 @@ export class NavbarComponent implements OnInit {
     this.isLogged = this.storageService.isLoggedIn();
     let id = this.storageService.getUser().id;
     this.getUser(id);
-    console.log(this.user);
-  
   }
   getUser(id: string) {
     this.http.get(API_URL + 'Admin/Users/' + id)
       .subscribe((user: any) => {
         this.user = user;
-        console.log(this.user);
       });
   }
   logout(){

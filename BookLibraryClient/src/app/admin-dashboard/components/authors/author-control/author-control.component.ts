@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Author } from 'src/app/models/author.model';
 import { BookLibraryService } from 'src/app/services/book-library.service';
 
 @Component({
@@ -7,8 +8,7 @@ import { BookLibraryService } from 'src/app/services/book-library.service';
   styleUrls: ['./author-control.component.css']
 })
 export class AuthorControlComponent implements OnInit {
-  authors: any[] = [];
-  books: undefined;
+  authors: Author[] = [];
   constructor(private bookLibraryService: BookLibraryService) { }
 
   ngOnInit(): void {
@@ -21,6 +21,5 @@ export class AuthorControlComponent implements OnInit {
   
   deleteAuthor(id: any){
     this.bookLibraryService.deleteItem('Author/', id);
-    window.location.reload();
   }
 }

@@ -10,12 +10,11 @@ import { BookLibraryService } from 'src/app/services/book-library.service';
 export class AddCountryComponent implements OnInit {
   country: Country = {};
   constructor(private bookLibraryService: BookLibraryService) { }
-
+  
   ngOnInit(): void {
     
   }
   addCountry(country: Country){
-    this.bookLibraryService.postItem('Admin/Countries', country);
-    console.log(country);
-  }  
+    this.bookLibraryService.postItem('General/Countries', country);
+  }
 }

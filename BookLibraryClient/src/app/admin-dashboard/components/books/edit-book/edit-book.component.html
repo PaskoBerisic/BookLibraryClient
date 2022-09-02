@@ -108,39 +108,8 @@
                   </div>
               </div>
               </div>
-              <div class="col-md-3">
-                <div class="form-group">
-                  <label for="orders">Orders</label>
-                  <div *ngFor="let order of orders">
-                  <input
-                      type="checkbox"
-                      class="form-control-sm"
-                      id="orders"
-                      name="orders"
-                      (click)="addToGenreArray(order.id!)"
-                      /> {{order.id}}
-                  </div>
-              </div>
-              </div>
-              <div class="col-md-3">
-                4
-              </div>
             </div>
         </form>
-        <!-- <button
-      class="badge badge-primary mr-2"
-      *ngIf="currentBook.published"
-      (click)="updatePublished(false)"
-    >
-      UnPublish
-    </button> -->
-    <!-- <button
-      *ngIf="!currentBook.published"
-      class="badge badge-primary mr-2"
-      (click)="updatePublished(true)"
-    >
-      Publish
-    </button> -->
     <button class="badge badge-danger mr-2" (click)="deleteBook(currentBook)">
       Delete
     </button>

@@ -75,7 +75,7 @@
                                 <h5 class="fw-normal mb-0">5 days</h5>
                               </div>
                               <div style="width: 80px;">
-                                <h5 class="mb-0" (click)="calculateOrder(book.rentalPrice!)">{{book.rentalPrice + ' ' + user.userBasket.currency}}</h5>
+                                <h5 class="mb-0">{{book.rentalPrice + ' ' + user.userBasket.currency}}</h5>
                               </div>
                               <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
                             </div>
@@ -83,7 +83,7 @@
                         </div>
                       </div>
 
-                      <button type="button" class="btn btn-gray btn-block btn-lg">Your order: {{order.totalRentalPriceWithVAT}} {{' ' + user.userBasket.currency}}</button>
+                      <button type="button" class="btn btn-gray btn-block btn-lg">Your order: {{user.userBasket.totalRentalPriceWithVAT}} {{' ' + user.userBasket.currency}}</button>
                       <div class="floatRight">
                         <button type="button" class="btn btn-info btn-block btn-lg" (click)="onSubmit()">
                           <div class="d-flex align-content-center">

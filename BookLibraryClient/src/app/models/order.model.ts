@@ -8,4 +8,6 @@ export class Order {
     user?: any;
     userId?: any;
     books?: any;
+    bookIds?: any;
+    userBasketId?: any;
 }

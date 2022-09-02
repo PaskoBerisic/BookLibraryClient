@@ -1,6 +1,4 @@
-import { Author } from "./author.model";
-
-export interface Book {
+export class Book {
     id?: number;
     title?: string;
     yearOfPublish?: number;
@@ -12,13 +10,17 @@ export interface Book {
     publisherId?: any;
     language?: any;
     languageId?: any;
-    authors?: any;
-    genres?: any;
-    orders?:any;
     createdBy?: number;
     created?: string;
     updatedBy?: number;
     updated?: string;
+
+    authors?: any;
+    authorIds?: any;
+    genres?: any;
+    genreIds?: any;
+    orders?:any;
+    orderIds?:any;
 }
 
 

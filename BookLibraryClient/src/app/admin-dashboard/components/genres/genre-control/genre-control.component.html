@@ -8,7 +8,6 @@
         <th scope="col">#</th>
         <th scope="col">Genre Name</th>
         <th scope="col">Description</th>
-        <th scope="col">Is Active?</th>
         <th scope="col">Books</th>
         <th scope="col">Edit</th>
         <th scope="col">Delete</th>
@@ -19,9 +18,6 @@
         <th scope="row">{{genre.id}}</th>
         <td>{{genre.name}} </td>
         <td>{{genre.description}}</td>
-        <td><div *ngIf="genre.isActive === true">Yes</div>
-            <div *ngIf="genre.isActive === false">No</div>
-        </td>
         <td>
             <ng-container *ngFor="let book of genre.books, let i = index">
               <ng-container *ngIf="i > 0">,</ng-container>

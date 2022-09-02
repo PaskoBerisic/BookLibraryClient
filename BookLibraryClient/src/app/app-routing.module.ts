@@ -2,12 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AddBookComponent } from './admin-dashboard/components/books/add-book/add-book.component';
-import { AdminAvailableBooksComponent } from './admin-dashboard/components/books/admin-available-books/admin-available-books.component';
 import { BookControlComponent } from './admin-dashboard/components/books/book-control/book-control.component';
 import { AddCountryComponent } from './admin-dashboard/components/countries/add-country/add-country.component';
-import { GetCountryComponent } from './admin-dashboard/components/countries/get-country/get-country.component';
-import { UpdateCountryComponent } from './admin-dashboard/components/countries/update-country/update-country.component';
-import { DetailedBookComponent } from './admin-dashboard/components/books/detailed-book/detailed-book.component';
 import { EditBookComponent } from './admin-dashboard/components/books/edit-book/edit-book.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthorControlComponent } from './admin-dashboard/components/authors/author-control/author-control.component';
@@ -22,7 +18,6 @@ import { EditLanguageComponent } from './admin-dashboard/components/languages/ed
 import { OrderControlComponent } from './admin-dashboard/components/orders/order-control/order-control.component';
 import { AddOrderComponent } from './admin-dashboard/components/orders/add-order/add-order.component';
 import { EditOrderComponent } from './admin-dashboard/components/orders/edit-order/edit-order.component';
-import { BookDetailComponent } from './admin-dashboard/book-detail/book-detail.component';
 import { AvailableBooksComponent } from './user-dashboard/components/available-books/available-books.component';
 import { LastRentalsComponent } from './user-dashboard/components/last-rentals/last-rentals.component';
 import { NewArrivalsComponent } from './user-dashboard/components/new-arrivals/new-arrivals.component';
@@ -41,6 +36,8 @@ import { LoginComponent } from './shared/login/login.component';
 import { RegisterComponent } from './shared/register/register.component';
 import { AuthGuard2Service } from './services/auth-guard2.service';
 import { RoleGuardService } from './services/role-guard.service';
+import { CountryControlComponent } from './admin-dashboard/components/countries/country-control/country-control.component';
+import { EditCountryComponent } from './admin-dashboard/components/countries/edit-country/edit-country.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -66,8 +63,6 @@ const routes: Routes = [
       { path: 'bookControl', component: BookControlComponent},
       { path: 'addbook', component: AddBookComponent},
       { path: 'editbook/:id', component: EditBookComponent},
-      { path: 'book/:id', component:DetailedBookComponent},
-      { path: 'all', component: AdminAvailableBooksComponent}, 
       //  children: [
       //   { path: ':id', component: DetailedBookComponent },
       //  ]           E X A M P L E
@@ -77,9 +72,9 @@ const routes: Routes = [
       { path: 'authorControl/addAuthor', component: AddAuthorComponent},
       { path: 'authorControl/updateAuthor/:id', component: EditAuthorComponent},
       //Country  
-      { path: 'countryControl', component: GetCountryComponent},
+      { path: 'countryControl', component: CountryControlComponent},
       { path: 'countryControl/addCountry', component: AddCountryComponent},
-      { path: 'countryControl/updateCountry/:id', component: UpdateCountryComponent},
+      { path: 'countryControl/updateCountry/:id', component: EditCountryComponent},
       //Genre  
       { path: 'genreControl', component: GenreControlComponent},
       { path: 'genreControl/addGenre', component: AddGenreComponent},

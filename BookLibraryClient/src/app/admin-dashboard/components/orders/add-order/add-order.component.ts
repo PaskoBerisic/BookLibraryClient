@@ -20,46 +20,34 @@ export class AddOrderComponent implements OnInit {
   constructor(private bookLibraryService: BookLibraryService) { }
 
   ngOnInit(): void {
-    this.bookLibraryService.getItems('Book')
+    this.bookLibraryService.getItems('Books')
     .subscribe((books: any) => {
       this.books = books;
     });
-    this.bookLibraryService.getItems('Admin/Users')
+    this.bookLibraryService.getItems('User')
     .subscribe((users: any) => {
       this.users = users;
     });
   }
+  
   addOrder(order: Order){
     JSON.stringify(this.bookArr);
-    order.books = this.bookArr;
+    order.bookIds = this.bookArr;
     this.bookLibraryService.postItem('Order', order);
-    console.log(order);
-    
   }
-  addToArray(id: number){
-    let index = this.bookArr.findIndex(element => element.id === id);
-    console.log('Index ' + index);
-
-    if(index === -1){
-      //console.log('findIndex ' + variabla);
-      this.bookArr.push({id});
-      console.log('After push: ' + this.bookArr)  
-      //this.bookArr.splice(variabla);
-    }
-    else{
-      this.bookArr.splice(index,1);
-      console.log('After slice: ' + this.bookArr)
-    }
-
-    /*this.bookArr.push({id});
-    console.log(this.bookArr);*/  
   
-    //console.log(this.bookArr);  
-    //console.log('JSON ' + JSON.stringify(this.bookArr));
-  }
+  addToArray(id: number){
+    let index = this.bookArr.findIndex(element => element === id);
+  
+      if(index === -1){
+        this.bookArr.push(id);
+      }
+      else{
+        this.bookArr.splice(index,1);
+      }
+    }
   
   addUsers(id: number){
     this.order.userId = id;
   }
-
 }

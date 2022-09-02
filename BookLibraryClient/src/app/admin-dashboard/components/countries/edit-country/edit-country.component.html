@@ -31,9 +31,9 @@
                 <input
                     type="number"
                     class="form-control"
-                    id="yearOfPublish"
+                    id="vat"
                     [(ngModel)]="currentCountry.vat"
-                    name="yearOfPublish"
+                    name="vat"
                     />
             </div>
         </form>
@@ -43,7 +43,6 @@
     <button type="submit" class="badge badge-success mb-2" (click)="updateCountry(currentCountry)">
         Update
     </button>
-    Status: {{status}}
     </div>
     <div *ngIf="!currentCountry?.id">
         <br />

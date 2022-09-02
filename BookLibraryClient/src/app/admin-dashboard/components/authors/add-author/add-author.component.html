@@ -1,68 +1,62 @@
 <div class="container-fluid">
-    <h3>Add Author</h3>
-    <div class="row">
-      <div class="col-md-3">
-        <div class="form-group">
-          <label for="author.firstName">First Name</label> 
-          <input type="text" class="form-control" id="author.firstName" [(ngModel)]="author.firstName">
-          <label for="author.lastName">Last Name</label> 
-          <input type="text" class="form-control" id="author.lastName" [(ngModel)]="author.lastName">
-          <label for="author.dateOfBirth">dateOfBirth</label> 
-          <input type="date" class="form-control" id="author.dateOfBirth"[(ngModel)]="author.dateOfBirth">
-          <label for="author.bibliography">Bibliography</label> 
-          <input type="text" class="form-control" id="author.bibliography" [(ngModel)]="author.bibliography">
-          <hr>
-          <label for="author.countryId">Country</label> 
-          <input type="text" class="form-control" id="author.countryId" [(ngModel)]="author.countryId">
-          <label for="author.books.id">Books</label> 
-          <input type="text" class="form-control" id="author.books.id"[(ngModel)]="booksId">
-          <ng-container *ngFor="let item of bookArr, let i = index">
-            <ng-container *ngIf="i > 0">,</ng-container>
-            {{item.id}}
-          </ng-container> <br>
-        </div>
-      </div>
-      <div class="col-md-9">
-        <h3>Preview</h3>
-        <table class="table">
-          <thead class="thead-dark">
-            <tr>
-              <th scope="col" >First Name</th>
-              <th scope="col" >Last Name</th>
-              <th scope="col" >Date of Birth</th>
-              <th scope="col" >Country</th>
-              <th scope="col" >Bibliography</th>
-              <th scope="col" >Books</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{{author.firstName}}</td>
-              <td>{{author.lastName}}</td>
-              <td>{{author.dateOfBirth}}</td>
-              <td>{{author.country}}</td>
-              <td>{{author.bibliography}}</td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="row">
-          <div class="col">
-            Countries:
-            <div *ngFor="let country of countries">
-                <input type="radio" name="author.countryId" id="author.countryId" (click)="addCountry(country.id!)">
-                {{' ' + country.name}}
-              </div>
-          </div>
-          <div class="col">
-            Books:
-            <div *ngFor="let book of books">
-                <input type="checkbox" name="author.books" id="booksId" (click)="addToArray(book.id!)">
-                {{' ' + book.title}}
-              </div>
-          </div> 
-        </div>  
+  <h3>Add Author</h3>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="author.firstName">First Name</label> 
+        <input type="text" class="form-control" id="author.firstName" [(ngModel)]="author.firstName">
+        <label for="author.lastName">Last Name</label> 
+        <input type="text" class="form-control" id="author.lastName" [(ngModel)]="author.lastName">
+        <label for="author.dateOfBirth">dateOfBirth</label> 
+        <input type="date" class="form-control" id="author.dateOfBirth"[(ngModel)]="author.dateOfBirth">
+        <label for="author.bibliography">Bibliography</label> 
+        <input type="text" class="form-control" id="author.bibliography" [(ngModel)]="author.bibliography">
+        <hr>
+        <label for="author.countryId">Country</label> 
+        <input type="text" class="form-control" id="author.countryId" [(ngModel)]="author.countryId">
       </div>
     </div>
-    <button class="btn btn-success" (click)="addAuthor(author)">Add Author</button>
+    <div class="col-md-9">
+      <h3>Preview</h3>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col" >First Name</th>
+            <th scope="col" >Last Name</th>
+            <th scope="col" >Date of Birth</th>
+            <th scope="col" >Country</th>
+            <th scope="col" >Bibliography</th>
+            <th scope="col" >Books</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{author.firstName}}</td>
+            <td>{{author.lastName}}</td>
+            <td>{{author.dateOfBirth}}</td>
+            <td>{{author.country}}</td>
+            <td>{{author.bibliography}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="row">
+        <div class="col">
+          Countries:
+          <div *ngFor="let country of countries">
+              <input type="radio" name="author.countryId" id="author.countryId" (click)="addCountry(country.id!)">
+              {{' ' + country.name}}
+            </div>
+        </div>
+        <div class="col">
+          Books:
+          <div *ngFor="let book of books">
+              <input type="checkbox" name="author.books" id="booksId" (click)="addToArray(book.id!)">
+              {{' ' + book.title}}
+            </div>
+        </div> 
+      </div>  
+    </div>
   </div>
- 
+  <button class="btn btn-success" (click)="addAuthor(author)">Add Author</button>
+</div>
+

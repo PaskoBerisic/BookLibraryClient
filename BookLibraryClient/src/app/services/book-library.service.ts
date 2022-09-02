@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 
 const API_URL = "https://localhost:44323/api/";
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -26,7 +25,12 @@ export class BookLibraryService {
    getItemByID(path: string,id: any): any {
     this.http.get(API_URL + path + id) 
       .subscribe((item: any) => {
+        console.log(item);
         return item;
+      },
+      response => { 
+        console.log('GET call in error', response); 
+        window.alert(response.error);
       });
       return this.item;
   }
@@ -43,23 +47,23 @@ export class BookLibraryService {
       data => this.postId = data.id,
       response => { 
         console.log('POST call in error', response); 
-        window.alert("POST call in error");
+        window.alert(response.error);
       },
      () => { 
       console.log('Added successful'); 
       window.alert("Added successful");
       window.location.reload();
-    }
-      );
+    });
     }
 
    //Put
    putItem(path: string, item: any) {
     this.http.put < any > (API_URL + path, item)
-      .subscribe(data => {this.postId = data.id},
-      response => { 
+      .subscribe(
+        data => {this.postId = data.id},
+        response => { 
         console.log('PUT call in error', response); 
-        window.alert("PUT call in error");
+        window.alert(response.error);
       },
      () => { 
       console.log('Update successful'); 
@@ -70,17 +74,16 @@ export class BookLibraryService {
 
    //Delete ID
    deleteItem(path: string, id: any) {
-    this.http.delete(API_URL + path + id)
+    this.http.delete < any > (API_URL + path + id)
       .subscribe(
         response => { 
           console.log('DELETE call in error', response); 
-          window.alert("DELETE call in error");
+          window.alert(response.message);
         },
-       () => { 
+       success => { 
         console.log('Delete successful'); 
-        window.alert("Delete successful");
+        window.alert('Delete successful');
         window.location.reload();
-      }
-        );
+      });
   }
 }

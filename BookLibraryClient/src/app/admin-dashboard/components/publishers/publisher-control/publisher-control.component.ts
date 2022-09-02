@@ -13,7 +13,7 @@ export class PublisherControlComponent implements OnInit {
   constructor(private bookLibraryService: BookLibraryService) { }
 
   ngOnInit(): void {
-    this.bookLibraryService.getItems('Admin/Publishers')
+    this.bookLibraryService.getItems('General/Publishers')
     .subscribe((publishers: any) => {
       this.publishers = publishers;
       console.log(this.publishers);
@@ -21,8 +21,7 @@ export class PublisherControlComponent implements OnInit {
   }
   
   deletePublisher(id: any){
-    this.bookLibraryService.deleteItem('Admin/Publishers/', id);
-    window.location.reload();
+    this.bookLibraryService.deleteItem('General/Publishers/', id);
   }
 
 }

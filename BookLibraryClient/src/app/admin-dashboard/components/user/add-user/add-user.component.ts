@@ -16,45 +16,20 @@ export class AddUserComponent implements OnInit {
   constructor(private bookLibraryService: BookLibraryService) { }
 
   ngOnInit(): void {
-    this.bookLibraryService.getItems('Order')
-    .subscribe((orders: any) => {
-      this.orders = orders;
-      console.log(this.orders);
-    });
+    
   }
   addToArray(id: any){
-    // {} needed for working collection insert
-    let index = this.orderArr.findIndex(element => element.id === id);
-    console.log('Index ' + index);
+    let index = this.orderArr.findIndex((element:any) => element === id);
 
     if(index === -1){
-      //console.log('findIndex ' + variabla);
-      this.orderArr.push({id});
-      console.log('After push: ' + this.orderArr)  
-      //this.orderArr.splice(variabla);
+      this.orderArr.push(id);
     }
     else{
       this.orderArr.splice(index,1);
-      console.log('After slice: ' + this.orderArr)
     } 
-  }
+   }
   
   addUser(user: User){
-    user.orders = this.orderArr;
-    this.bookLibraryService.postItem('Admin/Users', user);
-    console.log(user);
+    this.bookLibraryService.postItem('User', user);
 }
-
 }
-
-
-// let tempArr = [...this.orderArr]
-//       const index = tempArr.findIndex((element) => element === id)
-//       if(index !== -1){
-//         this.orderArr.splice(index, 1)
-//         console.log(this.orderArr);
-//       }
-//       else{
-//         this.orderArr.push(id);
-//         console.log(this.orderArr);    
-//       }

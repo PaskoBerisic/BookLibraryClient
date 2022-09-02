@@ -14,40 +14,34 @@ export class AddAuthorComponent implements OnInit {
   booksId: any;
   countries: Country[] = [];
   countryId: any;
-  bookArr: Book[] = [];
+  bookArr: any[] = [];
   
   constructor(private bookLibraryService: BookLibraryService) { }
 
   ngOnInit(): void {
-    this.bookLibraryService.getItems('Book')
+    this.bookLibraryService.getItems('Books')
     .subscribe((books: any) => {
       this.books = books;
     });
-    this.bookLibraryService.getItems('Admin/Countries')
+    this.bookLibraryService.getItems('General/Countries')
     .subscribe((countries: any) => {
       this.countries = countries;
     });
   }
   addAuthor(author: Author){
-    let i = author.books + author.country;
-    author.books = this.bookArr;
+    author.bookIds = this.bookArr;
     this.bookLibraryService.postItem('Author', author);
-    console.log(author);
   }
   addToArray(id: number){
-    let index = this.bookArr.findIndex(element => element.id === id);
-    console.log('Index ' + index);
+    let index = this.bookArr.findIndex(element => element === id);
 
     if(index === -1){
-      //console.log('findIndex ' + variabla);
-      this.bookArr.push({id});
-      console.log('After push: ' + this.bookArr)  
-      //this.bookArr.splice(variabla);
+      this.bookArr.push(id);
     }
     else{
       this.bookArr.splice(index,1);
-      console.log('After slice: ' + this.bookArr)
-    }}
+    }
+  }
   addCountry(id: number){
     this.author.countryId = id;
   }

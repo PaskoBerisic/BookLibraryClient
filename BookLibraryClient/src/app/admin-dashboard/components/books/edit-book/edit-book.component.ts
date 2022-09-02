@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Book } from 'src/app/models/book.model';
@@ -6,8 +5,6 @@ import { Location } from '@angular/common';
 import { BookLibraryService } from 'src/app/services/book-library.service';
 import { Genre } from 'src/app/models/genre.model';
 import { Author } from 'src/app/models/author.model';
-import { Order } from 'src/app/models/order.model';
-const API_URL = "https://localhost:44323/api/";
 
 
 @Component({
@@ -16,70 +13,76 @@ const API_URL = "https://localhost:44323/api/";
   styleUrls: ['./edit-book.component.css']
 })
 export class EditBookComponent implements OnInit {
-currentBook: any = {};
-genres: Genre[] = [];
-genreArr: Genre[] = [];
-authors: Author[] = [];
-authorArr: Author[] = [];
-orders: Order[] = [];
-orderArr: Order[] = [];
-constructor(
-    private http: HttpClient, 
+  currentBook: any = {};
+  genres: Genre[] = [];
+  genreArr: any[] = [];
+  authors: Author[] = [];
+  authorArr: any[] = [];
+
+  constructor(
     private route: ActivatedRoute,
     private location: Location,
-    private bookLibraryService: BookLibraryService
-    ) { }
+    private bookLibraryService: BookLibraryService) { }
+
 
   ngOnInit(): void {
     this.getBook(this.route.snapshot.params["id"]);
-    this.bookLibraryService.getItems('Admin/Genres')
-    .subscribe((genres:any) => {
+
+    this.bookLibraryService.getItems('General/Genres')
+    .subscribe((genres: any) => {
       this.genres = genres;
-      console.log(this.genres);
     });
+
     this.bookLibraryService.getItems('Author')
-    .subscribe((authors:any) => {
+    .subscribe((authors: any) => {
       this.authors = authors;
-      console.log(this.authors);
     });
-    this.bookLibraryService.getItems('Order')
-    .subscribe((orders:any) => {
-      this.orders = orders;
-      console.log(this.orders);
+
+  }
+
+  getBook(id: string) {
+    this.bookLibraryService.getItemByID('Books/', id)
+    .subscribe((book: any) => {
+      this.currentBook = book;
+      console.log(this.currentBook);
     });
   }
 
-    getBook(id: string){
-      this.http.get(API_URL + 'Book/' + id)
-      .subscribe((hero: any) => {
-        this.currentBook = hero;
-        console.log(this.currentBook);
-      }); 
-    }
-    updateBook(book: Book){
-      book.languageId = this.currentBook.language.id;
-      book.publisherId = this.currentBook.publisher.id;
-      book.authors = this.authorArr;
-      book.genres = this.genreArr;
-      book.orders = this.orderArr;
-      this.bookLibraryService.putItem('Book/', book);
-    }
-    addToAuthorArray(id: number){
-      this.authorArr.push({id});
-      console.log(this.authorArr);
-    }
-    addToGenreArray(id: number){
-      this.genreArr.push({id});
-      console.log(this.genreArr);
-    }
-    addToOrderArray(id: number){
-      this.orderArr.push({id});
-      console.log(this.orderArr);
-    }
-    deleteBook(book: Book){
+  updateBook(book: Book) {
+    book.languageId = this.currentBook.language.id;
+    book.publisherId = this.currentBook.publisher.id;
+    book.authorIds = this.authorArr;
+    book.genreIds = this.genreArr;
+    this.bookLibraryService.putItem('Books', book);
+  }
+
+  addToAuthorArray(id: number){
+    let index = this.authorArr.findIndex(element => element === id);
+  
+      if(index === -1){
+        this.authorArr.push(id);
+      }
+      else{
+        this.authorArr.splice(index,1);
+      }
     }
 
-    goBack(): void {
-      this.location.back();
+    addToGenreArray(id: number){
+      let index = this.genreArr.findIndex(element => element === id);
+  
+      if(index === -1){
+        this.genreArr.push(id);
+      }
+      else{
+        this.genreArr.splice(index,1);
+      }    
     }
+
+  deleteBook(book: Book) { 
+    this.bookLibraryService.deleteItem('Books/', book.id);
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
 }

@@ -49,7 +49,7 @@
                           <div class="d-flex justify-content-between align-items-center mb-4">
                             <div>
                               <p class="mb-1">Shopping cart</p>
-                              <p class="mb-0">You have ( {{user.userBasket.books.length}} ) items in your cart</p>
+                              <p class="mb-0">You have ( {{user.userBasket.books.length!}} ) items in your cart</p>
                             </div>
                             <div>
                               Element
@@ -70,13 +70,10 @@
                                     </div>
                                   </div>
                                   <div class="d-flex flex-row align-items-center">
-                                    <div style="width: 50px;">
+                                    <div style="width: 100px;">
                                       <p class="fw-normal mb-0">Unit Price: {{book.rentalPrice}}</p>
                                     </div>
-                                    <div style="width: 80px;">
-                                      <h5 class="mb-0">{{user.userBasket.totalRentalPriceWithVAT}}</h5>
-                                    </div>
-                                    <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
+                                    <a style="color: #cecece;"><i class="fas fa-trash-alt" style="cursor: pointer;" (click)="removeFromBasket(book.id)"></i></a>
                                   </div>
                                 </div>
                               </div>

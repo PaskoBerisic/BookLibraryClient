@@ -12,7 +12,6 @@
         <th scope="col">Language</th>
         <th scope="col">Genres</th>
         <th scope="col">Rental Price</th>
-        <th scope="col">Orders</th>
         <th scope="col">Edit</th>
         <th scope="col">Delete</th>
       </tr>
@@ -36,12 +35,6 @@
           </ng-container>
         </td>
         <td>{{book.rentalPrice}}</td>
-        <td>
-          <ng-container *ngFor="let order of book.orders, let i = index">
-            <ng-container *ngIf="i > 0">,</ng-container>
-            {{order.id}}
-          </ng-container>
-        </td>
 
         <td><button class="btn btn-warning" routerLink="/admin/editbook/{{book.id}}">Edit</button></td>
         <td><button class="btn btn-danger" (click)="deleteBook(book.id)">Delete</button></td>

@@ -12,24 +12,29 @@ export class AddGenreComponent implements OnInit {
   books: Book[] = [];
   booksId:any;
   genre: Genre = {};
-  bookArr: Book[] = [];
-  
+  bookArr: any[] = [];
   constructor(private bookLibraryService: BookLibraryService) { }
 
   ngOnInit(): void {
-    this.bookLibraryService.getItems('Book')
+    this.bookLibraryService.getItems('Books')
     .subscribe((books: any) => {
       this.books = books;
     });
   }
+  
   addGenre(genre: Genre){
-    genre.books = this.bookArr;
-    this.bookLibraryService.postItem('Admin/Genres', genre);
-    console.log(genre);
-  }
-  addToArray(id: number){
-    this.bookArr.push({id});
-    console.log(this.bookArr);  
+    genre.bookIds = this.bookArr;
+    this.bookLibraryService.postItem('General/Genres', genre);
   }
 
+  addToArray(id: number){
+    let index = this.bookArr.findIndex(element => element === id);
+  
+      if(index === -1){
+        this.bookArr.push(id);
+      }
+      else{
+        this.bookArr.splice(index,1);
+      }
+    }
 }
