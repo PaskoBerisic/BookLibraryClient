@@ -51,16 +51,16 @@
                           shopping</a></h5>
                       <hr>
 
+                      <ng-container *ngIf="user!.userBasket!">
+                          
                       <div class="d-flex justify-content-between align-items-center mb-4">
                         <div>
                           <p class="mb-1">Shopping cart</p>
-                          <ng-container *ngIf="user?.userBasket.books.length">
                           <p class="mb-0">You have {{user.userBasket.books!.length!}} items in your cart</p>
-                        </ng-container>
                         </div>
-
                       </div>
-
+                    </ng-container>
+                      
                       <div *ngFor="let book of user?.userBasket?.books" class="card mb-3">
                         <div class="card-body">
                           <div class="d-flex justify-content-between">
@@ -82,8 +82,9 @@
                           </div>
                         </div>
                       </div>
-
-                      <button type="button" class="btn btn-gray btn-block btn-lg">Your order: {{user.userBasket.totalRentalPriceWithVAT}} {{' ' + user.userBasket.currency}}</button>
+                      <ng-container *ngIf="user!.userBasket!">
+                      <button type="button" class="btn btn-gray btn-block btn-lg">Your order: {{user.userBasket.totalRentalPriceWithVAT!}} {{' ' + user.userBasket.currency}}</button>
+                    </ng-container>
                       <div class="floatRight">
                         <button type="button" class="btn btn-info btn-block btn-lg" (click)="onSubmit()">
                           <div class="d-flex align-content-center">
@@ -107,7 +108,7 @@
   </div>
     <!-- BEGIN scroll to top btn -->
     <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top" data-toggle="scroll-to-top"><i
-        class="fa fa-angle-up">^</i></a>
+        class="fa fa-angle-up"></i></a>
     <!-- END scroll to top btn -->
     <div style="border-color:red; width:1000px; height:auto;"></div>
     <!-- END #app -->

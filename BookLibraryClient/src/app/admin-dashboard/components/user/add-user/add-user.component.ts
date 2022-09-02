@@ -30,6 +30,6 @@ export class AddUserComponent implements OnInit {
    }
   
   addUser(user: User){
-    this.bookLibraryService.postItem('User', user);
+    this.bookLibraryService.postItem('Users', user);
 }
 }

@@ -34,7 +34,7 @@ import { AddUserComponent } from './admin-dashboard/components/user/add-user/add
 import { EditUserComponent } from './admin-dashboard/components/user/edit-user/edit-user.component';
 import { LoginComponent } from './shared/login/login.component';
 import { RegisterComponent } from './shared/register/register.component';
-import { AuthGuard2Service } from './services/auth-guard2.service';
+import { AuthGuardService } from './services/auth-guard.service';
 import { RoleGuardService } from './services/role-guard.service';
 import { CountryControlComponent } from './admin-dashboard/components/countries/country-control/country-control.component';
 import { EditCountryComponent } from './admin-dashboard/components/countries/edit-country/edit-country.component';
@@ -46,12 +46,12 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'user',
     children: [
-      { path: '', component: UserDashboardComponent, pathMatch: 'full', canActivate: [AuthGuard2Service]},
+      { path: '', component: UserDashboardComponent, pathMatch: 'full', canActivate: [AuthGuardService]},
       { path: 'availableBooks', component: AvailableBooksComponent, title: 'BookLibrary/AvailableBooks'},
       { path: 'newArrivals', component: NewArrivalsComponent, title: 'BookLibrary/NewArrivals'},
       { path: 'topRentals', component: TopRentalsComponent, title: 'BookLibrary/TopRentals', },
-      { path: 'lastRentals', component: LastRentalsComponent, title: 'BookLibrary/LastRentals', canActivate: [AuthGuard2Service]},
-      { path: 'userBasket', component: UserBasketComponent, title: 'BookLibrary/UserBasket', canActivate: [AuthGuard2Service]},
+      { path: 'lastRentals', component: LastRentalsComponent, title: 'BookLibrary/LastRentals', canActivate: [AuthGuardService]},
+      { path: 'userBasket', component: UserBasketComponent, title: 'BookLibrary/UserBasket', canActivate: [AuthGuardService]},
       { path: 'paymentInfo', component: UserPaymentInfoComponent},
       { path: 'orderComplete', component: UserOrderCompleteComponent}
     ]

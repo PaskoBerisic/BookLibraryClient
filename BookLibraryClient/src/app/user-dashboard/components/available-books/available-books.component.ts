@@ -18,7 +18,7 @@ export class AvailableBooksComponent implements OnInit {
   constructor(private bookLibraryService: BookLibraryService, private storageService: StorageService, private http: HttpClient) { }
   
   ngOnInit(): void {
-    this.bookLibraryService.getItems('Book')
+    this.bookLibraryService.getItems('Books')
     .subscribe((books: any) => {
       this.books = books;
     });
@@ -27,7 +27,7 @@ export class AvailableBooksComponent implements OnInit {
   }
 
   getUser(id: string) {
-    this.http.get(API_URL + 'Admin/Users/' + id)
+    this.http.get(API_URL + 'Users/' + id)
       .subscribe((user: any) => {
         this.user = user;
         console.log(this.user);
@@ -37,7 +37,7 @@ export class AvailableBooksComponent implements OnInit {
   addToBasket(id:number){
     this.request.bookId= id;
     this.request.userBasketId= this.user.userBasket.id;
-    this.bookLibraryService.postItem('Admin/UserBaskets/AddBook', this.request);
+    this.bookLibraryService.postItem('UserBasket/AddBook', this.request);
   }
 
   scrollToTop(): void {

@@ -27,24 +27,9 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
-    // const { firstName, lastName, username, password, dateOfBirth, address, role=2, isActive=true } = this.form;
-
-    // this.authService.register(firstName!, lastName!, username!, password!, dateOfBirth!, address!, role, isActive!).subscribe({
-    //   next: data => {
-    //     console.log(data);
-    //     this.isSuccessful = true;
-    //     this.isSignUpFailed = false;
-    //     alert("Success");
-    //   },
-    //   error: err => {
-    //     this.errorMessage = err.error.message;
-    //     this.isSignUpFailed = true;
-    //     alert("Error");
-    //   }
-    // });
     this.user.isActive = true;
     this.user.role = 2;
-    this.bookLibraryService.postItem('Admin/Users', this.user);
+    this.bookLibraryService.postItem('Users', this.user);
     console.log(this.user);
   }
 }

@@ -1,9 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user.model';
+import { BookLibraryService } from 'src/app/services/book-library.service';
 import { StorageService } from 'src/app/services/storage.service';
-
-const API_URL = "https://localhost:44323/api/";
 
 @Component({
   selector: 'app-user-payment-info',
@@ -15,7 +13,7 @@ export class UserPaymentInfoComponent implements OnInit {
   isAdminLogged: any;
   user: User = {};  
   
-  constructor(private storageService: StorageService, private http: HttpClient) { }
+  constructor(private storageService: StorageService, private bookLibraryService: BookLibraryService) { }
 
   ngOnInit(): void {
     this.isAdminLogged = this.storageService.isAdminLoggedIn();
@@ -25,11 +23,10 @@ export class UserPaymentInfoComponent implements OnInit {
   
   }
   getUser(id: string) {
-    this.http.get(API_URL + 'Admin/Users/' + id)
+    this.bookLibraryService.getItemByID('Users/', id)
       .subscribe((user: any) => {
         this.user = user;
         console.log(this.user);
       });
   }
-  checkout() { }
 }

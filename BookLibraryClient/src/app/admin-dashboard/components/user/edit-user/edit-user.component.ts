@@ -18,14 +18,14 @@ export class EditUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser(this.route.snapshot.params["id"]);
-    this.bookLibraryService.getItems('Order')
+    this.bookLibraryService.getItems('Orders')
       .subscribe((orders: any) => {
         this.orders = orders;
       });
   }
 
   getUser(id: string) {
-    this.bookLibraryService.getItemByID('User/', id)
+    this.bookLibraryService.getItemByID('Users/', id)
       .subscribe((user: any) => {
         this.currentUser = user;
         console.log(this.currentUser);
@@ -44,11 +44,11 @@ export class EditUserComponent implements OnInit {
   }
 
   updateUser(user: User) {
-    this.bookLibraryService.putItem('User', user);
+    this.bookLibraryService.putItem('Users', user);
   }
 
   deleteUser(user: User) {
-    this.bookLibraryService.deleteItem('User/', user.id);  
+    this.bookLibraryService.deleteItem('Users/', user.id);  
   }
 
   goBack(): void {

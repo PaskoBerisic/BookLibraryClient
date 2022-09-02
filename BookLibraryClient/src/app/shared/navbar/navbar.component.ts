@@ -1,10 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
+import { BookLibraryService } from 'src/app/services/book-library.service';
 import { StorageService } from 'src/app/services/storage.service';
-
-const API_URL = "https://localhost:44323/api/";
 
 @Component({
   selector: 'app-navbar',
@@ -16,22 +14,27 @@ export class NavbarComponent implements OnInit {
   user: User = {};
   isLogged: any;
   isAdminLogged: any;
-  constructor(private router: Router, private storageService: StorageService, private http: HttpClient) { }
-
+  constructor(private router: Router, private storageService: StorageService, private bookLibraryService: BookLibraryService) { }
+  
   ngOnInit(): void {
     this.isAdminLogged = this.storageService.isAdminLoggedIn();
     this.isLogged = this.storageService.isLoggedIn();
-    let id = this.storageService.getUser().id;
-    this.getUser(id);
+    
+    if(this.isAdminLogged || this.isLogged){
+      let id = this.storageService.getUser().id;
+      this.getUser(id);
+    }
   }
   getUser(id: string) {
-    this.http.get(API_URL + 'Admin/Users/' + id)
+    this.bookLibraryService.getItemByID('Users/', id)
       .subscribe((user: any) => {
         this.user = user;
+        console.log(this.user);
       });
   }
   logout(){
     this.storageService.clean();
-    window.location.reload();
+    //this.router.navigate(['dashboard']);
+    window.location.replace('dashboard');
   }
 }

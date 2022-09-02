@@ -38,7 +38,7 @@ export class EditOrderComponent implements OnInit {
     }
 
   getOrder(id: string){
-    this.bookLibraryService.getItemByID('Order/', id)
+    this.bookLibraryService.getItemByID('Orders/', id)
       .subscribe((order: any) => {
         this.currentOrder = order;
       }); 
@@ -47,11 +47,11 @@ export class EditOrderComponent implements OnInit {
   updateOrder(order: Order){
     order.userId = this.currentOrder.user.id;
     order.books = this.bookArr;
-    this.bookLibraryService.putItem('Order', order);
+    this.bookLibraryService.putItem('Orders', order);
   }
 
   deleteOrder(order: Order){
-    this.bookLibraryService.deleteItem('Order/', order.id);
+    this.bookLibraryService.deleteItem('Orders/', order.id);
   }
 
   goBack(): void {

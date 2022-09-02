@@ -14,15 +14,11 @@ export class InterceptorService implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
    this.token = this.storageService.getToken();
    console.log(this.token);
-   alert("hitted interceptor");
    if(this.token){
       const tokenReq = req.clone({ headers: req.headers.set('Authorization', 'Bearer ' + this.token.slice(1,-1)) });
       console.log(tokenReq);
-      alert("hitted if interceptor");
       return next.handle(tokenReq);
    }
    return next.handle(req);
   }
 }
-
-//username validation

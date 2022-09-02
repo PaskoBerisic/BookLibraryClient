@@ -12,7 +12,7 @@ export class UserControlComponent implements OnInit {
   constructor(private bookLibraryService: BookLibraryService) { }
 
   ngOnInit(): void {
-    this.bookLibraryService.getItems('User')
+    this.bookLibraryService.getItems('Users')
     .subscribe((users: any) => {
       this.users = users;
       console.log(this.users);
@@ -20,7 +20,7 @@ export class UserControlComponent implements OnInit {
   }
   
   deleteUser(id: any){
-    this.bookLibraryService.deleteItem('User/', id);
+    this.bookLibraryService.deleteItem('Users/', id);
   }
   
 }

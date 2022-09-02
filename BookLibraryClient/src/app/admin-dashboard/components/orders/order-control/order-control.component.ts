@@ -13,7 +13,7 @@ export class OrderControlComponent implements OnInit {
   constructor(private bookLibraryService: BookLibraryService) { }
 
   ngOnInit(): void {
-    this.bookLibraryService.getItems('Order')
+    this.bookLibraryService.getItems('Orders')
     .subscribe((orders: any) => {
       this.orders = orders;
       console.log(this.orders);
@@ -21,6 +21,6 @@ export class OrderControlComponent implements OnInit {
   }
   
   deleteOrder(id: any){
-    this.bookLibraryService.deleteItem('Order/', id);
+    this.bookLibraryService.deleteItem('Orders/', id);
   }
 }

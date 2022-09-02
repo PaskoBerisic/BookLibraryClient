@@ -33,7 +33,7 @@ export class EditBookComponent implements OnInit {
       this.genres = genres;
     });
 
-    this.bookLibraryService.getItems('Author')
+    this.bookLibraryService.getItems('Authors')
     .subscribe((authors: any) => {
       this.authors = authors;
     });

@@ -12,7 +12,7 @@ export class AuthorControlComponent implements OnInit {
   constructor(private bookLibraryService: BookLibraryService) { }
 
   ngOnInit(): void {
-    this.bookLibraryService.getItems('Author')
+    this.bookLibraryService.getItems('Authors')
     .subscribe((authors: any) => {
       this.authors = authors;
       console.log(this.authors);
@@ -20,6 +20,6 @@ export class AuthorControlComponent implements OnInit {
   }
   
   deleteAuthor(id: any){
-    this.bookLibraryService.deleteItem('Author/', id);
+    this.bookLibraryService.deleteItem('Authors/', id);
   }
 }

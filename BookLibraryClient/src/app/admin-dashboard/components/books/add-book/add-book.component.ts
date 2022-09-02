@@ -39,7 +39,7 @@ export class AddBookComponent implements OnInit {
     .subscribe((publishers: any) => {
       this.publishers = publishers;
     }) 
-    this.bookLibraryService.getItems('Author')
+    this.bookLibraryService.getItems('Authors')
     .subscribe((authors: any) => {
       this.authors = authors;
     })

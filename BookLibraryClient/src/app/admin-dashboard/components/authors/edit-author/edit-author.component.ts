@@ -25,7 +25,7 @@ export class EditAuthorComponent implements OnInit {
   }
 
   getAuthor(id: string) {
-    this.bookLibraryService.getItemByID('Author/', id)
+    this.bookLibraryService.getItemByID('Authors/', id)
       .subscribe((author: any) => {
         this.currentAuthor = author;
         console.log(this.currentAuthor);
@@ -46,11 +46,11 @@ export class EditAuthorComponent implements OnInit {
   updateAuthor(author: Author) {
     author.countryId = this.currentAuthor.country.id;
     author.bookIds = this.bookArr;
-    this.bookLibraryService.putItem('Author', author);
+    this.bookLibraryService.putItem('Authors', author);
   }
 
   deleteAuthor(author: Author) {
-    this.bookLibraryService.deleteItem('Author/', author.id);
+    this.bookLibraryService.deleteItem('Authors/', author.id);
   }
 
   goBack(): void {

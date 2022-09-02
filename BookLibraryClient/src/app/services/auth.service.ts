@@ -15,27 +15,11 @@ export class AuthService {
   constructor(private http: HttpClient, private jwtHelper: JwtHelperService) { }
   
   login(username: string, password: string): Observable<any> {
-    return this.http.post(
-       AUTH_API  //+ 'Admin/Authenticate'
-       ,{
-       username,
-       password
-     }, httpOptions);
+    return this.http.post( AUTH_API,{ username, password }, httpOptions);
   }
 
-  register(firstName: string, lastName: string, username: string, password: string, dateOfBirth: Date, address: string,role: number, isActive: boolean): Observable<any> {
-    return this.http.post(
-      AUTH_API + 'auth/register',
-      {
-        firstName,
-        lastName,
-        username,
-        password,
-        dateOfBirth,
-        address,
-        role,
-        isActive
-      }, httpOptions);
+  register(username: string, email: string, password: string): Observable<any> {
+    return this.http.post( AUTH_API, { username, email, password }, httpOptions);
   }
 
   logout(): Observable<any> {
@@ -47,5 +31,4 @@ export class AuthService {
     const token = sessionStorage.getItem('auth-token');
     return !this.jwtHelper.isTokenExpired(token!);
   }
-
 }

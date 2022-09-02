@@ -30,7 +30,7 @@ export class AddAuthorComponent implements OnInit {
   }
   addAuthor(author: Author){
     author.bookIds = this.bookArr;
-    this.bookLibraryService.postItem('Author', author);
+    this.bookLibraryService.postItem('Authors', author);
   }
   addToArray(id: number){
     let index = this.bookArr.findIndex(element => element === id);

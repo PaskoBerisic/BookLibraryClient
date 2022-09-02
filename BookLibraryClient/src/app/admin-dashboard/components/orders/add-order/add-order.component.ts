@@ -24,7 +24,7 @@ export class AddOrderComponent implements OnInit {
     .subscribe((books: any) => {
       this.books = books;
     });
-    this.bookLibraryService.getItems('User')
+    this.bookLibraryService.getItems('Users')
     .subscribe((users: any) => {
       this.users = users;
     });
@@ -33,7 +33,7 @@ export class AddOrderComponent implements OnInit {
   addOrder(order: Order){
     JSON.stringify(this.bookArr);
     order.bookIds = this.bookArr;
-    this.bookLibraryService.postItem('Order', order);
+    this.bookLibraryService.postItem('Orders', order);
   }
   
   addToArray(id: number){
