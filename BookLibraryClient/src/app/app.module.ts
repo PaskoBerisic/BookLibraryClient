@@ -33,7 +33,6 @@ import { TopRentalsComponent } from './user-dashboard/components/top-rentals/top
 import { UserBasketComponent } from './user-dashboard/components/user-basket/user-basket.component';
 import { UserPaymentInfoComponent } from './user-dashboard/components/user-basket/user-payment-info/user-payment-info.component';
 import { UserOrderCompleteComponent } from './user-dashboard/components/user-basket/user-order-complete/user-order-complete.component';
-import { LandingComponent } from './shared/landing/landing.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { MatToolbarModule } from '@angular/material/toolbar'; 
@@ -83,7 +82,6 @@ import { EditCountryComponent } from './admin-dashboard/components/countries/edi
     UserBasketComponent,
     UserPaymentInfoComponent,
     UserOrderCompleteComponent,
-    LandingComponent,
     FooterComponent,
     SidebarComponent,
     PublisherControlComponent,
