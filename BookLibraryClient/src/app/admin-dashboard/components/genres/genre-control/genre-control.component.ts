@@ -8,20 +8,17 @@ import { BookLibraryService } from 'src/app/services/book-library.service';
 })
 export class GenreControlComponent implements OnInit {
   genres: any[] = [];
-  books: undefined;
   constructor(private bookLibraryService: BookLibraryService) { }
 
   ngOnInit(): void {
-    this.bookLibraryService.getItems('Admin/Genres')
+    this.bookLibraryService.getItems('General/Genres')
     .subscribe((genres: any) => {
       this.genres = genres;
       console.log(this.genres);
-    })
+    });
   }
   
   deleteGenre(id: any){
-    this.bookLibraryService.deleteItem('Admin/Genres/', id);
-    window.location.reload();
+    this.bookLibraryService.deleteItem('General/Genres/', id);
   }
-
 }

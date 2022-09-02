@@ -11,7 +11,7 @@ export class TopRentalsComponent implements OnInit {
   books: any[]= [];
   constructor(private bookLibraryService: BookLibraryService) { }
   ngOnInit(): void {
-    this.bookLibraryService.getItemsByFilter('Book/ByRentalNumber')
+    this.bookLibraryService.getItemsByFilter('Books/ByRentalNumber')
     .subscribe((books: any) => {
       this.books = books;
     })

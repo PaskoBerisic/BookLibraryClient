@@ -7,7 +7,6 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Publisher Name</th>
-        <th scope="col">Books</th>
         <th scope="col">Edit</th>
         <th scope="col">Delete</th>
       </tr>
@@ -16,12 +15,6 @@
       <tr *ngFor="let publisher of publishers">
         <th scope="row">{{publisher.id}}</th>
         <td>{{publisher.name}} </td>
-        <td>
-          <ng-container *ngFor="let book of publisher.books, let i = index">
-            <ng-container *ngIf="i > 0">,</ng-container>
-            {{book.title}}
-          </ng-container>
-        </td>
         <td><button class="btn btn-warning" routerLink="/admin/publisherControl/updatePublisher/{{publisher.id}}">Edit</button></td>
         <td><button class="btn btn-danger" (click)="deletePublisher(publisher.id)">Delete</button></td>
       </tr>

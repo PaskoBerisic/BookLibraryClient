@@ -5,37 +5,29 @@
       <div class="form-group">
         <label for="user.firstNname">First Name</label>
         <input type="text" id="user.firstName" class="form-control" [(ngModel)]="user.firstName">
-      
-      <label for="user.lastName">Last Name</label>
+
+        <label for="user.lastName">Last Name</label>
         <input type="text" id="user.lastName" class="form-control" [(ngModel)]="user.lastName" />
-      
-      <label for="user.username">Username</label>
-        <input type="text" id="user.username" class="form-control" [(ngModel)]="user.username"/>
-      
-      <label for="user.isActive">Is Active?</label> <br>
-        <input type="checkbox" id="user.isActive" class="form-control-sm" [(ngModel)]="user.isActive"/> <br>
-      
+
+        <label for="user.username">Username</label>
+        <input type="text" id="user.username" class="form-control" [(ngModel)]="user.username" />
+
+        <label for="user.username">Password</label>
+        <input type="password" id="user.password" class="form-control" [(ngModel)]="user.password" />
+
+        <label for="user.isActive">Is Active?</label> <br>
+        <input type="checkbox" id="user.isActive" class="form-control-sm" [(ngModel)]="user.isActive" /> <br>
+
         <label for="user.dateOfBirth">Date of Birth</label>
-        <input type="date" id="user.dateOfBirth" class="form-control" [(ngModel)]="user.dateOfBirth"/>
+        <input type="date" id="user.dateOfBirth" class="form-control" [(ngModel)]="user.dateOfBirth" />
 
-       <label for="user.address">Address</label>
-        <input type="text" id="user.address" class="form-control" [(ngModel)]="user.address"/>
+        <label for="user.address">Address</label>
+        <input type="text" id="user.address" class="form-control" [(ngModel)]="user.address" />
 
-        <label for="user.orders.id">Orders</label> 
-      <!-- <input type="text" class="form-control" id="user.orders.id" [(ngModel)]="orderId">
-         <div *ngFor="let item of orderArr, let i = index">
-          <div *ngIf="i > 0">,</div>
-      {{item.id}}
-        </div>  -->
-          
-        <ng-container *ngFor="let item of orderArr, let i = index">
-          <ng-container *ngIf="i > 0">,</ng-container>
-          {{item.id}}
-        </ng-container> <br>
-      <label for="user.role"> Role</label>  <br>
-        <input type="radio" id="user.role" class="form-control-sm" value="User" [(ngModel)]="user.role"/>User <br>
+        <label for="user.role"> Role</label> <br>
+        <input type="radio" id="user.role" class="form-control-sm" value="User" [(ngModel)]="user.role" />User <br>
         <input type="radio" id="user.role" class="form-control-sm" value="Admin" [(ngModel)]="user.role" />Admin <br>
-    </div>
+      </div>
     </div>
     <div class="col-md-9">
       <h3>Preview</h3>
@@ -49,7 +41,6 @@
             <th scope="col">Date of Birth</th>
             <th scope="col">Address</th>
             <th scope="col">Role</th>
-            <th scope="col">Orders</th>
           </tr>
         </thead>
         <tbody>
@@ -61,20 +52,9 @@
             <td>{{user.dateOfBirth | date}}</td>
             <td>{{user.address}}</td>
             <td>{{user.role}}</td>
-            <td>{{user.orders}}</td>
           </tr>
         </tbody>
       </table>
-      <div class="row">
-        <div class="col">
-          Orders:
-          <div *ngFor="let order of orders">
-              <input type="checkbox" name="user.orders" id="orderId" (click)="addToArray(order.id!)">
-              Order ID: {{order.id}}
-            </div>
-        </div>
-      </div>
     </div>
     <button class="btn btn-success" (click)="addUser(user)">Add User</button>
   </div>
-

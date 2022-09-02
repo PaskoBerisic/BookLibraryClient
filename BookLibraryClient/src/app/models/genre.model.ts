@@ -3,5 +3,7 @@ export class Genre {
     name?: string;
     description?: string;
     isActive?: boolean;
+    
     books?: any;
+    bookIds?: any;
 }

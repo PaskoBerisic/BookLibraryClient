@@ -1,7 +1,7 @@
 <body class='pace-top'>
-    <ng-container *ngIf="isLoggedIn === true || isAdminLoggedIn === true">
+    <!-- <ng-container *ngIf="isLoggedIn === true || isAdminLoggedIn === true">
         <h3>Hello, proceed to app!</h3>
-    </ng-container>
+    </ng-container> -->
     <!-- BEGIN #app -->
     <div *ngIf="isLoggedIn === false && isAdminLoggedIn === false">
     <div id="app" class="app">
@@ -26,7 +26,7 @@
         <!-- BEGIN login-content -->
         <div class="login-content">
           <div class="form-floating mb-15px">
-              <input type="text" class="form-control h-45px fs-13px" placeholder="userName" id="user.userName" [(ngModel)]="form.username" />
+              <input type="text" class="form-control h-45px fs-13px" placeholder="userName" id="user.username" [(ngModel)]="form.username" />
               <label for="user.userName" class="d-flex align-items-center fs-13px text-gray-600">Username</label>
             </div>
             <div class="form-floating mb-15px">
@@ -47,7 +47,7 @@
             </div>
             <hr class="bg-gray-600 opacity-2" />
             <div class="text-gray-600 text-center text-gray-500-darker mb-0">
-              &copy; Book Library All Right Reserved 2021
+              &copy; Book Library All Right Reserved 2022
             </div>
         </div>
         <!-- END login-content -->

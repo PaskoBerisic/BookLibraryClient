@@ -19,56 +19,56 @@ export class UserDashboardComponent implements OnInit {
   topBooks: Book[] = [];
   newBooks: Book[] = [];
   orders: Order[] = [];
-  basket: UserBasket = {};
-  tempBooks: any;
 
   isLogged: any;
   isAdminLogged: any;
   user: User = {};  
+  request: any = {};
   constructor(
     private bookLibraryService: BookLibraryService,
     private http: HttpClient,
     private storageService: StorageService) { }
   ngOnInit(): void {
-    this.bookLibraryService.getItems('Book')
+    this.bookLibraryService.getItems('Books')
     .subscribe((books: any) => {
       this.books = books;
     });
-    this.bookLibraryService.getItemsByFilter('Book/ByRentalNumber')
+    this.bookLibraryService.getItemsByFilter('Books/ByRentalNumber')
     .subscribe((books: any) => {
       this.topBooks = books;
     });
-    this.bookLibraryService.getItemsByFilter('Book/ByYearDesc')
+    this.bookLibraryService.getItemsByFilter('Books/ByYearDesc')
     .subscribe((books: any) => {
       this.newBooks = books;
     });
+
     this.isAdminLogged = this.storageService.isAdminLoggedIn();
     this.isLogged = this.storageService.isLoggedIn();
+
     let id = this.storageService.getUser().id;
     this.getUser(id);
-    console.log(this.user);
+    this.getOrders(id);
   }
-  getUser(id: string) {
-    this.http.get(API_URL + 'Admin/Users/' + id)
+
+  getUser(id: any) {
+    this.bookLibraryService.getItemByID('Users/', id)
       .subscribe((user: any) => {
         this.user = user;
-        console.log(this.user);
       });
   }   
-  addToBasket(){
-    this.http.get(API_URL + 'Admin/UserBaskets/' + 1)
-    .subscribe((basket: any) => {
-      this.basket = basket;
-      console.log(this.basket);
-    });  
-    console.log('Before: ' + this.tempBooks);
-    this.tempBooks = [{id:1}, {id:2}, {id:4}];
-    console.log(this.tempBooks);
-    this.basket.books = this.tempBooks;
-    this.basket.userId = 3;
-    console.log(this.basket);
-    this.bookLibraryService.putItem('Admin/UserBaskets', this.basket)
+  getOrders(id: any){
+    this.bookLibraryService.getItemByID('Orders/UserOrders/', id)
+    .subscribe((orders: any) => {
+      this.orders = orders;
+    });
   }
+
+  addToBasket(id:number){
+    this.request.bookId= id;
+    this.request.userBasketId= this.user.userBasket.id;
+    this.bookLibraryService.postItem('UserBasket/AddBook', this.request);
+  }
+  
   scrollToTop(): void {
     window.scrollTo(0, 0);
   }

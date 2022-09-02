@@ -24,7 +24,7 @@
         <hr>
         <div class="container">
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            <ng-container *ngFor="let order of user.orders!; let i = index">
+            <ng-container *ngFor="let order of orders; let i = index">
               <div class="col-md-4">
                 <div class="card shadow-sm">
                   <div class="card-body" id="lastRentalView">
@@ -64,9 +64,9 @@
                   <hr>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary" onclick="HGMessage()">Rent
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Rent
                         Again?</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary" onclick="hungerGames()">See
+                      <button type="button" class="btn btn-sm btn-outline-secondary">See
                         rental details</button>
                     </div>
                     <small class="text-muted">Total: X,X KN</small>
@@ -115,7 +115,7 @@
                       </p>
                       <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
-                          <button type="button" class="btn btn-sm btn-outline-secondary">Rent</button>
+                          <button type="button" class="btn btn-sm btn-outline-secondary" (click)="addToBasket(book.id!)">Rent</button>
                           <button type="button" class="btn btn-sm btn-outline-secondary"
                             routerLink="/admin/book/{{book.id}}">See
                             details</button>
@@ -168,8 +168,7 @@
                       </p>
                       <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
-                          <button type="button" class="btn btn-sm btn-outline-secondary"
-                            (click)="addToBasket()">Rent</button>
+                          <button type="button" class="btn btn-sm btn-outline-secondary" (click)="addToBasket(book.id!)">Rent</button>
                           <button type="button" class="btn btn-sm btn-outline-secondary"
                             routerLink="/admin/book/{{book.id}}">See
                             details</button>
@@ -223,7 +222,7 @@
                       </p>
                       <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
-                          <button type="button" class="btn btn-sm btn-outline-secondary">Rent</button>
+                          <button type="button" class="btn btn-sm btn-outline-secondary" (click)="addToBasket(book.id!)">Rent</button>
                           <button type="button" class="btn btn-sm btn-outline-secondary"
                             routerLink="/admin/book/{{book.id}}">See
                             details</button>

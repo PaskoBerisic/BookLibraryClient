@@ -6,6 +6,8 @@ export class Order {
     currency?: string;
     
     user?: any;
-    UserId?: any;
+    userId?: any;
     books?: any;
+    bookIds?: any;
+    userBasketId?: any;
 }

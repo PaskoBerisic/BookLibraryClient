@@ -75,31 +75,6 @@
                     name="role"
                     />
             </div>
-
-            <!-- <div class="form-group">
-                <label for="orders">Orders</label>
-                <div *ngFor="let order of currentUser.orders">
-                <input
-                    type="checkbox"
-                    class="form-control-sm"
-                    id="orders"
-                    [(ngModel)]="order.id"
-                    name="orders"
-                    /> ID: {{order.id}}
-                </div>
-            </div> -->
-            <div class="form-group">
-                <label for="orders">Orders</label>
-                <div *ngFor="let order of orders">
-                    <input
-                    type="checkbox"
-                    class="form-control-sm"
-                    id="orders"
-                    name="orders"
-                    (click)="addToArray(order.id!)"
-                    /> ID: {{order.id}}
-                </div>
-            </div>
         </form>
     <button class="badge badge-danger mr-2" (click)="deleteUser(currentUser)">
       Delete

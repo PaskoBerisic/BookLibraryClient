@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Book } from 'src/app/models/book.model';
 import { BookLibraryService } from 'src/app/services/book-library.service';
 @Component({
   selector: 'app-book-control',
@@ -6,23 +7,20 @@ import { BookLibraryService } from 'src/app/services/book-library.service';
   styleUrls: ['./book-control.component.css']
 })
 export class BookControlComponent implements OnInit {
-  books: any[]= [];
-  authors: undefined;
-constructor(private bookLibraryService: BookLibraryService) { }
+  books: Book[] = [];
+  constructor(private bookLibraryService: BookLibraryService) { }
 
-ngOnInit(): void {
-  this.bookLibraryService.getItems('Book')
-  .subscribe((books: any) => {
-    this.books = books;
-    console.log(this.books);
-    console.log(this.authors);
-  })
-}
+  ngOnInit(): void {
+    this.bookLibraryService.getItems('Books')
+      .subscribe((books: any) => {
+        this.books = books;
+        console.log(this.books);
+      })
+  }
 
-deleteBook(id: any){
-  this.bookLibraryService.deleteItem('Book/', id);
-  window.location.reload();
-}
+  deleteBook(id: any) {
+    this.bookLibraryService.deleteItem('Books/', id);
+  }
 }
 
 

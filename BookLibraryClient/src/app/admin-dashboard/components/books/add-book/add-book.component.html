@@ -18,24 +18,7 @@
         <input type="text" class="form-control" id="book.publisherId" [(ngModel)]="book.publisherId">
         <label for="book.languageId">Language</label> 
         <input type="text" class="form-control" id="book.languageId" [(ngModel)]="book.languageId">
-        <label for="book.authors.id">Author</label> 
-        <input type="text" class="form-control" id="book.authors.id" [(ngModel)]="authorId">
-        <ng-container *ngFor="let item of authorArr, let i = index">
-          <ng-container *ngIf="i > 0">,</ng-container>
-          {{item.id}}
-        </ng-container> <br>
-        <label for="book.genres.id">Genre</label> 
-        <input type="text" class="form-control" id="book.genres.id"  [(ngModel)]="genreId">
-        <ng-container *ngFor="let item of genreArr, let i = index">
-          <ng-container *ngIf="i > 0">,</ng-container>
-          {{item.id}}
-        </ng-container> <br>
-        <label for="book.orders.id">Orders</label> 
-        <input type="text" class="form-control" id="book.orders.id" [(ngModel)]="orderId">
-        <ng-container *ngFor="let item of orderArr, let i = index">
-          <ng-container *ngIf="i > 0">,</ng-container>
-          {{item.id}}
-        </ng-container> <br>
+        
       </div>
     </div>
     <div class="col-md-9">
@@ -92,13 +75,6 @@
               <input type="checkbox" name="book.genres" id="genreId" (click)="addToGenreArray(genre.id!)">
               {{' ' + genre.name}}
           </div>
-        </div>
-        <div class="col">
-          Orders:
-          <div *ngFor="let order of orders">
-              <input type="checkbox" name="book.orders" id="orderId" (click)="addToOrderArray(order.id!)">
-              {{order.id}}
-            </div>
         </div>         
       </div>
     </div>

@@ -9,32 +9,9 @@
 <div class="album py-5 bg-light">
   <div class="container">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-      <!-- <ng-container *ngFor="let order of user.orders; let i = index">
-        <div class="col">
-            <div class="card shadow-sm">
-              <div class="card-body" id="lastRentalView">
-                <h3>Order #{{order.id}}</h3>
-                <hr>
-                <ol>
-                  <ng-container *ngFor="let book of order.books; let i = index">
-                  <li style="list-style-type:square">{{book.title}}</li>
-                  </ng-container>
-                </ol>
-                <hr>
-                <div class="d-flex justify-content-between align-items-center" id="bookControls">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Rent Again?</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">See rental details</button>
-                  </div>  
-                  <small class="text-muted">Total: {{order.totalRentalPriceWithVAT + ' ' + order.currency!}}</small> 
-              </div>
-              </div>
-            </div>
-          </div>
-      </ng-container> -->
       <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-          <ng-container *ngFor="let order of user.orders!; let i = index">
+          <ng-container *ngFor="let order of orders; let i = index">
               <div class="col-md-4">
                 <div class="card shadow-sm">
                   <div class="card-body" id="lastRentalView">
@@ -70,17 +47,19 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
+                <th scope="col">Order ID:</th>
                 <th scope="col">User</th>
                 <th scope="col">Books Rented</th>
                 <th scope="col">Date</th>
-                <th scope="col">Status</th>
+                <th scope="col">Total</th>
                 <th scope="col">Total with VAT</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let order of user.orders">
-                <th scope="row">{{order.id}}</th>
-                <td>{{user.username }}</td>
+              <tr *ngFor="let order of orders; let i = index">
+                <th scope="row">{{i+1}}</th>
+                <td>{{order.id}}</td>
+                <td>{{order.user.username}}</td>
                 <td> 
                   <ng-container *ngFor="let book of order.books, let i = index">
                     <ng-container *ngIf="i > 0">,</ng-container>
@@ -88,11 +67,8 @@
                   </ng-container>
                 </td>
                 <td>{{order.date | date}}</td>
-                <td>
-                  <div *ngIf="order.status === true">Closed!</div>
-                  <div *ngIf="order.status === false">Opened!</div>
-                </td>
                 <td>{{order.totalRentalPrice}} {{order.currency}}</td>
+                <td>{{order.totalRentalPriceWithVAT}} {{order.currency}}</td>
               </tr>
             </tbody>
           </table>
