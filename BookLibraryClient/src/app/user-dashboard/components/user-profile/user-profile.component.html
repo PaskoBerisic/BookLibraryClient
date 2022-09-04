@@ -1,0 +1,41 @@
+<button class="badge badge-secondary mb-3" (click)="goBack()"> Back</button>
+
+<div *ngIf="user.id" class="edit-form">
+  <h4>Edit User '{{user.firstName}} {{user.lastName}}'</h4>
+  <form>
+    <div class="form-group">
+      <label for="name">First Name</label>
+      <input type="text" class="form-control" id="name" [(ngModel)]="user.firstName" name="name" />
+    </div>
+    <div class="form-group">
+      <label for="lname">Last Name</label>
+      <input type="text" class="form-control" id="lname" [(ngModel)]="user.lastName" name="lname" />
+    </div>
+
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" id="username" [(ngModel)]="user.username" name="username" disabled/>
+    </div>
+    <div class="form-group">
+      <label for="dateofBirth">Date of Birth</label>
+      <input type="text" class="form-control" id="dateofBirth" [(ngModel)]="user.dateOfBirth" name="dateofBirth" />
+    </div>
+    <div class="form-group">
+      <label for="adress">Adress</label>
+      <input type="text" class="form-control" id="adress" [(ngModel)]="user.address" name="address" />
+    </div>
+
+    <div class="form-group">
+      <label for="role">Role</label>
+      <input type="text" class="form-control" id="role" value="User" name="role" *ngIf="user.role == 2" disabled/>
+      <input type="text" class="form-control" id="role" [(ngModel)]="user.role" name="role" hidden/>
+    </div>
+  </form>
+  <button type="submit" class="badge badge-success mb-2" (click)="updateUser(user)">
+    Update
+  </button>
+</div>
+<div *ngIf="!user.id">
+  <br />
+  <p>Cannot access this User...</p>
+</div>

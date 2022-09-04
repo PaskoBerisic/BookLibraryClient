@@ -24,6 +24,9 @@
         <hr>
         <div class="container">
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <ng-container *ngIf="!orders?.length">
+              <h3>You dont have any orders!</h3>
+            </ng-container>
             <ng-container *ngFor="let order of orders; let i = index">
               <div class="col-md-4">
                 <div class="card shadow-sm">
@@ -47,33 +50,6 @@
                 </div>
               </div>
             </ng-container>
-
-            <div class="col">
-              <div class="card shadow-sm">
-                <div class="card-body" id="lastRentalView">
-                  <h3>Order Template</h3>
-                  <hr>
-                  <ol>
-                    <li style="list-style-type:square">Book 1</li>
-                    <li style="list-style-type:square">Book 2</li>
-                    <li style="list-style-type:square">Book 3</li>
-                    <li style="list-style-type:square">Book 4</li>
-                    <li style="list-style-type:square">Book ..</li>
-                    <li style="list-style-type:square">Book 999</li>
-                  </ol>
-                  <hr>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Rent
-                        Again?</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">See
-                        rental details</button>
-                    </div>
-                    <small class="text-muted">Total: X,X KN</small>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
         <button class="btn btn-inverse"><a routerLink="/user/lastRentals" style="color:white">"See
@@ -117,7 +93,7 @@
                         <div class="btn-group">
                           <button type="button" class="btn btn-sm btn-outline-secondary" (click)="addToBasket(book.id!)">Rent</button>
                           <button type="button" class="btn btn-sm btn-outline-secondary"
-                            routerLink="/admin/book/{{book.id}}">See
+                            routerLink="/user/book/{{book.id}}">See
                             details</button>
                         </div>
                         <small class="text-muted">Price:{{book.rentalPrice}}</small>
@@ -170,7 +146,7 @@
                         <div class="btn-group">
                           <button type="button" class="btn btn-sm btn-outline-secondary" (click)="addToBasket(book.id!)">Rent</button>
                           <button type="button" class="btn btn-sm btn-outline-secondary"
-                            routerLink="/admin/book/{{book.id}}">See
+                            routerLink="/user/book/{{book.id}}">See
                             details</button>
                         </div>
                         <small class="text-muted">Price:{{book.rentalPrice}}</small>
@@ -224,7 +200,7 @@
                         <div class="btn-group">
                           <button type="button" class="btn btn-sm btn-outline-secondary" (click)="addToBasket(book.id!)">Rent</button>
                           <button type="button" class="btn btn-sm btn-outline-secondary"
-                            routerLink="/admin/book/{{book.id}}">See
+                            routerLink="/user/book/{{book.id}}">See
                             details</button>
                         </div>
                         <small class="text-muted">Price:{{book.rentalPrice}}</small>
