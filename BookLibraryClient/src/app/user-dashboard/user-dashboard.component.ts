@@ -60,6 +60,7 @@ export class UserDashboardComponent implements OnInit {
     this.bookLibraryService.getItemByID('Orders/UserOrders/', id)
     .subscribe((orders: any) => {
       this.orders = orders;
+      console.log(this.orders);
     });
   }
 

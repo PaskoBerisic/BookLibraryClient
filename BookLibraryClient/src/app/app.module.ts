@@ -35,9 +35,6 @@ import { UserPaymentInfoComponent } from './user-dashboard/components/user-baske
 import { UserOrderCompleteComponent } from './user-dashboard/components/user-basket/user-order-complete/user-order-complete.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
-import { MatToolbarModule } from '@angular/material/toolbar'; 
-import { MatIconModule } from '@angular/material/icon'; 
-import { MatMenuModule } from '@angular/material/menu';
 import { PublisherControlComponent } from './admin-dashboard/components/publishers/publisher-control/publisher-control.component';
 import { AddPublisherComponent } from './admin-dashboard/components/publishers/add-publisher/add-publisher.component';
 import { EditPublisherComponent } from './admin-dashboard/components/publishers/edit-publisher/edit-publisher.component';
@@ -50,6 +47,8 @@ import { JwtHelperService, JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { InterceptorService } from './services/interceptor.service';
 import { CountryControlComponent } from './admin-dashboard/components/countries/country-control/country-control.component';
 import { EditCountryComponent } from './admin-dashboard/components/countries/edit-country/edit-country.component';
+import { BookDetailsComponent } from './user-dashboard/components/book-details/book-details.component';
+import { UserProfileComponent } from './user-dashboard/components/user-profile/user-profile.component';
 
 
 @NgModule({
@@ -94,6 +93,8 @@ import { EditCountryComponent } from './admin-dashboard/components/countries/edi
     RegisterComponent,
     CountryControlComponent,
     EditCountryComponent,
+    BookDetailsComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -102,9 +103,6 @@ import { EditCountryComponent } from './admin-dashboard/components/countries/edi
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatMenuModule,
     JwtModule
   ],
   providers: [{provide: JWT_OPTIONS, useValue: JWT_OPTIONS}, JwtHelperService, {provide:HTTP_INTERCEPTORS, useClass:InterceptorService, multi:true}],

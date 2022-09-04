@@ -22,6 +22,7 @@ export class DashboardComponent implements OnInit {
       clearInterval(this.hourCounterStop);
     }
   },1)
+ 
   constructor(private router: Router) { }
 
   ngOnInit(): void {

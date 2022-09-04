@@ -38,65 +38,72 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { RoleGuardService } from './services/role-guard.service';
 import { CountryControlComponent } from './admin-dashboard/components/countries/country-control/country-control.component';
 import { EditCountryComponent } from './admin-dashboard/components/countries/edit-country/edit-country.component';
+import { BookDetailsComponent } from './user-dashboard/components/book-details/book-details.component';
+import { UserProfileComponent } from './user-dashboard/components/user-profile/user-profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent},
-  { path: 'register', component: RegisterComponent},
-  { path: 'login', component: LoginComponent},
-  { path: 'user',
+  { path: 'dashboard', component: DashboardComponent },
+  //Register & Login
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+  {
+    path: 'user',
     children: [
-      { path: '', component: UserDashboardComponent, pathMatch: 'full', canActivate: [AuthGuardService]},
-      { path: 'availableBooks', component: AvailableBooksComponent, title: 'BookLibrary/AvailableBooks'},
-      { path: 'newArrivals', component: NewArrivalsComponent, title: 'BookLibrary/NewArrivals'},
+      { path: '', component: UserDashboardComponent, pathMatch: 'full', canActivate: [AuthGuardService] },
+      { path: 'availableBooks', component: AvailableBooksComponent, title: 'BookLibrary/AvailableBooks' },
+      { path: 'newArrivals', component: NewArrivalsComponent, title: 'BookLibrary/NewArrivals' },
       { path: 'topRentals', component: TopRentalsComponent, title: 'BookLibrary/TopRentals', },
-      { path: 'lastRentals', component: LastRentalsComponent, title: 'BookLibrary/LastRentals', canActivate: [AuthGuardService]},
-      { path: 'userBasket', component: UserBasketComponent, title: 'BookLibrary/UserBasket', canActivate: [AuthGuardService]},
-      { path: 'paymentInfo', component: UserPaymentInfoComponent},
-      { path: 'orderComplete', component: UserOrderCompleteComponent}
+      { path: 'book/:id', component: BookDetailsComponent, title: '', },
+      { path: 'lastRentals', component: LastRentalsComponent, title: 'BookLibrary/LastRentals', canActivate: [AuthGuardService] },
+      { path: 'userBasket', component: UserBasketComponent, title: 'BookLibrary/UserBasket', canActivate: [AuthGuardService] },
+      { path: 'paymentInfo', component: UserPaymentInfoComponent, title: 'BookLibrary/PaymentInfo', canActivate: [AuthGuardService] },
+      { path: 'orderComplete', component: UserOrderCompleteComponent, title: 'BookLibrary/Checkout', canActivate: [AuthGuardService] },
+      { path: 'myProfile', component: UserProfileComponent, title: 'My Profile', canActivate: [AuthGuardService]},
     ]
   },
-  { path: 'admin',
+  {
+    path: 'admin',
     children: [
       //Book
       { path: '', component: AdminDashboardComponent, pathMatch: 'full' },
-      { path: 'bookControl', component: BookControlComponent},
-      { path: 'addbook', component: AddBookComponent},
-      { path: 'editbook/:id', component: EditBookComponent},
+      { path: 'bookControl', component: BookControlComponent },
+      { path: 'addbook', component: AddBookComponent },
+      { path: 'editbook/:id', component: EditBookComponent },
       //  children: [
       //   { path: ':id', component: DetailedBookComponent },
       //  ]           E X A M P L E
       // },
       //Author
-      { path: 'authorControl', component: AuthorControlComponent},
-      { path: 'authorControl/addAuthor', component: AddAuthorComponent},
-      { path: 'authorControl/updateAuthor/:id', component: EditAuthorComponent},
+      { path: 'authorControl', component: AuthorControlComponent },
+      { path: 'authorControl/addAuthor', component: AddAuthorComponent },
+      { path: 'authorControl/updateAuthor/:id', component: EditAuthorComponent },
       //Country  
-      { path: 'countryControl', component: CountryControlComponent},
-      { path: 'countryControl/addCountry', component: AddCountryComponent},
-      { path: 'countryControl/updateCountry/:id', component: EditCountryComponent},
+      { path: 'countryControl', component: CountryControlComponent },
+      { path: 'countryControl/addCountry', component: AddCountryComponent },
+      { path: 'countryControl/updateCountry/:id', component: EditCountryComponent },
       //Genre  
-      { path: 'genreControl', component: GenreControlComponent},
-      { path: 'genreControl/addGenre', component: AddGenreComponent},
-      { path: 'genreControl/updateGenre/:id', component: EditGenreComponent},
+      { path: 'genreControl', component: GenreControlComponent },
+      { path: 'genreControl/addGenre', component: AddGenreComponent },
+      { path: 'genreControl/updateGenre/:id', component: EditGenreComponent },
       //Language  
-      { path: 'languageControl', component: LanguageControlComponent},
-      { path: 'languageControl/addLanguage', component: AddLanguageComponent},
-      { path: 'languageControl/updateLanguage/:id', component: EditLanguageComponent},
+      { path: 'languageControl', component: LanguageControlComponent },
+      { path: 'languageControl/addLanguage', component: AddLanguageComponent },
+      { path: 'languageControl/updateLanguage/:id', component: EditLanguageComponent },
       //Order  
-      { path: 'orderControl', component: OrderControlComponent},
-      { path: 'orderControl/addOrder', component: AddOrderComponent},
-      { path: 'orderControl/updateOrder/:id', component: EditOrderComponent},
+      { path: 'orderControl', component: OrderControlComponent },
+      { path: 'orderControl/addOrder', component: AddOrderComponent },
+      { path: 'orderControl/updateOrder/:id', component: EditOrderComponent },
       //Publisher  
-      { path: 'publisherControl', component: PublisherControlComponent},
-      { path: 'publisherControl/addPublisher', component: AddPublisherComponent},
-      { path: 'publisherControl/updatePublisher/:id', component: EditPublisherComponent},
+      { path: 'publisherControl', component: PublisherControlComponent },
+      { path: 'publisherControl/addPublisher', component: AddPublisherComponent },
+      { path: 'publisherControl/updatePublisher/:id', component: EditPublisherComponent },
       //User
-      { path: 'userControl', component: UserControlComponent},
-      { path: 'userControl/addUser', component: AddUserComponent},
-      { path: 'userControl/updateUser/:id', component: EditUserComponent},
+      { path: 'userControl', component: UserControlComponent },
+      { path: 'userControl/addUser', component: AddUserComponent },
+      { path: 'userControl/updateUser/:id', component: EditUserComponent },
     ],
-    canActivate: [RoleGuardService] 
+    canActivate: [RoleGuardService]
   },
 ];
 
